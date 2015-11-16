@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{site_title}}</title>
+</head>
+<body>
+	{% for word in words_list %}
+		<p>{{ word.fi }}</p>
+		<p>{{ word.en }}</p>
+	{% endfor %}
+	
+</body>
