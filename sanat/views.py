@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 def index(request):
 	context = {
-		'words_list': models.Word.objects.order_by('-fi')[:5],
+		'words_list': models.Word.objects.order_by('-fi'),
 		'site_title':"Home | Puhun suomea"
 		}
 	return render(request, "sanat/index.html", context,)
