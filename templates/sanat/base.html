@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
+		<style>
+		html, body, .wrap
+		{
+			height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's childs (sidebar, content) could reach the bottom */
+			margin: 0;
+			font-family: Verdana, Geneva, sans-serif;;
+			font-size: 14px;
+		}
+		.wrap {
+		}
+		.header {
+/*			position: fixed;*/
+			height: 12%;
+			width: 100%;
+			float: left;
+		}
+		.header-left {
+			width: 20%;
+			background-color: #6f6868;
+			height: 100%;
+			float: left;
+		}
+		.header-right {
+			width: 80%;
+			background-color: #f2f1f4;
+			float: left;
+			height: 100%;
+		}
+		.sidebar {
+			float: left;
+			width: 20%;
+			background-color: #45413c;
+			color: white;
+		}
+		.content {
+			float: left;
+			width: 80%;
+			background-color: #ececec;
+		}
+		.sidebar, .content {
+			border: 0px solid #000;
+			height: 88%;
+		}
+		.text-sidebar {
+			float: left;
+			margin-top: 20%;
+			font-size: 18px;
+		}
+		
+		.text-content {
+			float: left;
+			margin-left: 10%;
+			width: 100%;		/* needed so that its child divs take all the space to the left */
+		}
+		.fi-text-content {
+			float: left;
+			width: 40%;
+		}
+		.en-text-content {
+			float: left;
+			width: 60%;
+		}
+		ul {
+			list-style-type: none; /* remove bullets in all the lists */
+		}
+		.text-sidebar a {		/* change only those "a"s which are inside div of .text-sidebar class */
+			text-decoration: none;
+			color: lightgrey;
+		}
+		.text-sidebar a:hover {		/* change only those "a"s which are inside div of .text-sidebar class */
+			color: white;
+		}
+
+		h1 {
+  			background-color: #565656;
+  			color: transparent;
+			text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+			-webkit-background-clip: text;
+			-moz-background-clip: text;
+			background-clip: text;
+			text-align: center;
+		}
+
+		.each-word {
+			/*display: inline;*/
+			overflow: auto;
+		}
+		.text-content div:hover {
+			background-color: blue;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="header-left">
+				<h1>Puhun suomea</h1>
+			</div>
+			<div class="header-right">
+				<h1>Memorize</h1>
+			</div>
+		</div>
+
+		<div class="sidebar">
+			<div class="text-sidebar">
+				<ul>
+					<li><a href="{% url 'index' %}" >Show words</a></li>
+					<br /><br /><br /><br />
+					<li><a href="{% url 'insert_form' %}" >Add words</a></li>
+					<br /><br /><br /><br />
+					<li>Take a test</li>
+					<br /><br /><br /><br />
+					<li>Contact me</li>			
+				</ul>
+			</div>
+		</div>
+		{% block content %}{% endblock content %}
+		{% block insert_form %} {% endblock insert_form %}
+		{% block test %} {% endblock test %}
+	</div>	
+</body>
+</html>

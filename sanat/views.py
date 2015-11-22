@@ -1,10 +1,30 @@
 from sanat import models
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse # needed for WordFrom
+from .forms import WordForm
 
 def index(request):
 	context = {
 		'words_list': models.Word.objects.order_by('-fi'),
+		'examples_list': models.Example.objects.order_by('-fi'),
 		'site_title':"Home | Puhun suomea"
 		}
 	return render(request, "sanat/index.html", context,)
+
+# def insert_form(request):
+# 	return render(request, "sanat/insert_form.html",)
+
+def insert_form(request):
+	if request.method == 'POST':
+		form = WordForm(request.POST)
+		if form.is_valid():
+			word = form.save(commit=False)
+			word.fi = form.cleaned_data['fi']
+			word.en = form.cleaned_data['en']
+			word.tyyppi = form.cleaned_data['tyyppi']
+			word.save()
+			return HttpResponseRedirect('/')
+	else:
+		form = WordForm()
+		return render(request, "sanat/insert_form.html",{'form':form})

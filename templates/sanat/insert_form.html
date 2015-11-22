@@ -1,0 +1,13 @@
+{% extends 'sanat/base.html' %}
+{% block title %} Insert words into DB {% endblock title %}  <!-- it's possible to change title and this way -->
+{% block insert_form %} 
+
+<a href="{% url 'index' %}" >click to go back</a>
+	<form method="POST">{% csrf_token %}
+       <input type="text" name="fi" id="fi">fi</input>
+       <input type="text" name="en" id="en">en</input>
+       <input type="text" name="tyyppi" id="tyyppi">tyyppi</input>
+    	<button type="submit">Save</button>
+    </form>
+
+{% endblock insert_form %}

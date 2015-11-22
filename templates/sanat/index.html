@@ -1,106 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>{{site_title}}</title>
-	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Goblin+One" />
-	<style>
-		html, body, .wrap
-		{
-			height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's childs (sidebar, content) could reach the bottom */
-			margin: 0;
-			font-family: Verdana, Geneva, sans-serif;;
-			font-size: 14px;
-		}
-		.wrap {
-		}
-		.header {
-/*			position: fixed;*/
-			height: 12%;
-			width: 100%;
-			float: left;
-		}
-		.header-left {
-			width: 20%;
-			background-color: #6f6868;
-			height: 100%;
-			float: left;
-		}
-		.header-right {
-			width: 80%;
-			background-color: #f2f1f4;
-			float: left;
-			height: 100%;
-		}
-		.sidebar {
-			float: left;
-			width: 20%;
-			background-color: #45413c;
-			color: white;
-		}
-		.content {
-			float: left;
-			width: 80%;
-			background-color: #ececec;
-		}
-		.sidebar, .content {
-			border: 0px solid #000;
-			height: 88%;
-		}
-		.text-sidebar {
-			float: left;
-			margin-left: 15%;
-			margin-top: 20%;
-		}
-		.text-content {
-			float: left;
-			margin-left: 20%;
-		}
-		.fi-text-content {
-			float: left;
-			width: 40%;
-		}
-		.en-text-content {
-			float: left;
-			width: 60%;
-		}
-
-
-	</style>
-</head>
-<body>
-	<div class="wrap">
-		<div class="header">
-			<div class="header-left">
-				
-			</div>
-			<div class="header-right">
-				Puhun suomea
-			</div>
-		</div>
-
-		<div class="sidebar">
-			<div class="text-sidebar">
-				<ul>
-					<li>Show all words</li>
-					<br /><br /><br /><br />
-					<li>Add words to DB</li>
-					<br /><br /><br /><br />
-					<li>Test your knowledge</li>
-					<br /><br /><br /><br />
-					<li>Contact author</li>
-					
-				</ul>
-			</div>
-		</div>
-
+{% extends 'sanat/base.html' %}
+{% block content %}
 		<div class="content">
 			<div class="text-content">
 				{% for word in words_list %}
-					<p class="fi-text-content">{{ word.fi }}</p>
-					<p class="en-text-content">{{ word.en }}</p>
-				{% endfor %}
+					<div class="each-word">
+						<p class="fi-text-content">{{ word.fi }}</p>
+						
+						<p class="en-text-content">
+							{{ word.en }}
+							{% comment %}
+							{% for example in examples_list %}
+								{% if example.word == word %}
+									{{ example.fi }} {{ example.en }}
+								{% endif %}
+							{% endfor %}
+							{% endcomment %}
+						</p>
+					</div>
+				{% endfor %} 
 			</div>
 		</div>
-	</div>	
-</body>
+{% endblock content %}
