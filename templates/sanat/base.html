@@ -54,16 +54,20 @@
 		
 		.text-content {
 			float: left;
-			margin-left: 10%;
+			margin-left: 5%;
 			width: 100%;		/* needed so that its child divs take all the space to the left */
 		}
 		.fi-text-content {
 			float: left;
-			width: 40%;
+			width: 25%;
 		}
 		.en-text-content {
 			float: left;
-			width: 60%;
+			width: 40%;
+		}
+		.tools-text-content {
+			float: left;
+			width: 30%;
 		}
 		ul {
 			list-style-type: none; /* remove bullets in all the lists */
@@ -91,7 +95,11 @@
 			overflow: auto;
 		}
 		.text-content div:hover {
-			background-color: blue;
+			background-color: grey;
+			cursor: pointer;
+		}
+		.text-content div:active {
+			background-color: yellow;
 		}
 
 	</style>
