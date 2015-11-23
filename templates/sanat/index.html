@@ -4,21 +4,21 @@
 			<div class="text-content">
 				{% for word in words_list %}
 					<div class="each-word">
-						<p class="fi-text-content">{{ word.fi }}</p>
 						
-						<p class="en-text-content">
-							{{ word.en }}
-							{% comment %}
-							{% for example in examples_list %}
-								{% if example.word == word %}
-									{{ example.fi }} {{ example.en }}
-								{% endif %}
-							{% endfor %}
-							{% endcomment %}
-						</p>
-						<p class="tools-text-content">
-						edit
-						</p>
+						<ul class="accordion css-accordion">
+						  <li class="accordion-item">
+						    <input class="accordion-item-input" type="checkbox" name="accordion" id="{{word.fi}}" />
+						    <label for="{{word.fi}}" class="accordion-item-hd">
+
+						    						<div class="fi-text-content">{{ word.fi }}</div>
+						
+						<div class="en-text-content">{{ word.en }}</div>
+						<div class="tools-text-content">edit</div>
+
+						    <span class="accordion-item-hd-cta">&#9650;</span></label>
+						    <div class="accordion-item-bd">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex consequuntur architecto maxime, saepe repudiandae quidem quisquam aliquam cumque possimus inventore, deserunt nostrum, explicabo modi voluptatibus sed, labore quaerat. Accusamus, officiis. </div>
+						  </li>
+						</ul>
 					</div>
 				{% endfor %} 
 			</div>
