@@ -7,7 +7,7 @@ from .forms import WordForm
 def index(request):
 	context = {
 		'words_list': models.Word.objects.order_by('-fi'),
-		'examples_list': models.Example.objects.order_by('-fi'),
+		#'examples_list': models.Example.objects.order_by('-fi'),
 		'site_title':"Home | Puhun suomea"
 		}
 	return render(request, "sanat/index.html", context,)

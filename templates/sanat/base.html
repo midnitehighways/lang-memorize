@@ -3,7 +3,27 @@
 <head>
 	<meta charset="utf-8">
 	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
-		<style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+		    var mglass = $('.magnifying-glass');
+		     //var form = $('#line1');
+		    //mglass = $('.accordion-item-bd')
+		    mglass.click(function () {
+		        //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
+		       //console.log($(this).children('.header-search-form').children());
+		        console.log($(this).parent().children().children());
+		        var form = $(this).parent().children().children('.add-example-field');
+		        if (form.is(':hidden')) form.show()
+		        form.animate({
+		            'width': form.width() == 100 ? '0px' : '100px'
+		        }, 'slow', function () {
+		            if (form.width() == 0) form.hide()
+		        });
+		    });
+		});</script>
+
+	<style>
 		html, body, .wrap
 		{
 			height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's childs (sidebar, content) could reach the bottom */
@@ -51,7 +71,6 @@
 			margin-top: 20%;
 			font-size: 18px;
 		}
-		
 		.text-content {
 			float: left;
 			margin-left: 5%;
@@ -59,15 +78,15 @@
 		}
 		.fi-text-content {
 			float: left;
-			width: 25%;
+			width: 35%;
 		}
 		.en-text-content {
 			float: left;
-			width: 40%;
+			width: 64%%;
 		}
 		.tools-text-content {
 			float: left;
-			width: 10%;
+			width: 1%;
 		}
 		ul {
 			list-style-type: none; /* remove bullets in all the lists */
@@ -79,7 +98,6 @@
 		.text-sidebar a:hover {		/* change only those "a"s which are inside div of .text-sidebar class */
 			color: white;
 		}
-
 		h1 {
   			background-color: #565656;
   			color: transparent;
@@ -89,7 +107,6 @@
 			background-clip: text;
 			text-align: center;
 		}
-
 		.each-word {
 			/*display: inline;*/
 			overflow: auto;
@@ -106,74 +123,82 @@
 
 
 
+		.accordion {
+		  border: 1px solid lightgrey;
+		  padding: 0 10px;
+		  margin: 0 auto;
+		  list-style: none outside;
+		}
 
+		.accordion > * + * { border-top: 1px solid white; }
 
+		.accordion-item-hd {
+		  display: block;
+		  padding: 2% 3.5% 3.5% 0; /*15px 30px 30px 0 */
+		  position: relative;
+		  cursor: pointer;
+		  font-size: 14px;
+		}
 
-.accordion {
-  border: 1px solid grey;
-  padding: 0 10px;
-  margin: 0 auto;
-  list-style: none outside;
+		.accordion-item-input:checked ~ .accordion-item-bd {
+		  max-height: 1000px;
+		  padding-top: 2%; /*15px*/
+		  margin-bottom: 2%; /*15px*/
+		  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+		  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+		}
+
+		.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+		  -webkit-transform: rotate(0);
+		  -ms-transform: rotate(0);
+		  transform: rotate(0);
+		}
+
+		.accordion-item-hd-cta {
+		  display: block;
+		  width: 30px;
+		  position: absolute;
+		  top: calc(50% - 6px);
+		  /*minus half font-size*/
+		  right: 0;
+		  pointer-events: none;
+		  -webkit-transition: -webkit-transform .3s ease;
+		  transition: transform .3s ease;
+		  -webkit-transform: rotate(-180deg);
+		  -ms-transform: rotate(-180deg);
+		  transform: rotate(-180deg);
+		  text-align: center;
+		  font-size: 12px;
+		  line-height: 1;
+		}
+
+		.accordion-item-bd {
+		  max-height: 0;
+		  margin-bottom: 0;
+		  /*overflow: hidden;*/
+		  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+		  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+		}
+
+		.accordion-item-input {
+		  clip: rect(0 0 0 0);
+		  width: 1px;
+		  height: 1px;
+		  margin: -1;
+		  overflow: hidden;
+		  position: absolute;
+		  left: -9000px;
 }
 
-.accordion > * + * { border-top: 1px solid white; }
 
-.accordion-item-hd {
-  display: block;
-  padding: 15px 30px 30px 0;
-  position: relative;
-  cursor: pointer;
-  font-size: 14px;
+
+.add-example-field {
+    display:none;
 }
-
-.accordion-item-input:checked ~ .accordion-item-bd {
-  max-height: 1000px;
-  padding-top: 15px;
-  margin-bottom: 15px;
-  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
-  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+.add-example-field {
+    width: 0px;
 }
-
-.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
-  -webkit-transform: rotate(0);
-  -ms-transform: rotate(0);
-  transform: rotate(0);
-}
-
-.accordion-item-hd-cta {
-  display: block;
-  width: 30px;
-  position: absolute;
-  top: calc(50% - 6px );
-  /*minus half font-size*/
-  right: 0;
-  pointer-events: none;
-  -webkit-transition: -webkit-transform .3s ease;
-  transition: transform .3s ease;
-  -webkit-transform: rotate(-180deg);
-  -ms-transform: rotate(-180deg);
-  transform: rotate(-180deg);
-  text-align: center;
-  font-size: 12px;
-  line-height: 1;
-}
-
-.accordion-item-bd {
-  max-height: 0;
-  margin-bottom: 0;
-  /*overflow: hidden;*/
-  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
-  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
-}
-
-.accordion-item-input {
-  clip: rect(0 0 0 0);
-  width: 1px;
-  height: 1px;
-  margin: -1;
-  overflow: hidden;
-  position: absolute;
-  left: -9999px;
+.magnifying-glass {
 }
 	</style>
 </head>
@@ -195,7 +220,7 @@
 					<br /><br /><br /><br />
 					<li><a href="{% url 'insert_form' %}" >Add words</a></li>
 					<br /><br /><br /><br />
-					<li>Take a test</li>
+					<li><a href="{% url 'insert_form' %}" >Take a test</a></li>
 					<br /><br /><br /><br />
 					<li>Contact me</li>			
 				</ul>
