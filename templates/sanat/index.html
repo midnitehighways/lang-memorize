@@ -21,12 +21,13 @@
 									<br />
 								{% endfor %}
 								{% endwith %}
-								<a class='magnifying-glass' href="#">Add an example</a>&nbsp&nbsp&nbsp
+								<a class='add-example' href="#">Add an example</a>&nbsp&nbsp&nbsp
 								<a href="#">Edit word</a>&nbsp&nbsp&nbsp
 								<a href="#">Delete word</a>&nbsp&nbsp&nbsp
-								<form class='header-search-form' id='form{{ forloop.counter }}' action='JavaScript:postSearchForm()' method='POST' autocomplete='off'>
+								<form class='header-search-form' id='form{{ forloop.counter }}' action="{% url 'add_example_form' %}" method='POST' autocomplete='off'>{% csrf_token %}
 									<input class='add-example-field' type='text' id='line{{ forloop.counter }}' name='line{{ forloop.counter }}' />
-									<img src='http://findicons.com/files/icons/974/glyphish/18/magnifying_glass.png' class='magnifying-glass' />
+									<!-- <img src='http://findicons.com/files/icons/974/glyphish/18/magnifying_glass.png' class='magnifying-glass' /> -->
+									<button type=submit class='add-example-button'>Add example</button>
 								</form>
 
 
@@ -35,6 +36,14 @@
 						</ul>
 					</div>
 				{% endfor %} 
+								<form action="{% url 'add_example_form' %}" method='POST' >{% csrf_token %}
+									{{ form.errors }}
+									{{ form.non_field_errors }}
+									<input type='text' name='fi'id='fi'/>
+									
+									<button type=submit>Add example</button>
+				</form>
+
 			</div>
 		</div>
 {% endblock content %}

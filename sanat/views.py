@@ -1,8 +1,8 @@
 from sanat import models
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse # needed for WordFrom
-from .forms import WordForm
+from .forms import WordForm, ExampleForm
 
 def index(request):
 	context = {
@@ -25,6 +25,27 @@ def insert_form(request):
 			word.tyyppi = form.cleaned_data['tyyppi']
 			word.save()
 			return HttpResponseRedirect('/')
-	else:
-		form = WordForm()
-		return render(request, "sanat/insert_form.html",{'form':form})
+		#else:
+	form = WordForm()
+	return render(request, "sanat/insert_form.html",{'form':form})
+
+def add_example_form(request):
+	
+	if request.method == 'POST':
+		id = 4 ############TEMPORARY!!!!!!
+		word = get_object_or_404(models.Word, pk=id)
+		form = ExampleForm(request.POST)
+		
+		if form.is_valid():
+			example = form.save(commit=False)
+			example.word = word
+			example.fi = form.cleaned_data['fi']
+			#example.en = form.cleaned_data['en']
+			#example.en = form.cleaned_data['en_ex']
+			example.save()
+			return HttpResponseRedirect('/')
+		else:
+			
+			return render(request, "sanat/test.html",{'form':form})
+	form = ExampleForm()
+	return render(request, "sanat/test.html",{'form':form})

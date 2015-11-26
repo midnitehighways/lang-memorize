@@ -6,19 +6,18 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
-		    var mglass = $('.magnifying-glass');
-		     //var form = $('#line1');
-		    //mglass = $('.accordion-item-bd')
+		    var mglass = $('.add-example');
 		    mglass.click(function () {
 		        //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
 		       //console.log($(this).children('.header-search-form').children());
 		        console.log($(this).parent().children().children());
 		        var form = $(this).parent().children().children('.add-example-field');
-		        if (form.is(':hidden')) form.show()
+		        var button = form.siblings('.add-example-button');
+		        if (form.is(':hidden')) {form.show(); button.show(); form.focus();}
 		        form.animate({
 		            'width': form.width() == 100 ? '0px' : '100px'
 		        }, 'slow', function () {
-		            if (form.width() == 0) form.hide()
+		            if (form.width() == 0) {form.hide();button.hide();}
 		        });
 		    });
 		});</script>
@@ -192,7 +191,7 @@
 
 
 
-.add-example-field {
+.add-example-field, .add-example-button {
     display:none;
 }
 .add-example-field {
@@ -220,7 +219,7 @@
 					<br /><br /><br /><br />
 					<li><a href="{% url 'insert_form' %}" >Add words</a></li>
 					<br /><br /><br /><br />
-					<li><a href="{% url 'insert_form' %}" >Take a test</a></li>
+					<li><a href="{% url 'add_example_form'%}" >Take a test</a></li>
 					<br /><br /><br /><br />
 					<li>Contact me</li>			
 				</ul>

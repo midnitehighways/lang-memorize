@@ -1,26 +1,28 @@
 {% extends 'sanat/base.html' %}
-{% block content %}
-		<div class="content">
-			<div class="text-content">
-				{% for word in words_list %}
-					<div class="each-word">
-						<p class="fi-text-content">{{ word.fi }}</p>
-						
-						<p class="en-text-content">
-							{{ word.en }}
-							{% comment %}
-							{% for example in examples_list %}
-								{% if example.word == word %}
-									{{ example.fi }} {{ example.en }}
-								{% endif %}
-							{% endfor %}
-							{% endcomment %}
-						</p>
-						<p class="tools-text-content">
-						edit
-						</p>
-					</div>
-				{% endfor %} 
-			</div>
-		</div>
-{% endblock content %}
+{% block test %}
+			<form method='POST' >{% csrf_token %}
+									{{ form.errors }}
+									{{ form.non_field_errors }}
+									
+
+							 		<input type='text' name='fi' id='fu'>fu</input>
+
+									<input type=submit />
+				</form>
+				
+									{% if form.errors %}
+									    {% for field in form %}
+									        {% for error in field.errors %}
+									            <div class="alert alert-error">
+									                <strong>{{ error|escape }}</strong>
+									            </div>
+									        {% endfor %}
+									    {% endfor %}
+									    {% for error in form.non_field_errors %}
+									        <div class="alert alert-error">
+									            <strong>{{ error|escape }}</strong>
+									        </div>
+									    {% endfor %}
+									{% endif %}
+
+{% endblock test %}

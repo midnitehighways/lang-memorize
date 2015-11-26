@@ -15,8 +15,8 @@ class Word(models.Model):
 
 class Example(models.Model):		
 	word = models.ForeignKey(Word)
-	fi = models.TextField(max_length=100)
-	en = models.TextField(max_length=100)
+	fi = models.TextField(max_length=100, default='')
+	en = models.TextField(max_length=100, default='')
 
 	def __str__(self):
 		return self.word.fi
