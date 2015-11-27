@@ -6,8 +6,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
-		    var mglass = $('.add-example');
-		    mglass.click(function () {
+		    var element = $('.add-example');
+		    element.click(function () {
 		        //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
 		       //console.log($(this).children('.header-search-form').children());
 		        console.log($(this).parent().children().children());
@@ -197,8 +197,6 @@
 .add-example-field {
     width: 0px;
 }
-.magnifying-glass {
-}
 	</style>
 </head>
 <body>
@@ -219,7 +217,7 @@
 					<br /><br /><br /><br />
 					<li><a href="{% url 'insert_form' %}" >Add words</a></li>
 					<br /><br /><br /><br />
-					<li><a href="{% url 'add_example_form'%}" >Take a test</a></li>
+					<li><a href="{% url 'add_example_form' 4%}" >Take a test</a></li>
 					<br /><br /><br /><br />
 					<li>Contact me</li>			
 				</ul>

@@ -15,34 +15,25 @@
 
 						    <span class="accordion-item-hd-cta">&#9650;</span></label>
 						    <div id="div{{ forloop.counter }}"class="accordion-item-bd">
-								{% with word.example_set.all as examples %}			<!-- thus we get access to examples -->
+								{% with word.example_set.all as examples %}		<!-- this way we get access to examples of each particular word -->
 								{% for example in examples %}
 									<div> {{ forloop.counter }}. {{ example.fi }} - {{ example.en }} </div>
 									<br />
 								{% endfor %}
 								{% endwith %}
 								<a class='add-example' href="#">Add an example</a>&nbsp&nbsp&nbsp
-								<a href="#">Edit word</a>&nbsp&nbsp&nbsp
-								<a href="#">Delete word</a>&nbsp&nbsp&nbsp
-								<form class='header-search-form' id='form{{ forloop.counter }}' action="{% url 'add_example_form' %}" method='POST' autocomplete='off'>{% csrf_token %}
-									<input class='add-example-field' type='text' id='line{{ forloop.counter }}' name='line{{ forloop.counter }}' />
+								<a class='edit-word' href="#">Edit word</a>&nbsp&nbsp&nbsp
+								<a href="{% url 'delete_word' word.id %}">Delete word</a>&nbsp&nbsp&nbsp
+								<form class='header-search-form' id='form{{ forloop.counter }}' action="{% url 'add_example_form' word.id %}" method='POST' autocomplete='off'>{% csrf_token %}
+									<input class='add-example-field' type='text' id='line{{ forloop.counter }}' name='fi' />
 									<!-- <img src='http://findicons.com/files/icons/974/glyphish/18/magnifying_glass.png' class='magnifying-glass' /> -->
 									<button type=submit class='add-example-button'>Add example</button>
 								</form>
-
-
 							</div>
 						  </li>
 						</ul>
 					</div>
 				{% endfor %} 
-								<form action="{% url 'add_example_form' %}" method='POST' >{% csrf_token %}
-									{{ form.errors }}
-									{{ form.non_field_errors }}
-									<input type='text' name='fi'id='fi'/>
-									
-									<button type=submit>Add example</button>
-				</form>
 
 			</div>
 		</div>

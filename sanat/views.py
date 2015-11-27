@@ -29,23 +29,20 @@ def insert_form(request):
 	form = WordForm()
 	return render(request, "sanat/insert_form.html",{'form':form})
 
-def add_example_form(request):
-	
+def add_example_form(request, id):
 	if request.method == 'POST':
-		id = 4 ############TEMPORARY!!!!!!
 		word = get_object_or_404(models.Word, pk=id)
 		form = ExampleForm(request.POST)
-		
 		if form.is_valid():
 			example = form.save(commit=False)
 			example.word = word
 			example.fi = form.cleaned_data['fi']
 			#example.en = form.cleaned_data['en']
-			#example.en = form.cleaned_data['en_ex']
 			example.save()
 			return HttpResponseRedirect('/')
-		else:
-			
-			return render(request, "sanat/test.html",{'form':form})
 	form = ExampleForm()
-	return render(request, "sanat/test.html",{'form':form})
+	return render(request, "sanat/index.html",{'form':form})
+
+def delete_word(request, id):
+    word = get_object_or_404(models.Word, pk=id).delete()
+    return HttpResponseRedirect(reverse('index'))
