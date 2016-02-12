@@ -20,7 +20,32 @@
 		            if (form.width() == 0) {form.hide();button.hide();}
 		        });
 		    });
-		});</script>
+		});
+		$(function () {
+		    var element = $('.edit-word');
+		    element.click(function () {
+		        //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
+		       //console.log($(this).children('.header-search-form').children());
+		        var vv = $(this).parent().parent().parent().parent().parent();
+		        // console.log($(this).parent().parent().children().children());//.children().children());
+		    	console.log(vv);
+				
+				///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!////////vv.find("*").off(); _______///+++???????? - maybe useful + forgot about it!!!!
+		        
+
+		        // var form = $(this).parent().children().children('.add-example-field');
+		        // var button = form.siblings('.add-example-button');
+		        // if (form.is(':hidden')) {form.show(); button.show(); form.focus();}
+		        // form.animate({
+		        //     'width': form.width() == 100 ? '0px' : '100px'
+		        // }, 'slow', function () {
+		        //     if (form.width() == 0) {form.hide();button.hide();}
+		        // });
+		    });
+		});
+
+
+		</script>
 
 	<style>
 		html, body, .wrap
