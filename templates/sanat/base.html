@@ -14,11 +14,9 @@
 		        var form = $(this).parent().children().children('.add-example-field');
 		        var button = form.siblings('.add-example-button');
 		        if (form.is(':hidden')) {form.show(); button.show(); form.focus();}
-		        form.animate({
-		            'width': form.width() == 100 ? '0px' : '100px'
-		        }, 'slow', function () {
-		            if (form.width() == 0) {form.hide(); button.hide();}
-		        });
+		        form.animate({'width': form.width() == 100 ? '0px' : '100px'}, 'slow', function () {
+		            		if (form.width() == 0) {form.hide(); button.hide();}
+		        		});
 		    });
 		});
 		$(function () {
@@ -29,33 +27,23 @@
 		        var vv = $(this).parent().parent().children('.accordion-item-hd').children('.accordion-item-hd-cta');
 		        // console.log($(this).parent().parent().children().children());//.children().children());
 		    	console.log(vv);
-		    	//vv.css("background-color", "yellow");
-		    	//vv.text("new");
-
-		    	vv.siblings().each(
-        			function(){
-            			if ($(this).find('input').length){
-                			$(this).text($(this).find('input').val());
-                			element.text("Edit word");
-            			}
-            			else {
-                			var t = $(this).text();
-                			$(this).html($('<input />',{'value' : t}).val(t));
-                			element.text("Save");
-            			}
-        			});
-				
+		    	// vv.siblings().each(
+       //  			function(){
+       //      			if ($(this).find('input').length){
+       //          			$(this).text($(this).find('input').val());
+       //          			element.text("Edit word");
+       //      			}
+       //      			else {
+       //          			var t = $(this).text();
+       //          			$(this).html($('<input />',{'value' : t}).val(t));
+       //          			element.text("Save");
+       //      			}
+       //  			});
+		    	var fi = vv.siblings('.fi-text-content');
+		    	console.log(fi.text());
+		    	var t = fi.text();
+		    	fi.html($('<input />',{'value' : t}).val(t));
 				///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!////////vv.find("*").off(); _______///+++???????? - maybe useful + maybe I forgot about it!!!!
-		        
-
-		        // var form = $(this).parent().children().children('.add-example-field');
-		        // var button = form.siblings('.add-example-button');
-		        // if (form.is(':hidden')) {form.show(); button.show(); form.focus();}
-		        // form.animate({
-		        //     'width': form.width() == 100 ? '0px' : '100px'
-		        // }, 'slow', function () {
-		        //     if (form.width() == 0) {form.hide();button.hide();}
-		        // });
 		    });
 		});
 
