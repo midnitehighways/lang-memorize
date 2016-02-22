@@ -21,10 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=1(tkqt3(y_1+5riigw)k-t5mg-^^zaakt*15i5ox_ww$430w@'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+#'=1(tkqt3(y_1+5riigw)k-t5mg-^^zaakt*15i5ox_ww$430w@'
 
 ALLOWED_HOSTS = []
 
@@ -88,14 +86,13 @@ WSGI_APPLICATION = 'puhunsuomea.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DATABASE_NAME'),  #get_env_variable('DATABASE_NAME'),
-        'USER': os.environ.get('USER_NAME'),   #get_env_variable('DATABASE_USER'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),      #get_env_variable('DATABASE_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ.get('DATABASE_NAME'), 
+        'USER': os.environ.get('USER_NAME'),   
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+        'HOST': '',
+        'PORT': '',
     }
 }
-
 
 
 # Internationalization
@@ -116,3 +113,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+ STATICFILES_DIRS = (
+     os.path.join(BASE_DIR, 'static'),
+ )
+
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
+DEBUG = True
+
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
