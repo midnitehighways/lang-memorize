@@ -137,5 +137,5 @@ import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
 
 DATABASES = {
-     'default': dj_database_url.config(default='postgres://localhost'),
+     'default': dj_database_url.config(default='postgres://sashych:reaktor@localhost:5432/memorize'),
 }
