@@ -126,12 +126,12 @@ ALLOWED_HOSTS = ['*']
 
 DEBUG = True
 
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
 DATABASES = {
      'default': dj_database_url.config(default='postgres://localhost'),
 }
-
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
 
 try:
     from .local_settings import *
