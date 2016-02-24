@@ -27,22 +27,22 @@
 		        var vv = $(this).parent().parent().children('.accordion-item-hd').children('.accordion-item-hd-cta');
 		        // console.log($(this).parent().parent().children().children());//.children().children());
 		    	console.log(vv);
-		    	// vv.siblings().each(
-       //  			function(){
-       //      			if ($(this).find('input').length){
-       //          			$(this).text($(this).find('input').val());
-       //          			element.text("Edit word");
-       //      			}
-       //      			else {
-       //          			var t = $(this).text();
-       //          			$(this).html($('<input />',{'value' : t}).val(t));
-       //          			element.text("Save");
-       //      			}
-       //  			});
-		    	var fi = vv.siblings('.fi-text-content');
-		    	console.log(fi.text());
-		    	var t = fi.text();
-		    	fi.html($('<input />',{'value' : t}).val(t));
+		    	vv.siblings().each(
+        			function(){
+            			if ($(this).find('input').length){
+                			$(this).text($(this).find('input').val());
+                			element.text("Edit word");
+            			}
+            			else {
+                			var t = $(this).text();
+                			$(this).html($('<input />',{'value' : t}).val(t));
+                			element.text("Save");
+            			}
+        			});
+		    	// var fi = vv.siblings('.fi-text-content');
+		    	// console.log(fi.text());
+		    	// var t = fi.text();
+		    	// fi.html($('<input />',{'value' : t}).val(t));
 				///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!////////vv.find("*").off(); _______///+++???????? - maybe useful + maybe I forgot about it!!!!
 		    });
 		});
