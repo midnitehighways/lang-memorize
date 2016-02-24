@@ -4,9 +4,9 @@
 
 <a href="{% url 'index' %}" >click to go back</a>
 	<form method="POST">{% csrf_token %}
-       <input type="text" name="fi" id="fi">fi</input>
-       <input type="text" name="en" id="en">en</input>
-       <input type="text" name="tyyppi" id="tyyppi">tyyppi</input>
+       	<input type="text" name="fi" id="fi" autofocus>fi</input><br />
+       	<input type="text" name="en" id="en">en</input><br />
+       	<input type="text" value="V" name="tyyppi" id="tyyppi">tyyppi</input><br />
     	<button type="submit">Save</button>
     </form>
 

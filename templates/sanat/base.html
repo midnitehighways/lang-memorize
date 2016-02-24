@@ -16,7 +16,7 @@
 		        if (form.is(':hidden')) {form.show(); button.show(); form.focus();}
 		        form.animate({'width': form.width() == 100 ? '0px' : '100px'}, 'slow', function () {
 		            		if (form.width() == 0) {form.hide(); button.hide();}
-		        		});
+		        });
 		    });
 		});
 		$(function () {
@@ -24,38 +24,33 @@
 		    element.click(function () {
 		        //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
 		       //console.log($(this).children('.header-search-form').children());
-		        var vv = $(this).parent().parent().children('.accordion-item-hd').children('.accordion-item-hd-cta');
+		        var target = $(this).parent().parent().children('.accordion-item-hd').children('.accordion-item-hd-cta');
 		        // console.log($(this).parent().parent().children().children());//.children().children());
-		    	console.log(vv);
-		    	vv.siblings().each(
-        			function(){
-            			if ($(this).find('input').length){
+		    	console.log(target);
+		    	target.siblings().each(
+        			function() {
+            			if ($(this).find('input').length) {
                 			$(this).text($(this).find('input').val());
                 			element.text("Edit word");
             			}
             			else {
-                			var t = $(this).text();
-                			$(this).html($('<input />',{'value' : t}).val(t));
-                			element.text("Save");
+                			var el_text = $(this).text();
+                			if (el_text!='') {		// this way we skip 'text-free' elements, in our case - tools-text-content
+                				$(this).html($('<input />',{'value' : el_text}).val(el_text));
+                				element.text("Save");
+                			}
             			}
         			});
-		    	// var fi = vv.siblings('.fi-text-content');
-		    	// console.log(fi.text());
-		    	// var t = fi.text();
-		    	// fi.html($('<input />',{'value' : t}).val(t));
-				///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!////////vv.find("*").off(); _______///+++???????? - maybe useful + maybe I forgot about it!!!!
 		    });
 		});
-
-
-		</script>
+	</script>
 
 	<style>
 		html, body, .wrap
 		{
 			height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's childs (sidebar, content) could reach the bottom */
 			margin: 0;
-			font-family: Verdana, Geneva, sans-serif;;
+			font-family: Verdana, Geneva, sans-serif;
 			font-size: 14px;
 		}
 		.wrap {
@@ -82,7 +77,6 @@
 			float: left;
 			width: 20%;
 			background-color: #45413c;
-			color: white;
 		}
 		.content {
 			float: left;
@@ -96,7 +90,9 @@
 		.text-sidebar {
 			float: left;
 			margin-top: 20%;
-			font-size: 18px;
+			color: white;
+			font-family: Papyrus, fantasy;
+			font-size: 22px;
 		}
 		.text-content {
 			float: left;
@@ -109,7 +105,7 @@
 		}
 		.en-text-content {
 			float: left;
-			width: 64%%;
+			width: 64%;
 		}
 		.tools-text-content {
 			float: left;
@@ -161,7 +157,7 @@
 
 		.accordion-item-hd {
 		  display: block;
-		  padding: 2% 3.5% 3.5% 0; /*15px 30px 30px 0 */
+		  padding: 2% 3.5% 5% 0; /*15px 30px 30px 0 */
 		  position: relative;
 		  cursor: pointer;
 		  font-size: 14px;
@@ -242,11 +238,11 @@
 			<div class="text-sidebar">
 				<ul>
 					<li><a href="{% url 'index' %}" >Show words</a></li>
-					<br /><br /><br /><br />
+					<!-- <br /><br /> --><br /><br />
 					<li><a href="{% url 'insert_form' %}" >Add words</a></li>
-					<br /><br /><br /><br />
+					<!-- <br /><br /> --><br /><br />
 					<li><a href="{% url 'add_example_form' 4%}" >Take a test</a></li>
-					<br /><br /><br /><br />
+					<!-- <br /><br /> --><br /><br />
 					<li>Contact me</li>			
 				</ul>
 			</div>
