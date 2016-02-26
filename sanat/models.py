@@ -7,6 +7,7 @@ class Word(models.Model):
 				('V', 'Verbi'), 
 				('S', 'Substantiivi'),
 				('A', 'Adjektiivi'),
+				('D', 'Adverbi'),
 				('M', 'Jotain muuta'),
 				('E', 'Ei mitaan'),
 			)

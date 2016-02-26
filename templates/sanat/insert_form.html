@@ -1,13 +1,22 @@
 {% extends 'sanat/base.html' %}
 {% block title %} Insert words into DB {% endblock title %}  <!-- it's possible to change title and this way -->
 {% block insert_form %} 
-
-<a href="{% url 'index' %}" >click to go back</a>
-	<form method="POST">{% csrf_token %}
-       	<input type="text" name="fi" id="fi" autofocus>fi</input><br />
-       	<input type="text" name="en" id="en">en</input><br />
-       	<input type="text" value="V" name="tyyppi" id="tyyppi">tyyppi</input><br />
-    	<button type="submit">Save</button>
-    </form>
-
+<div class="content">
+	<div class="text-content">
+		<!-- <a href="{% url 'index' %}" >click to go back</a> -->
+			<form method="POST">{% csrf_token %}
+		       	<input type="text" name="fi" id="fi" autofocus>fi</input><br />
+		       	<input type="text" name="en" id="en">en</input><br />
+		    	<select name="tyyppi" id="tyyppi" size="6">
+			  		<option value="V">Verb</option>
+					<option value="S">Noun</option>
+					<option value="A">Adjective</option>
+					<option value="D">Adverb</option>
+					<option value="M">Other</option>
+					<option value="E" selected="selected">Nothing</option>
+				</select>
+		    	<button type="submit">Save</button>
+		    </form>
+	</div>
+</div>
 {% endblock insert_form %}
