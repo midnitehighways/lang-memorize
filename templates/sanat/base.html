@@ -63,13 +63,15 @@
 		}
 		.header-left {
 			width: 20%;
-			background-color: #6f6868;
+			background-color: #45413c;
+			/*background-color: #6f6868;*/
 			height: 100%;
 			float: left;
 		}
 		.header-right {
 			width: 80%;
-			background-color: #f2f1f4;
+			/*background-color: #f2f1f4;*/
+			background-color: #ececec;
 			float: left;
 			height: 100%;
 		}
@@ -90,7 +92,6 @@
 		.text-sidebar {
 			float: left;
 			margin-top: 20%;
-			color: white;
 			font-family: Papyrus, fantasy;
 			font-size: 22px;
 		}
@@ -116,10 +117,10 @@
 		}
 		.text-sidebar a {		/* change only those "a"s which are inside div of .text-sidebar class */
 			text-decoration: none;
-			color: lightgrey;
+			color: #a4f333;
 		}
 		.text-sidebar a:hover {		/* change only those "a"s which are inside div of .text-sidebar class */
-			color: white;
+			color: green;
 		}
 		h1 {
   			background-color: #565656;
@@ -213,8 +214,6 @@
 		  left: -9000px;
 }
 
-
-
 .add-example-field, .add-example-button {
     display:none;
 }
@@ -227,7 +226,7 @@
 	<div class="wrap">
 		<div class="header">
 			<div class="header-left">
-				<h1>Puhun suomea</h1>
+				<!-- <h1>Puhun suomea</h1> -->
 			</div>
 			<div class="header-right">
 				<h1>Memorize</h1>
@@ -237,12 +236,14 @@
 			<div class="text-sidebar">
 				<ul>
 					<li><a href="{% url 'index' %}" >Show words</a></li>
-					<!-- <br /><br /> --><br /><br />
+					<!-- <br /><br /> --><br />
 					<li><a href="{% url 'insert_form' %}" >Add words</a></li>
-					<!-- <br /><br /> --><br /><br />
+					<!-- <br /><br /> --><br />
 					<li><a href="{% url 'add_example_form' 4%}" >Take a test</a></li>
-					<!-- <br /><br /> --><br /><br />
-					<li>Contact me</li>			
+					<br />
+					<li><a href="#">Sign up</a></li>
+					<!-- <br /><br /> --><br />
+					<li><a href="#">Contact me</a></li>
 				</ul>
 			</div>
 		</div>
