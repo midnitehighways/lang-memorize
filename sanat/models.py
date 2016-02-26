@@ -6,6 +6,8 @@ class Word(models.Model):
 	TYYPIT = (
 				('V', 'Verbi'), 
 				('S', 'Substantiivi'),
+				('A', 'Adjektiivi'),
+				('M', 'Jotain muuta'),
 				('E', 'Ei mitaan'),
 			)
 	tyyppi = models.TextField(choices = TYYPIT, default='E')
