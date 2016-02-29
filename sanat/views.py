@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse # needed for WordFrom
 from .forms import WordForm, ExampleForm
+import json
+from django.core import serializers
 
 def index(request):
 	context = {
@@ -48,8 +50,11 @@ def delete_word(request, id):
     return HttpResponseRedirect(reverse('index'))
 
 def take_a_test(request):
+	
+	data = serializers.serialize("json", models.Word.objects.all())
+	# json_words = json.dumps(models.Word.objects.all())
 	context = {
-		'words_list': models.Word.objects.order_by('-fi'),
+		'words_list': data, #models.Word.objects.order_by('-fi'),
 		#'examples_list': models.Example.objects.order_by('-fi'),
 		'site_title':"Test | Puhun suomea"
 		}

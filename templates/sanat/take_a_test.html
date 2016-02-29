@@ -16,8 +16,15 @@
 		            $("#suomea").hide("500");
 		            document.getElementById('tulos').innerHTML = "joo";//"Vastasit oikein!";
                		document.getElementById('tulos').className = "joo";
+               		var words_list = {{ words_list | safe }};
+               		console.log(words_list);
+               		document.getElementById('tulos').innerHTML = words_list[3].fields.en;
 	        	}
+        
         </script>
+		{% for word in words_list %}
+			{{ word.fi }}
+		{% endfor %} 
 
 		<input style = "margin-top: 110px;" type = "button"; class = "button2"; id = "yritys_en" /></br>
         <span id="tulos" style="bottom: -100px; position: relative; margin-left: 160px;"> </span>
