@@ -46,3 +46,11 @@ def add_example_form(request, id):
 def delete_word(request, id):
     word = get_object_or_404(models.Word, pk=id).delete()
     return HttpResponseRedirect(reverse('index'))
+
+def take_a_test(request):
+	context = {
+		'words_list': models.Word.objects.order_by('-fi'),
+		#'examples_list': models.Example.objects.order_by('-fi'),
+		'site_title':"Test | Puhun suomea"
+		}
+	return render(request, "sanat/take_a_test.html", context,)
