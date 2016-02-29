@@ -1,6 +1,7 @@
 {% extends 'sanat/base.html' %}
 {% block title %} Insert words into DB {% endblock title %}  <!-- it's possible to change title and this way -->
 {% block insert_form %} 
+
 <div class="content">
 	<div class="text-content">
 		<!-- <a href="{% url 'index' %}" >click to go back</a> -->
@@ -17,6 +18,27 @@
 				</select>
 		    	<button type="submit">Save</button>
 		    </form>
+			
+			<script>
+				function koe(vastaus)
+        		{
+					document.getElementById('yritys_en').style.display = "none";
+
+					 $("#yritys_en").show("600");
+		             $("#suomea").show("800");		    
+	        	}
+            </script>
+
+		<input style = "margin-top: 110px;" type = "button"; class = "button2"; id = "yritys_en" /></br>
+        <span id="tulos" style="bottom: -100px; position: relative; margin-left: 160px;"> </span>
+        <div id="suomea" style="margin-left: 330px; margin-top: -170px">
+	        <input type = "button" class = "nappi" onclick="koe(this.value)" id = "yritys_1" /></br>
+	        <input type = "button" class = "nappi" onclick="koe(this.value)" id = "yritys_2" /></br>
+	        <input type = "button" class = "nappi" onclick="koe(this.value)" id = "yritys_3" /></br>
+	        <input type = "button" class = "nappi" onclick="koe(this.value)" id = "yritys_4" /></br>
+        </div>
+
+
 	</div>
 </div>
 {% endblock insert_form %}
