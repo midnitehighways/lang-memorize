@@ -5,8 +5,9 @@
 	<div class="text-content">
 		
 		<script>
-			var words_list = {{ words_list | safe }};				// array of the words passed by means of json serialization
-			var maara = words_list.length;
+			var words_list = {{ words_list | safe }};	// array of words passed by means of json. Safe format, without 'u'-s
+			var maara = words_list.length;				// number of words
+			// pomestit stroki nije v prepare-test!!!!!!
 			var fin = [];
 			var eng = [];
 			for(var i = 0; i < maara; i++) {
@@ -14,27 +15,23 @@
 				eng.push(words_list[i].fields.en);
 			}
 
-        function yritys2()
+        function prepare_test()	// initial function. Determining the 4 words and the asked word using random generation
         {
             var numerot = [];
             for (var i = 0; i < 4; i++) {										// create array numerot[] and populate it with 4 random numbers
-                numerot[i] = Math.floor(Math.random( ) * (maara));				// generate random number less than 'maara'
-                for (var j = i; j > 0; j--) {
-                    if (numerot[i] == numerot[j-1]) {							// thus we avoid the same numbers in the array
-                        numerot[i] = Math.floor(Math.random( ) * (maara));
+                numerot[i] = Math.floor(Math.random( ) * (maara));				// generate these random numbers, each less than 'maara'
+                for (var j = i; j > 0; j--) {									// check for repetitive numbers in the array
+                    if (numerot[i] == numerot[j-1]) {							// if same number found --->
+                        numerot[i] = Math.floor(Math.random( ) * (maara));		// ----> generate a new one
                         i--;
                         break;
                     }
                 }
             }
-            var rand = Math.floor(Math.random( ) * 4);
-            console.log(" num " + numerot[0] + " " + numerot[1] + " " + numerot[2] + " " + numerot[3]);
-            console.log(" eng " + eng[numerot[0]] + " " + eng[numerot[1]] + " " + eng[numerot[2]] + " " + eng[numerot[3]]);
-            console.log(" fin " + fin[numerot[0]] + " " + fin[numerot[1]] + " " + fin[numerot[2]] + " " + fin[numerot[3]]);
-            console.log(rand);
-            document.getElementById('yritys_en').value = eng[numerot[rand]];
-            oikea_vastaus = fin[numerot[rand]];						// oikea_vastaus - the right answer (text)
-            valinnat = [document.getElementById('yritys_1'), document.getElementById('yritys_2'), document.getElementById('yritys_3'), document.getElementById('yritys_4')];
+            var rand = Math.floor(Math.random( ) * 4);							// the generated number (0..3) defines which word --->
+            document.getElementById('asked_word').value = eng[numerot[rand]];	// ---> is going to be asked among the 4 chosen previously
+            oikea_vastaus = fin[numerot[rand]];									// the right answer (text)
+            valinnat = [document.getElementById('choice_1'), document.getElementById('choice_2'), document.getElementById('choice_3'), document.getElementById('choice_4')];
             // for (var i = numerot.length - 1; i > 0; i--) {				// shuffling the numerot-array
             //     var j = Math.floor(Math.random() * (i + 1));
             //     var temp = numerot[i];
@@ -44,35 +41,35 @@
             for (var i = 0; i < 4; i++) {
                 valinnat[i].value = fin[numerot[i]];
             }
-            $("#yritys_en").show("600");
-            $("#suomea").show("600");
+            $("#asked_word").show("600");
+            $("#choices").show("600");
         } 
         
-        window.onload = function() { yritys2();};        
+        window.onload = function() { prepare_test();};        
         
-        function koe(vastaus)
+        function handle_answer(vastaus)		// check whether answer is correct and react correspondingly
         {
-            document.getElementById('yritys_en').style.display = "none";
+            document.getElementById('asked_word').style.display = "none";
             if(vastaus == oikea_vastaus) {
-                document.getElementById('tulos').innerHTML = "joo";//"Vastasit oikein!";
+                document.getElementById('tulos').innerHTML = "joo";
                 document.getElementById('tulos').className = "joo";
             }
             else {
-                document.getElementById('tulos').innerHTML = "ei";//"Oikea vastaus on " + oikea_vastaus;
+                document.getElementById('tulos').innerHTML = "ei";
                 document.getElementById('tulos').className = "ei";
             }
-            $("#suomea").hide(600);
-            yritys2();
+            $("#choices").hide(600);
+            prepare_test();		// now prepare the new test
         }
         </script>
 
-		<input style = "margin-top: 110px;" type = "button"; class = "button2"; id = "yritys_en" /></br>
+		<input style = "margin-top: 110px;" type = "button"; class = "button2"; id = "asked_word" /></br>
         <span id="tulos" style="bottom: -100px; position: relative; margin-left: 160px;"> </span>
-        <div id="suomea" style="margin-left: 330px; margin-top: -170px">
-	        <input type = "button" class = "nappi" onclick="koe(this.value)" id = "yritys_1" /></br>
-	        <input type = "button" class = "nappi" onclick="koe(this.value)" id = "yritys_2" /></br>
-	        <input type = "button" class = "nappi" onclick="koe(this.value)" id = "yritys_3" /></br>
-	        <input type = "button" class = "nappi" onclick="koe(this.value)" id = "yritys_4" /></br>
+        <div id="choices" style="margin-left: 330px; margin-top: -170px">
+	        <input type = "button" class = "nappi" onclick="handle_answer(this.value)" id = "choice_1" /></br>
+	        <input type = "button" class = "nappi" onclick="handle_answer(this.value)" id = "choice_2" /></br>
+	        <input type = "button" class = "nappi" onclick="handle_answer(this.value)" id = "choice_3" /></br>
+	        <input type = "button" class = "nappi" onclick="handle_answer(this.value)" id = "choice_4" /></br>
         </div>
     </div>
 </div>
