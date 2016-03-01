@@ -39,7 +39,7 @@
             //     numerot[j] = temp;
             // }
             for (var i = 0; i < 4; i++) {
-                ids[i].value = fin[numerot[i]];		// assigning corresponding words to inputs in "choices"-section
+                ids[i].innerHTML = fin[numerot[i]];		// assigning corresponding words to inputs in "choices"-section
             }
             $("#asked_word").show("600");
             $("#choices").show("600");
@@ -61,16 +61,22 @@
             $("#choices").hide(600);
             prepare_test(words);		// now prepare the new test
         }
+        
+        $(function () {
+		    $('.nappi').click(function () {
+		    	handle_answer($(this).text());
+		    }
+		)})
         </script>
 
 		<input style = "margin-top: 110px;" type = "button"; class = "button2"; id = "asked_word" /></br>
         <span id="result" style="bottom: -100px; position: relative; margin-left: 160px;"> </span>
-        <div id="choices" style="margin-left: 330px; margin-top: -170px">
-	        <input type = "button" class = "nappi" onclick="handle_answer(this.value)" id = "choice_1" /></br>
-	        <input type = "button" class = "nappi" onclick="handle_answer(this.value)" id = "choice_2" /></br>
-	        <input type = "button" class = "nappi" onclick="handle_answer(this.value)" id = "choice_3" /></br>
-	        <input type = "button" class = "nappi" onclick="handle_answer(this.value)" id = "choice_4" /></br>
-        </div>
+        <ul id="choices" style="margin-left: 330px; margin-top: -170px">
+	        <li type = "button" class = "nappi" id = "choice_1"></li></br></br>
+	        <li type = "button" class = "nappi" id = "choice_2"></li></br></br>
+	        <li type = "button" class = "nappi" id = "choice_3"></li></br></br>
+	        <li type = "button" class = "nappi" id = "choice_4"></li></br>
+        </ul>
     </div>
 </div>
 {% endblock test %}
