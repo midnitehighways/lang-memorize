@@ -3,31 +3,96 @@
 
 <div class="content">
 	<div class="text-content">
-			
+		
 		<script>
 			var words_list = {{ words_list | safe }};				// array of the words passed by means of json serialization
 			var maara = words_list.length;
-			var fi = [];
-			var en = [];
-			for(i = 0; i < maara; i++) {
-				fi.push(words_list[i].fields.fi);
-				en.push(words_list[i].fields.en);
+			var fin = [];
+			var eng = [];
+			for(var i = 0; i < maara; i++) {
+				fin.push(words_list[i].fields.fi);
+				eng.push(words_list[i].fields.en);
 			}
-			console.log(fi[0]);
-			function koe(vastaus)
-        	{
-				// document.getElementById('yritys_en').style.display = "none";
-				// $("#yritys_en").show("600");
-	            // $("#yritys_en").toggle("slide");
-	            // $("#suomea").toggle("explode");//show("800");		    
-		        $("#yritys_en").hide("500");
-		        $("#suomea").hide("500");
-		        document.getElementById('tulos').innerHTML = "joo";//"Vastasit oikein!";
-            	document.getElementById('tulos').className = "joo";
+			// console.log(fi[0]);
+			// function koe(vastaus)
+   //      	{
+			// 	// document.getElementById('yritys_en').style.display = "none";
+			// 	// $("#yritys_en").show("600");
+	  //           // $("#yritys_en").toggle("slide");
+	  //           // $("#suomea").toggle("explode");//show("800");		    
+		 //        $("#yritys_en").hide("500");
+		 //        $("#suomea").hide("500");
+		 //        document.getElementById('tulos').innerHTML = "joo";//"Vastasit oikein!";
+   //          	document.getElementById('tulos').className = "joo";
 
-            	document.getElementById('tulos').innerHTML = words_list[3].fields.en;
-	        }
+   //          	document.getElementById('tulos').innerHTML = words_list[3].fields.en;
+	  //       }
         
+
+        function yritys2()
+        {
+            var numerot = [];
+            for (var i = 0; i < 4; i++) {
+                numerot[i] = Math.floor(Math.random( ) * (maara));				// generate random number less than 'maara'
+                for (var j = i; j > 0; j--) {
+                    if (numerot[i] == numerot[j-1]) {							// thus we avoid the same numbers in the array
+                        numerot[i] = Math.floor(Math.random( ) * (maara));
+                        i--;
+                        break;
+                    }
+                }
+            }
+            document.getElementById('yritys_en').value = eng[numerot[0]];
+            oikea_vastaus = fin[numerot[0]];						// oikea_vastaus - the right answer (text)
+            valinnat = [document.getElementById('yritys_1'), document.getElementById('yritys_2'), document.getElementById('yritys_3'), document.getElementById('yritys_4')];
+            for (var i = numerot.length - 1; i > 0; i--) {				// shuffling the numerot-array
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = numerot[i];
+                numerot[i] = numerot[j];
+                numerot[j] = temp;
+            }
+            for (var i = 0; i < 4; i++)
+            {
+                valinnat[i].value = fin[numerot[i]];
+                //valinnat[i].style.color = "#070c47";
+                //valinnat[i].style.display = "";
+            }
+            $("#yritys_en").show("600");
+            $("#suomea").show("600");
+        } 
+        window.onload = function() { yritys2();};	
+		function vastauksen_jalkeen(oikea)
+        {
+            if(oikea == true) {
+                for(var i = 0; i < valinnat.length; i++) {
+                    if(valinnat[i].value == oikea_vastaus) 
+                        continue;
+                    //else
+                        //valinnat[i].style.color = "red";
+                }
+            }
+            $("#suomea").hide(600);
+        }
+        
+        function koe(vastaus)
+        {
+            document.getElementById('yritys_en').style.display = "none";
+            //$("#yritys_en").hide(300);
+            if(vastaus == oikea_vastaus) {
+                document.getElementById('tulos').innerHTML = "joo";//"Vastasit oikein!";
+                //document.getElementById('tulos').value= "joo";
+                document.getElementById('tulos').className = "joo";
+                
+                 vastauksen_jalkeen(true);
+                 //document.getElementById('tulos').style.display = "none";
+            }
+            else {
+                document.getElementById('tulos').innerHTML = "ei";//"Oikea vastaus on " + oikea_vastaus;
+                document.getElementById('tulos').className = "ei";
+                vastauksen_jalkeen(false);
+            }
+            yritys2();
+        }
         </script>
 		{% for word in words_list %}
 			{{ word.fi }}
