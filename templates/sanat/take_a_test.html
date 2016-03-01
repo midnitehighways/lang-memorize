@@ -5,21 +5,28 @@
 	<div class="text-content">
 			
 		<script>
-				function koe(vastaus)
-        		{
-					// document.getElementById('yritys_en').style.display = "none";
+			var words_list = {{ words_list | safe }};				// array of the words passed by means of json serialization
+			var maara = words_list.length;
+			var fi = [];
+			var en = [];
+			for(i = 0; i < maara; i++) {
+				fi.push(words_list[i].fields.fi);
+				en.push(words_list[i].fields.en);
+			}
+			console.log(fi[0]);
+			function koe(vastaus)
+        	{
+				// document.getElementById('yritys_en').style.display = "none";
+				// $("#yritys_en").show("600");
+	            // $("#yritys_en").toggle("slide");
+	            // $("#suomea").toggle("explode");//show("800");		    
+		        $("#yritys_en").hide("500");
+		        $("#suomea").hide("500");
+		        document.getElementById('tulos').innerHTML = "joo";//"Vastasit oikein!";
+            	document.getElementById('tulos').className = "joo";
 
-					 // $("#yritys_en").show("600");
-		             // $("#yritys_en").toggle("slide");
-		             // $("#suomea").toggle("explode");//show("800");		    
-		            $("#yritys_en").hide("500");
-		            $("#suomea").hide("500");
-		            document.getElementById('tulos').innerHTML = "joo";//"Vastasit oikein!";
-               		document.getElementById('tulos').className = "joo";
-               		var words_list = {{ words_list | safe }};
-               		console.log(words_list);
-               		document.getElementById('tulos').innerHTML = words_list[3].fields.en;
-	        	}
+            	document.getElementById('tulos').innerHTML = words_list[3].fields.en;
+	        }
         
         </script>
 		{% for word in words_list %}
