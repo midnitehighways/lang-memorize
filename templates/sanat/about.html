@@ -1,0 +1,63 @@
+{% extends 'sanat/base.html' %}
+{% block about %}
+		<div class="content">
+			<div class="text-content">
+				{% for word in words_list %}
+					<div class="each-word">
+						<ul class="accordion css-accordion">
+						  <li class="accordion-item">
+						    <input class="accordion-item-input" type="checkbox" name="accordion" id="word{{ forloop.counter }}" />
+						    <label for="word{{ forloop.counter }}" class="accordion-item-hd">
+								<div class="fi-text-content">{{ word.fi }}</div>						
+								<div class="en-text-content">{{ word.en }}</div>
+								<div class="tools-text-content"></div>
+						    	<span class="accordion-item-hd-cta">&#9650;</span>
+						    </label>
+						    <div id="div{{ forloop.counter }}"class="accordion-item-bd">
+								{% with word.example_set.all as examples %}		<!-- this way we get access to examples of each particular word -->
+								{% for example in examples %}
+									<div> {{ forloop.counter }}. {{ example.fi }} - {{ example.en }} </div>
+									<br />
+								{% endfor %}
+								{% endwith %}
+								<a class='add-example' href="#">Add an example</a>&nbsp&nbsp&nbsp
+								<a class='edit-word' href="#">Edit word</a>&nbsp&nbsp&nbsp
+								<a href="{% url 'delete_word' word.id %}">Delete word</a>&nbsp&nbsp&nbsp
+								<form class='header-search-form' id='form{{ forloop.counter }}' action="{% url 'add_example_form' word.id %}" method='POST' autocomplete='off'>{% csrf_token %}
+									<input class='add-example-field' type='text' id='line{{ forloop.counter }}' name='fi' />
+									<!-- <img src='http://findicons.com/files/icons/974/glyphish/18/magnifying_glass.png' class='magnifying-glass' /> -->
+									<button type=submit class='add-example-button'>Add example</button>
+								</form>
+							</div>
+						  </li>
+						</ul>
+					</div>
+				{% endfor %} 
+
+				<table class="wordlist">
+    <thead>
+        <tr>
+            <th><span class="text">fi</span>
+
+            </th>
+            <th><span class="text">en</span>
+
+            </th>
+            <th><span class="text">tyypi</span>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for word in words_list %}
+        <tr>
+            <td>{{ word.fi }}</td>
+            <td>{{ word.en }}</td>
+            <td>{{ word.tyypi }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+			</div>
+		</div>
+{% endblock about %}

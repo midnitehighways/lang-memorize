@@ -50,12 +50,16 @@ def delete_word(request, id):
     return HttpResponseRedirect(reverse('index'))
 
 def take_a_test(request):
-	
 	data = serializers.serialize("json", models.Word.objects.all())
-	# json_words = json.dumps(models.Word.objects.all())
 	context = {
-		'words_list': data, #models.Word.objects.order_by('-fi'),
-		#'examples_list': models.Example.objects.order_by('-fi'),
+		'words_list': data,
 		'site_title':"Test | Puhun suomea"
 		}
 	return render(request, "sanat/take_a_test.html", context,)
+
+def about(request):
+	context = {
+		'words_list': models.Word.objects.order_by('-fi'),
+		'site_title':"About | Puhun suomea"
+		}
+	return render(request, "sanat/about.html", context,)

@@ -260,7 +260,7 @@
 		.header-right {
 			width: 80%;
 			/*background-color: #f2f1f4;*/
-			background-color: #ececec;
+			/*background-color: #ececec;*/
 			float: left;
 			height: 100%;
 		}
@@ -272,7 +272,7 @@
 		.content {
 			float: left;
 			width: 80%;
-			background-color: #ececec;
+			/*background-color: #ececec;*/
 		}
 		.sidebar, .content {
 			border: 0px solid #000;
@@ -288,6 +288,8 @@
 			float: left;
 			margin-left: 5%;
 			width: 80%;		/* needed so that its child divs take all the space to the left */
+			height: 70%;	/*-----------------------*/
+			overflow: auto; /*-----------------------*/
 		}
 		.fi-text-content {
 			float: left;
@@ -327,6 +329,10 @@
 		.text-content div:hover {
 		/*	background-color: grey;
 			cursor: pointer;*/
+		}
+		.text-content {
+			background-color: grey; /*-----------------------*/
+			cursor: pointer;/*-----------------------*/
 		}
 		.text-content div:active {
 		/*	background-color: yellow;*/
@@ -407,7 +413,35 @@
 .add-example-field {
     width: 0px;
 }
-	</style>
+
+/*hr {
+	opacity: 0.2;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #fff;
+}*/
+
+
+table.wordlist {
+        display: table;
+        width: 100%;
+    }
+    table.wordlist thead, table.wordlist tbody {
+        float: left;
+        width: 100%;
+    }
+    table.wordlist tbody {
+        overflow: auto;
+        height: 150px;
+    }
+    table.wordlist tr {
+        width: 100%;
+        display: table;
+        text-align: left;
+    }
+    table.wordlist th, table.wordlist td {
+        width: 33%;
+    }
+</style>
 </head>
 <body>
 	<div class="wrap">
@@ -416,7 +450,7 @@
 				<!-- <h1>Puhun suomea</h1> -->
 			</div>
 			<div class="header-right">
-				<h1>Memorize</h1>
+				<h1></h1>
 			</div>
 		</div>
 		<div class="sidebar">
@@ -430,13 +464,14 @@
 					<br />
 					<li><a href="#">&#9731;&nbsp; Sign up</a></li>
 					<!-- <br /><br /> --><br />
-					<li><a href="#">&#9743;&nbsp; Contact me</a></li>
+					<li><a href="{% url 'about' %}">&#9743;&nbsp; About</a></li>
 				</ul>
 			</div>
 		</div>
 		{% block content %}{% endblock content %}
 		{% block insert_form %} {% endblock insert_form %}
 		{% block test %} {% endblock test %}
+		{% block about %} {% endblock about %}
 	</div>	
 </body>
 </html>
