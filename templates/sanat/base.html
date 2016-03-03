@@ -5,21 +5,22 @@
 	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script type="text/javascript">
-		// $(function () {
-	 //        var element = $('.accordion-item-hd');
-	 //        element.click(function () {
-	 //        var e = $(this).siblings(('.accordion-item-bd'));
+		$(function () {
+	        var element = $('.accordion-item-hd');
+	        element.click(function () {
+	        var e = $(this).siblings(('.accordion-item-bd'));
 
-	 //          console.log(e);
+	          console.log(e);
 
-	 //          if(e.is(':hidden')) {
-	 //              e.slideDown();
-	 //          }
-	 //          else { 
-	 //            e.slideUp();
-	 //          }
-	 //        });
-  //   	});
+	          if(e.is(':hidden')) {
+	              console.log('hidden!!');
+	              e.slideDown();
+	          }
+	          else { 
+	            e.slideUp();
+	          }
+	        });
+    	});
 
 		$(function () {
 		    var element = $('.add-example');
@@ -363,7 +364,7 @@
 		  list-style: none outside;
 		}
 
-		.accordion > * + * { border-top: 1px solid white; }
+		.accordion > * + * { border-top: 1px solid lightgrey; }
 
 		.accordion-item-hd {
 		  display: block;
@@ -373,14 +374,14 @@
 		  font-size: 14px;
 		}
 
-		.accordion-item-input:checked ~ .accordion-item-bd {
+/*		.accordion-item-input:checked ~ .accordion-item-bd {
 		  max-height: 1000px;
-		  padding-top: 2%; /*15px*/
-		  margin-bottom: 2%; /*15px*/
+		  padding-top: 2%; 
+		  margin-bottom: 2%; 
 		  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
 		  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
 		}
-
+*/
 		.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
 		  -webkit-transform: rotate(0);
 		  -ms-transform: rotate(0);
@@ -406,11 +407,7 @@
 		}
 
 		.accordion-item-bd {
-		  max-height: 0;
-		  margin-bottom: 0;
-		  /*overflow: hidden;*/
-		  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
-		  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+		  margin-bottom: 15px;
 		}
 
 		.accordion-item-input {
@@ -423,7 +420,7 @@
 		  left: -9000px;
 }
 
-.add-example-field, .add-example-button {
+.add-example-field, .add-example-button, .accordion-item-bd {
     display:none;
 }
 .add-example-field {

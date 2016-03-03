@@ -6,12 +6,14 @@
 					{% for word in words_list %}
 						<div class="each-word">
 						    <input class="accordion-item-input" type="checkbox" name="accordion" id="word{{ forloop.counter }}" />
-						    <label for="word{{ forloop.counter }}" class="accordion-item-hd">
+						    <div class="accordion-item-hd">
+						    <!-- <label for="word{{ forloop.counter }}" class="accordion-item-hd"> -->
 								<div class="fi-text-content">{{ word.fi }}</div>						
 								<div class="en-text-content">{{ word.en }}</div>
 								<div class="tools-text-content"></div>
 						    	<span class="accordion-item-hd-cta">&#9650;</span>
-						    </label>
+						    <!-- </label> -->
+						    </div>
 						    <div id="div{{ forloop.counter }}"class="accordion-item-bd">
 								{% with word.example_set.all as examples %}		<!-- this way we get access to examples of each particular word -->
 								{% for example in examples %}
