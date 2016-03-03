@@ -2,17 +2,16 @@
 {% block content %}
 		<div class="content">
 			<div class="text-content">
-				{% for word in words_list %}
-					<div class="each-word">
-						<ul class="accordion css-accordion">
-						  <li class="accordion-item">
-						    <input class="accordion-item-input" type="checkbox" name="accordion" id="word{{ forloop.counter }}" />
-						    <label for="word{{ forloop.counter }}" class="accordion-item-hd">
+				<ul class="accordion css-accordion">
+					{% for word in words_list %}
+						<div class="each-word">
+						    <!-- <input class="accordion-item-input" type="checkbox" name="accordion"  /> -->
+						    <div class="accordion-item-hd" id="word{{ forloop.counter }}">
 								<div class="fi-text-content">{{ word.fi }}</div>						
 								<div class="en-text-content">{{ word.en }}</div>
 								<div class="tools-text-content"></div>
-						    	<span class="accordion-item-hd-cta">&#9650;</span>
-						    </label>
+						    	<span class="accordion-item-hd-cta">&#9651;</span>
+						    </div>
 						    <div id="div{{ forloop.counter }}"class="accordion-item-bd">
 								{% with word.example_set.all as examples %}		<!-- this way we get access to examples of each particular word -->
 								{% for example in examples %}
@@ -25,14 +24,12 @@
 								<a href="{% url 'delete_word' word.id %}">Delete word</a>&nbsp&nbsp&nbsp
 								<form class='header-search-form' id='form{{ forloop.counter }}' action="{% url 'add_example_form' word.id %}" method='POST' autocomplete='off'>{% csrf_token %}
 									<input class='add-example-field' type='text' id='line{{ forloop.counter }}' name='fi' />
-									<!-- <img src='http://findicons.com/files/icons/974/glyphish/18/magnifying_glass.png' class='magnifying-glass' /> -->
 									<button type=submit class='add-example-button'>Add example</button>
 								</form>
-							</div>
-						  </li>
-						</ul>
-					</div>
-				{% endfor %} 
+							</div>		
+						</div>
+					{% endfor %} 
+				</ul> 
 			</div>
 		</div>
 {% endblock content %}
