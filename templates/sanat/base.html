@@ -8,17 +8,23 @@
 		$(function () {
 	        var element = $('.accordion-item-hd');
 	        element.click(function () {
-	        var e = $(this).siblings(('.accordion-item-bd'));
+		        var e = $(this).siblings(('.accordion-item-bd'));
+		        var e2 = $(this).children(('.arrowUp'));
+		        console.log(e);
+		        // e2.toggleClass('arrowDown');
+		        e2.toggleClass("arrowDown");
+		        
+		        if(e.is(':hidden')) {
+		            e.slideDown();
 
-	          console.log(e);
-
-	          if(e.is(':hidden')) {
-	              console.log('hidden!!');
-	              e.slideDown();
-	          }
-	          else { 
-	            e.slideUp();
-	          }
+		            // console.log(e.css('className'));
+    
+		        }
+		        else { 
+		        	e.slideUp();
+		        	// e2.toggleClass('arrowDown');
+		        	// console.log(e.css('toggleClass'));
+		        }
 	        });
     	});
 
@@ -41,7 +47,7 @@
 		    element.click(function () {
 		        //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
 		       //console.log($(this).children('.header-search-form').children());
-		        var target = $(this).parent().parent().children('.accordion-item-hd').children('.accordion-item-hd-cta');
+		        var target = $(this).parent().parent().children('.accordion-item-hd').children('.arrowDown');
 		        // console.log($(this).parent().parent().children().children());//.children().children());
 		    	console.log(target);
 		    	target.siblings().each(
@@ -124,7 +130,6 @@
 	</script>
 
 	<style>
-		
 
 .nappi {
 	text-decoration:none; text-align:center; 
@@ -132,8 +137,8 @@
 	 border: none;
 	 outline: none;
 	 cursor: pointer;
-	 /*width: 35%;*/		/* !! choices size is equal */
-	 display: inline-block;	/* !! choices size is different */
+	 /*width: 35%;*/		/* !! fin-choices field size is equal */
+	 display: inline-block;	/* !! fin-choices field size is different */
 	 -webkit-border-radius: 10px;
 	 -moz-border-radius: 10px; 
 	 border-radius: 10px; 
@@ -305,8 +310,16 @@
 			float: left;
 			margin-left: 5%;
 			width: 80%;		/* needed so that its child divs take all the space to the left */
-			/*height: 70%;	*//*-----------------------*/
-			/*overflow: auto;*/ /*-----------------------*/
+
+
+			
+/*---------------------------------------------*/
+			height: 50%;	
+			overflow: auto; 
+/*---------------------------------------------*/
+
+
+
 		}
 		.fi-text-content {
 			float: left;
@@ -343,13 +356,11 @@
 			/*display: inline;*/
 			overflow: auto;
 		}
-		.text-content div:hover {
-		/*	background-color: grey;
-			cursor: pointer;*/
-		}
 		.text-content {
-			/*background-color: grey;*/ /*-----------------------*/
-			/*cursor: pointer;*//*-----------------------*/
+			
+/*-----------------------------------------------------------*/
+			background-color: #FAFAFA;
+			/*cursor: pointer;*/
 		}
 		.text-content div:active {
 		/*	background-color: yellow;*/
@@ -358,7 +369,7 @@
 
 
 		.accordion {
-		  border: 1px solid lightgrey;
+		  /*border: 1px solid lightgrey;*/
 		  padding: 0 10px;
 		  margin: 0 auto;
 		  list-style: none outside;
@@ -374,54 +385,26 @@
 		  font-size: 14px;
 		}
 
-/*		.accordion-item-input:checked ~ .accordion-item-bd {
-		  max-height: 1000px;
-		  padding-top: 2%; 
-		  margin-bottom: 2%; 
-		  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
-		  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
-		}
-*/
-		/*.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
-		  -webkit-transform: rotate(0);
-		  -ms-transform: rotate(0);
-		  transform: rotate(0);
-		}*/
-
-		.accordion-item-hd-cta {
-		  /*display: block;*/
-		  /*width: 30px;*/
+/*		.accordion-item-hd-cta {
 		  position: absolute;
-		  /*top: calc(50% - 6px);*/
-		  /*minus half font-size*/
-		  /*right: 0;
-		  pointer-events: none;
-		  -webkit-transition: -webkit-transform .3s ease;
-		  transition: transform .3s ease;
-		  -webkit-transform: rotate(-180deg);
-		  -ms-transform: rotate(-180deg);
-		  transform: rotate(-180deg);*/
-		  /*text-align: center;
-		  font-size: 12px;
-		  line-height: 1;*/
+		}*/
+		.arrowUp {
+		    transform: rotate(-180deg);
+		    transition: 0.5s;
+		    position: absolute;
+		}
+		.arrowDown {
+		    transform: rotate(0deg);
+		    transition: 0.5s;
+		    position: absolute;
 		}
 
 		.accordion-item-bd {
 		  margin-bottom: 15px;
 		}
 
-		.accordion-item-input {
-		  clip: rect(0 0 0 0);
-		  width: 1px;
-		  height: 1px;
-		  margin: -1;
-		  overflow: hidden;
-		  position: absolute;
-		  left: -9000px;
-}
-
 .add-example-field, .add-example-button, .accordion-item-bd {
-    display:none;
+    display: none;
 }
 .add-example-field {
     width: 0px;
@@ -434,7 +417,7 @@
 }*/
 
 
-table.wordlist {
+	table.wordlist {
         display: table;
         width: 100%;
     }
