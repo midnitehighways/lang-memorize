@@ -1,3 +1,10 @@
+.resize {
+	height: auto; 
+    width: auto; 
+    max-width: 100px; 
+    max-height: 100px;
+}
+
 .nappi {
 	text-decoration:none; text-align:center; 
 	 padding: 11px 11px; 
