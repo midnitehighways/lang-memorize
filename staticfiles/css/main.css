@@ -222,7 +222,7 @@
 		.text-content {
 			
 /*-----------------------------------------------------------*/
-			background-color: #FAFAFA;
+			/*background-color: #FAFAFA;*/
 /*-----------------------------------------------------------*/
 			/*cursor: pointer;*/
 		}
@@ -254,6 +254,7 @@
 		}
 		.accordion-item-bd {
 		  margin-bottom: 3%; /*fffff---------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+		  /*background-color: #FAFAFA;*/
 		}
 
 .add-example-field, .add-example-button, .accordion-item-bd {
