@@ -5,11 +5,185 @@
     max-height: 80px;
     transition: all .2s ease-in-out; 
 }
-.resize:hover { 
+/*.resize:hover { 
 	transform: scale(1.1); 
+}*/
+
+.resize:hover > .words {display: hidden;}
+
+html, body, .wrap
+{
+	height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's children (sidebar, content) could reach the bottom */
+	margin: 0;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+}
+.wrap {
+}
+.header {
+/*			position: fixed;*/
+	height: 12%;
+	width: 100%;
+	float: left;
+}
+.header-left {
+	width: 20%;
+	/*background-color: #45413c;*/
+	/*background-color: #6f6868;*/
+	height: 100%;
+	float: left;
+}
+.header-right {
+	width: 80%;
+	/*background-color: #f2f1f4;*/
+	/*background-color: #ececec;*/
+	float: left;
+	height: 100%;
+}
+.sidebar {
+	float: left;
+	width: 20%;
+	/*background-color: #45413c;*/
+}
+.content {
+	float: left;
+	width: 80%;
+	/*background-color: #ececec;*/
+}
+.sidebar, .content {
+	/*border: 0px solid #000;*/
+	height: 88%;
+}
+.text-sidebar {
+	float: left;
+	/*margin-top: 20%;*/
+	font-family: Papyrus, fantasy;
+	font-size: 22px;
+}
+.text-content {
+	float: left;
+	margin-left: 5%;
+	width: 80%;		/* needed so that its child divs take all the space to the left */
+
+
+	
+/*---------------------------------------------*/
+	height: 90%;	
+	overflow: auto; 
+/*---------------------------------------------*/
+
+
+
+}
+.fi-text-content {
+	float: left;
+	width: 35%;
+}
+.en-text-content {
+	float: left;
+	width: 64%;
+}
+.tools-text-content {
+	float: left;
+	width: 1%;
+}
+ul {
+	list-style-type: none; /* remove bullets in all the lists */
+}
+.text-sidebar a {		/* change only those "a"s which are inside div of .text-sidebar class */
+	text-decoration: none;
+	color: #a4f333;
+}
+.text-sidebar a:hover {		/* change only those "a"s which are inside div of .text-sidebar class */
+	color: green;
+}
+h1 {
+	background-color: #565656;
+	color: transparent;
+	text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	text-align: center;
+}
+.each-word {
+	/*display: inline;*/
+	overflow: auto;
+}
+.text-content {
+	
+/*-----------------------------------------------------------*/
+	/*background-color: #FAFAFA;*/
+/*-----------------------------------------------------------*/
+	/*cursor: pointer;*/
 }
 
-.nappi {
+.accordion {
+	/*border: 1px solid lightgrey;*/
+	padding: 0 10px;
+	margin: 0 auto;
+	list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid lightgrey; }
+
+.accordion-item-hd {
+	padding: 2% 3.5% 5% 0; /*15px 30px 30px 0 */
+	position: relative;
+	cursor: pointer;
+	font-size: 14px;
+}
+.arrowUp {
+    transform: rotate(-180deg);
+    transition: 0.5s;
+    position: absolute;
+}
+.arrowDown {
+    transform: rotate(0deg);
+    transition: 0.5s;
+    position: absolute;
+}
+.accordion-item-bd {
+  margin-bottom: 3%; /*fffff---------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+  /*background-color: #FAFAFA;*/
+}
+
+.add-example-field, .add-example-button, .accordion-item-bd {
+    display: none;
+}
+.add-example-field {
+    width: 0px;
+}
+
+/*hr {
+	opacity: 0.2;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #fff;
+}*/
+
+
+	table.wordlist {
+        display: table;
+        width: 100%;
+    }
+    table.wordlist thead, table.wordlist tbody {
+        float: left;
+        width: 100%;
+    }
+    table.wordlist tbody {
+        overflow: auto;
+        height: 150px;
+    }
+    table.wordlist tr {
+        width: 100%;
+        display: table;
+        text-align: left;
+    }
+    table.wordlist th, table.wordlist td {
+        width: 33%;
+    }
+
+    .nappi {
 	text-decoration:none; text-align:center; 
 	 padding: 11px 11px; 
 	 border: none;
@@ -118,176 +292,3 @@
 	text-decoration: none;
 	vertical-align: middle;
 }
-
-		html, body, .wrap
-		{
-			height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's children (sidebar, content) could reach the bottom */
-			margin: 0;
-			font-family: Verdana, Geneva, sans-serif;
-			font-size: 14px;
-		}
-		.wrap {
-		}
-		.header {
-/*			position: fixed;*/
-			height: 12%;
-			width: 100%;
-			float: left;
-		}
-		.header-left {
-			width: 20%;
-			background-color: #45413c;
-			/*background-color: #6f6868;*/
-			height: 100%;
-			float: left;
-		}
-		.header-right {
-			width: 80%;
-			/*background-color: #f2f1f4;*/
-			/*background-color: #ececec;*/
-			float: left;
-			height: 100%;
-		}
-		.sidebar {
-			float: left;
-			width: 20%;
-			background-color: #45413c;
-		}
-		.content {
-			float: left;
-			width: 80%;
-			/*background-color: #ececec;*/
-		}
-		.sidebar, .content {
-			border: 0px solid #000;
-			height: 88%;
-		}
-		.text-sidebar {
-			float: left;
-			/*margin-top: 20%;*/
-			font-family: Papyrus, fantasy;
-			/*font-family: Ubuntu;*/
-			font-size: 22px;
-		}
-		.text-content {
-			float: left;
-			margin-left: 5%;
-			width: 80%;		/* needed so that its child divs take all the space to the left */
-
-
-			
-/*---------------------------------------------*/
-			height: 90%;	
-			overflow: auto; 
-/*---------------------------------------------*/
-
-
-
-		}
-		.fi-text-content {
-			float: left;
-			width: 35%;
-		}
-		.en-text-content {
-			float: left;
-			width: 64%;
-		}
-		.tools-text-content {
-			float: left;
-			width: 1%;
-		}
-		ul {
-			list-style-type: none; /* remove bullets in all the lists */
-		}
-		.text-sidebar a {		/* change only those "a"s which are inside div of .text-sidebar class */
-			text-decoration: none;
-			color: #a4f333;
-		}
-		.text-sidebar a:hover {		/* change only those "a"s which are inside div of .text-sidebar class */
-			color: green;
-		}
-		h1 {
-  			background-color: #565656;
-  			color: transparent;
-			text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
-			-webkit-background-clip: text;
-			-moz-background-clip: text;
-			background-clip: text;
-			text-align: center;
-		}
-		.each-word {
-			/*display: inline;*/
-			overflow: auto;
-		}
-		.text-content {
-			
-/*-----------------------------------------------------------*/
-			/*background-color: #FAFAFA;*/
-/*-----------------------------------------------------------*/
-			/*cursor: pointer;*/
-		}
-
-		.accordion {
-		  /*border: 1px solid lightgrey;*/
-		  padding: 0 10px;
-		  margin: 0 auto;
-		  list-style: none outside;
-		}
-
-		.accordion > * + * { border-top: 1px solid lightgrey; }
-
-		.accordion-item-hd {
-		  padding: 2% 3.5% 5% 0; /*15px 30px 30px 0 */
-		  position: relative;
-		  cursor: pointer;
-		  font-size: 14px;
-		}
-		.arrowUp {
-		    transform: rotate(-180deg);
-		    transition: 0.5s;
-		    position: absolute;
-		}
-		.arrowDown {
-		    transform: rotate(0deg);
-		    transition: 0.5s;
-		    position: absolute;
-		}
-		.accordion-item-bd {
-		  margin-bottom: 3%; /*fffff---------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-		  /*background-color: #FAFAFA;*/
-		}
-
-.add-example-field, .add-example-button, .accordion-item-bd {
-    display: none;
-}
-.add-example-field {
-    width: 0px;
-}
-
-/*hr {
-	opacity: 0.2;
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #fff;
-}*/
-
-
-	table.wordlist {
-        display: table;
-        width: 100%;
-    }
-    table.wordlist thead, table.wordlist tbody {
-        float: left;
-        width: 100%;
-    }
-    table.wordlist tbody {
-        overflow: auto;
-        height: 150px;
-    }
-    table.wordlist tr {
-        width: 100%;
-        display: table;
-        text-align: left;
-    }
-    table.wordlist th, table.wordlist td {
-        width: 33%;
-    }
