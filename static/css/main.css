@@ -2,42 +2,43 @@
 	font-family: 'Brookes'; 
 	src: url('../fonts/BrookeS8.ttf');  
 }
-.words:hover {
 
-}
-/*.text-sidebar: li {	*/		/*each of sidebar menu elements*/
-.menu-element {
-	line-height: 100px;
+.text-sidebar li {			/*each of sidebar menu elements*/
+	line-height: 80px;
 }
 
 .resize { 	
 	vertical-align: middle;
 	height: auto; 
     width: auto; 
-    max-width: 80px; 
-    max-height: 80px;
+    max-width: 60px; 
+    max-height: 60px;
     transition: all .2s ease-in-out; 
 }
 
 .text-sidebar a {		/* change only those "a"s which are inside div of .text-sidebar class */
-		font-family: 'Brookes';
-	font-size: 36px;
+	font-family: 'Brookes';
+	font-size: 30px;
 	vertical-align: middle;
 	text-decoration: none;
 	/*color: #a4f333;*/
 	color: black;
 }
+
 .text-sidebar a:hover .words {		 /*change only those "a"s which are inside div of .text-sidebar class */
 	color: green;
 }
+
 .text-sidebar a:hover .resize  {		/*  */
 	transform: scale(1.2); 
 }
+
 .footer {
 	font-size: 11px;
 	/*text-align: center;*/
 	margin-left: 45%;
 }
+
 html, body, .wrap
 {
 	height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's children (sidebar, content) could reach the bottom */
@@ -125,6 +126,7 @@ ul {
 }
 
 h1 {
+	font-family: Brookes;
 	background-color: #565656;
 	color: transparent;
 	text-shadow: 0px 2px 3px rgba(255,255,255,0.5);

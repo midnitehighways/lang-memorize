@@ -6,13 +6,6 @@
 	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<style>
-/*  @font-face {
-    font-family: 'Brookes';
-    src: url('{% static 'fonts/BrookeS8.ttf' %}');
-    /*src: local('{% static 'fonts/BrookeS8.ttf' %}');
-  }*/
-</style>
 </head>
 <body>
 	<div class="wrap">
@@ -21,25 +14,25 @@
 				<!-- <h1>Puhun suomea</h1> -->
 			</div>
 			<div class="header-right">
-				<h1></h1>
+				<h1>P o l y g l o t e</h1>
 			</div>
 		</div>
 		<div class="sidebar">
 			<div class="text-sidebar">
 				<ul>
-					<li class="menu-element"><a href="{% url 'index' %}" > <img class="resize" src="{% static "img/dict_ico.png" %}" />
-					<span class="words"> &nbsp;Words  </span></a></li>
+					<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static "img/dict_ico.png" %}" />
+					<span class="words"> Words  </span></a></li>
 					<!-- <br /><br /> <br />-->
-					<li class="menu-element"><a href="{% url 'insert_form' %}" ><img class="resize" src="{% static "img/pen4.png" %}" />
-					<span class="words"> &nbsp;Add </span> </a></li>
+					<li ><a href="{% url 'insert_form' %}" ><img class="resize" src="{% static "img/pen4.png" %}" />
+					<span class="words"> Add </span> </a></li>
 					<!-- <br /><br /> <br />-->
-					<li class="menu-element"><a href="{% url 'take_a_test' %}" ><img class="resize" src="{% static "img/test6.png" %}" />
-					<span class="words"> &nbsp;Test </span></a></li>
-					<li class="menu-element"><a href="#"><img class="resize" src="{% static "img/signup1.png" %}" />
-					<span class="words"> &nbsp;Sign up </span></a></li>
+					<li ><a href="{% url 'take_a_test' %}" ><img class="resize" src="{% static "img/test6.png" %}" />
+					<span class="words"> Test </span></a></li>
+					<li ><a href="#"><img class="resize" src="{% static "img/signup1.png" %}" />
+					<span class="words"> Sign up </span></a></li>
 					<!-- <br /><br /> <br />-->
-					<li class="menu-element"><a href="{% url 'about' %}"><img class="resize" src="{% static "img/about1.png" %}" />
-					<span class="words"> &nbsp;About </span></a></li>
+					<li ><a href="{% url 'about' %}"><img class="resize" src="{% static "img/about1.png" %}" />
+					<span class="words"> About </span></a></li>
 				</ul>
 			</div>
 		</div>
