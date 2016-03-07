@@ -27,15 +27,19 @@
 		<div class="sidebar">
 			<div class="text-sidebar">
 				<ul>
-					<li><a href="{% url 'index' %}" > <img class="resize" src="{% static "img/dict_ico.png" %}" /><span class="words"> <!-- &#9749;&nbsp;Show words  --></span></a></li>
+					<li class="menu-element"><a href="{% url 'index' %}" > <img class="resize" src="{% static "img/dict_ico.png" %}" />
+					<span class="words"> &nbsp;Words  </span></a></li>
 					<!-- <br /><br /> <br />-->
-					<li><a href="{% url 'insert_form' %}" ><img class="resize" src="{% static "img/pen4.png" %}" /><!-- &#10000;&nbsp; Add words --> </a></li>
+					<li class="menu-element"><a href="{% url 'insert_form' %}" ><img class="resize" src="{% static "img/pen4.png" %}" />
+					<span class="words"> &nbsp;Add </span> </a></li>
 					<!-- <br /><br /> <br />-->
-					<li><a href="{% url 'take_a_test' %}" ><img class="resize" src="{% static "img/test6.png" %}" /><!-- &#9997;&nbsp; Take a test --></a></li>
-					
-					<li><a href="#"><img class="resize" src="{% static "img/signup1.png" %}"<!-- &#9731;&nbsp; Sign up --></a></li>
+					<li class="menu-element"><a href="{% url 'take_a_test' %}" ><img class="resize" src="{% static "img/test6.png" %}" />
+					<span class="words"> &nbsp;Test </span></a></li>
+					<li class="menu-element"><a href="#"><img class="resize" src="{% static "img/signup1.png" %}" />
+					<span class="words"> &nbsp;Sign up </span></a></li>
 					<!-- <br /><br /> <br />-->
-					<li><a href="{% url 'about' %}"><img class="resize" src="{% static "img/about1.png" %}"<!-- &#9743;&nbsp; About --></a></li>
+					<li class="menu-element"><a href="{% url 'about' %}"><img class="resize" src="{% static "img/about1.png" %}" />
+					<span class="words"> &nbsp;About </span></a></li>
 				</ul>
 			</div>
 		</div>

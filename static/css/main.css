@@ -1,9 +1,18 @@
 @font-face {
-    font-family: 'Brookes'; 
-	 src: url('../fonts/BrookeS8.ttf');  
-   }
+	font-family: 'Brookes'; 
+	src: url('../fonts/BrookeS8.ttf');  
+}
+.words {
+	font-family: 'Brookes';
+	font-size: 36px;
+	vertical-align: middle;
+}
+.menu-element {
+	line-height: 100px;
+}
 
 .resize { 	
+	vertical-align: middle;
 	height: auto; 
     width: auto; 
     max-width: 80px; 
@@ -14,7 +23,7 @@
 	transform: scale(1.1); 
 }
 
-.resize:hover > .words {display: hidden;}
+/*.resize:hover > .words {display: hidden;}*/
 
 .footer {
 	font-size: 11px;
@@ -25,7 +34,8 @@ html, body, .wrap
 {
 	height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's children (sidebar, content) could reach the bottom */
 	margin: 0;
-	font-family: Brookes;/*Verdana, Geneva, sans-serif;*/
+	font-family: Verdana, Geneva, sans-serif;
+	/*font-weight: 600;*/
 	font-size: 14px;
 }
 .wrap {
