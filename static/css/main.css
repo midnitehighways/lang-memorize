@@ -11,6 +11,11 @@
 
 .resize:hover > .words {display: hidden;}
 
+.footer {
+	font-size: 11px;
+	/*text-align: center;*/
+	margin-left: 45%;
+}
 html, body, .wrap
 {
 	height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's children (sidebar, content) could reach the bottom */
@@ -22,13 +27,13 @@ html, body, .wrap
 }
 .header {
 /*			position: fixed;*/
-	height: 12%;
+	height: 10%;
 	width: 100%;
 	float: left;
 }
 .header-left {
 	width: 20%;
-	/*background-color: #45413c;*/
+	background-color: #45413c;
 	/*background-color: #6f6868;*/
 	height: 100%;
 	float: left;
@@ -43,16 +48,20 @@ html, body, .wrap
 .sidebar {
 	float: left;
 	width: 20%;
-	/*background-color: #45413c;*/
+	background-color: #45413c;
 }
 .content {
 	float: left;
 	width: 80%;
 	/*background-color: #ececec;*/
 }
-.sidebar, .content {
+.content {
 	/*border: 0px solid #000;*/
-	height: 88%;
+	height: 85%;
+}
+.sidebar {
+	/*border: 0px solid #000;*/
+	height: 90%;
 }
 .text-sidebar {
 	float: left;
