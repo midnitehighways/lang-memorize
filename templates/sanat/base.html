@@ -9,6 +9,9 @@
 </head>
 <body>
 	<div class="wrap">
+							
+							<!--				 Header 			-->
+		
 		<div class="header">
 			<div class="header-left">
 				<!-- <h1>Puhun suomea</h1> -->
@@ -17,17 +20,18 @@
 				<h1>B e &nbsp; a &nbsp; P o l y g l o t </h1>
 			</div>
 		</div>
+							<!--				 Sidebar 			-->
 		<div class="sidebar">
 			<div class="text-sidebar">
 				<ul>
 					<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static "img/dict_ico.png" %}" />
-					<span class="words"> Words  </span></a></li>
+					<span class="words"> Show words  </span></a></li>
 					<!-- <br /><br /> <br />-->
 					<li ><a href="{% url 'insert_form' %}" ><img class="resize" src="{% static "img/pen4.png" %}" />
-					<span class="words"> Add </span> </a></li>
+					<span class="words"> Add new </span> </a></li>
 					<!-- <br /><br /> <br />-->
 					<li ><a href="{% url 'take_a_test' %}" ><img class="resize" src="{% static "img/test6.png" %}" />
-					<span class="words"> Test </span></a></li>
+					<span class="words"> Take a test </span></a></li>
 					<li ><a href="#"><img class="resize" src="{% static "img/signup1.png" %}" />
 					<span class="words"> Sign up </span></a></li>
 					<!-- <br /><br /> <br />-->
@@ -36,11 +40,16 @@
 				</ul>
 			</div>
 		</div>
+							<!--				 Content 			-->
 		{% block content %}{% endblock content %}
 		{% block insert_form %} {% endblock insert_form %}
 		{% block test %} {% endblock test %}
 		{% block about %} {% endblock about %}
-		<div class="footer"> &#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | alexandru.oat@gmail.com  </div>
+		
+							<!--				 Footer 			-->
+
+		<div class="footer"> 
+		<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | alexandru.oat@gmail.com  </p></div>
 	</div>	
 	<script src="{% static "js/main.js" %}"></script>
 </body>
