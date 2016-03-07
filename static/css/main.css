@@ -27,11 +27,13 @@
 
 .text-sidebar a:hover .words {		 /*change only those "a"s which are inside div of .text-sidebar class */
 	color: green;
+	font-size: 34px;
 }
 
 .text-sidebar a:hover .resize  {		/*  */
 	transform: scale(1.2); 
 }
+
 
 .footer {
 	font-size: 11px;
@@ -57,10 +59,17 @@ html, body, .wrap
 }
 .header-left {
 	width: 20%;
-	background-color: #45413c;
 	/*background-color: #6f6868;*/
 	height: 100%;
 	float: left;
+}
+.header-left, .sidebar {
+	background-color: #FAFAFA;
+	border-right: 1px solid black;
+	/*#45413c;*/
+}
+.header-right, .content {
+	margin-left: -1px;
 }
 .header-right {
 	width: 80%;
@@ -72,7 +81,6 @@ html, body, .wrap
 .sidebar {
 	float: left;
 	width: 20%;
-	background-color: #45413c;
 }
 .content {
 	float: left;
@@ -108,6 +116,11 @@ html, body, .wrap
 
 
 
+}
+.test-area {
+	float: left;
+	margin-left: 20%;
+	margin-top: 5%;
 }
 .fi-text-content {
 	float: left;

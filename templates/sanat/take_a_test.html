@@ -2,7 +2,8 @@
 {% block test %}
 
 <div class="content">
-	<div class="text-content">
+	<!-- <div class="text-content"> -->
+    <div class="test-area">
 		<script>
 			var words = {{ words_list | safe }};	// array of words passed by means of json. Safe format, without 'u'-s
             window.onload = function() { prepare_test(words);};   // initial function must be executed on loading the page to prepare the first choices
