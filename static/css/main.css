@@ -2,11 +2,10 @@
 	font-family: 'Brookes'; 
 	src: url('../fonts/BrookeS8.ttf');  
 }
-.words {
-	font-family: 'Brookes';
-	font-size: 36px;
-	vertical-align: middle;
+.words:hover {
+
 }
+/*.text-sidebar: li {	*/		/*each of sidebar menu elements*/
 .menu-element {
 	line-height: 100px;
 }
@@ -19,12 +18,21 @@
     max-height: 80px;
     transition: all .2s ease-in-out; 
 }
-.resize:hover { 
-	transform: scale(1.1); 
+
+.text-sidebar a {		/* change only those "a"s which are inside div of .text-sidebar class */
+		font-family: 'Brookes';
+	font-size: 36px;
+	vertical-align: middle;
+	text-decoration: none;
+	/*color: #a4f333;*/
+	color: black;
 }
-
-/*.resize:hover > .words {display: hidden;}*/
-
+.text-sidebar a:hover .words {		 /*change only those "a"s which are inside div of .text-sidebar class */
+	color: green;
+}
+.text-sidebar a:hover .resize  {		/*  */
+	transform: scale(1.2); 
+}
 .footer {
 	font-size: 11px;
 	/*text-align: center;*/
@@ -79,10 +87,11 @@ html, body, .wrap
 	height: 90%;
 }
 .text-sidebar {
-	float: left;
-	/*margin-top: 20%;*/
+
+/*.	float: left;
+	/*margin-top: 20%;
 	font-family: Papyrus, fantasy;
-	font-size: 22px;
+	font-size: 22px;*/
 }
 .text-content {
 	float: left;
@@ -114,13 +123,7 @@ html, body, .wrap
 ul {
 	list-style-type: none; /* remove bullets in all the lists */
 }
-.text-sidebar a {		/* change only those "a"s which are inside div of .text-sidebar class */
-	text-decoration: none;
-	color: #a4f333;
-}
-.text-sidebar a:hover {		/* change only those "a"s which are inside div of .text-sidebar class */
-	color: green;
-}
+
 h1 {
 	background-color: #565656;
 	color: transparent;
