@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Brookes'; 
+	 src: url('../fonts/BrookeS8.ttf');  
+   }
+
 .resize { 	
 	height: auto; 
     width: auto; 
@@ -20,7 +25,7 @@ html, body, .wrap
 {
 	height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's children (sidebar, content) could reach the bottom */
 	margin: 0;
-	font-family: Verdana, Geneva, sans-serif;
+	font-family: Brookes;/*Verdana, Geneva, sans-serif;*/
 	font-size: 14px;
 }
 .wrap {
