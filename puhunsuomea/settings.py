@@ -41,18 +41,6 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-    'social.apps.django_app.context_processors.backends',
-    'social.apps.django_app.context_processors.login_redirect',
-)
-
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
     'social.backends.google.GoogleOAuth2',
@@ -65,7 +53,7 @@ SOCIAL_AUTH_TWITTER_KEY = 'AvsS3Hp9Bf9RAF95eSyM7vyDQ'
 SOCIAL_AUTH_TWITTER_SECRET = 'jINTMh9bsSFqQMqg1maGXhCfJWvdQ793SUVwsfzbVOiZZYoOlQ'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/take-a-test'
 SOCIAL_AUTH_LOGIN_URL = '/'
-
+# above + python-social-auth!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -91,6 +79,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #below template-processors for python-social-auth. Some may be useless
+                    #'django.core.context_processors.debug',?????
+                'django.core.context_processors.i18n',
+                'django.core.context_processors.media',
+                'django.core.context_processors.static',
+                'django.core.context_processors.tz',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
