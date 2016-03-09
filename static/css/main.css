@@ -1,10 +1,22 @@
+
+
+
+/*TO DO
+----- github icon in footer
+----- user field in Word object in models
+----- social auth
+*/
+
+
+
+
 @font-face {
 	font-family: 'Brookes'; 
 	src: url('../fonts/BrookeS8.ttf');  
 }
 
 .gradient {
-    background: linear-gradient(to top, #474949, #2D2F2F);
+    background: linear-gradient(to top, #474949, #808181);
     padding: 10px;
     border: 0px solid #333;
    }
@@ -184,8 +196,13 @@ ul {
 	-moz-background-clip: text;
 	background-clip: text;
 	text-align: right;
+	margin-right: 15%;
 	vertical-align: middle;
+	cursor: pointer;
 }
+.red-text {
+	color: yellow;
+} 
 .each-word {
 	/*display: inline;*/
 	overflow: auto;
