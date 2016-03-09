@@ -1,10 +1,12 @@
 from sanat import models
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, render_to_response, redirect  ###
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse # needed for WordFrom
 from .forms import WordForm, ExampleForm
 import json
 from django.core import serializers
+from django.contrib.auth import logout as auth_logout 	###
+from django.contrib.auth.decorators import login_required  ###
 
 def index(request):
 	context = {
@@ -48,7 +50,7 @@ def add_example_form(request, id):
 def delete_word(request, id):
     word = get_object_or_404(models.Word, pk=id).delete()
     return HttpResponseRedirect(reverse('index'))
-
+@login_required(login_url='/take_a_test')
 def take_a_test(request):
 	data = serializers.serialize("json", models.Word.objects.all())
 	context = {
@@ -63,3 +65,11 @@ def about(request):
 		'site_title':"About | Puhun suomea"
 		}
 	return render(request, "sanat/about.html", context,)
+
+
+def login(request):
+    return render(request, 'sanat/login.html')
+
+def logout(request):
+    auth_logout(request)
+    return redirect('/')

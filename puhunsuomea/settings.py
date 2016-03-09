@@ -52,7 +52,7 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_TWITTER_KEY = 'AvsS3Hp9Bf9RAF95eSyM7vyDQ'
 SOCIAL_AUTH_TWITTER_SECRET = 'jINTMh9bsSFqQMqg1maGXhCfJWvdQ793SUVwsfzbVOiZZYoOlQ'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/take-a-test'
-SOCIAL_AUTH_LOGIN_URL = '/'
+SOCIAL_AUTH_LOGIN_URL = '/login'
 # above + python-social-auth!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 MIDDLEWARE_CLASSES = (

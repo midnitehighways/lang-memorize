@@ -5,6 +5,12 @@
 ----- github icon in footer
 ----- user field in Word object in models
 ----- social auth
+
+
+
+Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with MongoHQ.
+Polyglot, Indeed uses Ideone API © by Sphere Research Labs
+© Chris Anderson 2011
 */
 
 
@@ -47,7 +53,7 @@
 	/*font-size: 32px;*/
 }
 
-.text-sidebar a:hover .resize  {		/*  */
+.text-sidebar a:hover .resize  {		/* resize pics when hovering over text */
 	transform: scale(1.1); 
 }
 
@@ -199,6 +205,10 @@ ul {
 	margin-right: 15%;
 	vertical-align: middle;
 	cursor: pointer;
+}
+.header a {
+	text-decoration: none;
+	color: white;
 }
 .red-text {
 	color: yellow;

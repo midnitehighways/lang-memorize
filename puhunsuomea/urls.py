@@ -20,4 +20,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('sanat.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^login/$', 'sanat.views.login', name="login"),
+    url(r'^take-a-test$', 'sanat.views.take_a_test', name='take_a_test'),
+    # url(r'^home/$', 'sanat.views.home'),
+    url(r'^logout/$', 'sanat.views.logout', name='logout'),
+
 ]

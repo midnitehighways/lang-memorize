@@ -18,7 +18,14 @@
 				<p>B e &nbsp; a &nbsp; <span class="red-text">P o l y g l o t</span> </p>
 			</div>
 			<div class="header-right">
-				<p>Hello, &nbsp; Alex ! &nbsp; Log out </p>
+				{% if user and not user.is_anonymous %}
+					<p>Hello, &nbsp; {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
+  <!-- 
+  <br>
+  <a href="/logout">Logout</a> -->
+				{% else %}
+  					<p><a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Log in with Twitter</a></p>
+				{% endif %}
 			</div>
 		</div>
 							<!--				 Sidebar 			-->
@@ -33,8 +40,8 @@
 					<!-- <br /><br /> <br />-->
 					<li ><a href="{% url 'take_a_test' %}" ><img class="resize" src="{% static "img/test6.png" %}" />
 					<span class="words"> Take a test </span></a></li>
-					<li ><a href="#"><img class="resize" src="{% static "img/signup1.png" %}" />
-					<span class="words"> Sign up </span></a></li>
+					<li ><a href="{% url 'login' %}" ><img class="resize" src="{% static "img/signup1.png" %}" />
+					<span class="words"> Log in </span></a></li>
 					<!-- <br /><br /> <br />-->
 					<li ><a href="{% url 'about' %}"><img class="resize" src="{% static "img/about1.png" %}" />
 					<span class="words"> About </span></a></li>
