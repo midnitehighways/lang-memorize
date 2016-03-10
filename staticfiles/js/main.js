@@ -87,8 +87,8 @@ function prepare_test(words_list)	// initial function. Determining the 4 words a
     for (var i = 0; i < 4; i++) {
         ids[i].innerHTML = fin[numerot[i]];		// assigning corresponding words to inputs in "choices"-section
     }
-    $("#asked_word").show("600");
-    $("#choices").show("600");
+    $("#asked_word").show(300);
+    $("#choices").show(300);
 }
 
 function handle_answer(answer)		// check whether answer is correct and react correspondingly
@@ -102,7 +102,7 @@ function handle_answer(answer)		// check whether answer is correct and react cor
         document.getElementById('result').innerHTML = "ei";
         document.getElementById('result').className = "ei";
     }
-    $("#choices").hide(600);
+    $("#choices").hide(300);
     prepare_test(words);		// now prepare the new test
 }
 

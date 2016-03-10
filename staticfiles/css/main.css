@@ -1,47 +1,100 @@
+
+
+
+/*TO DO
+----- github icon in footer
+----- user field in Word object in models
+----- social auth
+
+
+
+Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with MongoHQ.
+Polyglot, Indeed uses Ideone API © by Sphere Research Labs
+© Chris Anderson 2011
+*/
+
+
+
+
 @font-face {
-    font-family: 'Brookes'; 
-	 src: url('../fonts/BrookeS8.ttf');  
+	font-family: 'Brookes'; 
+	src: url('../fonts/BrookeS8.ttf');  
+}
+
+.gradient {
+    background: linear-gradient(to top, #474949, #808181);
+    padding: 10px;
+    border: 0px solid #333;
    }
+.text-sidebar li {			/*each of sidebar menu elements*/
+	line-height: 65px;
+}
 
 .resize { 	
+	vertical-align: middle;
 	height: auto; 
     width: auto; 
-    max-width: 80px; 
-    max-height: 80px;
+    max-width: 50px; 
+    max-height: 50px;
     transition: all .2s ease-in-out; 
 }
-.resize:hover { 
+
+.text-sidebar a {					/* change only those "a"s which are inside div of .text-sidebar class */
+	font-family: 'Brookes';
+	font-size: 28px;
+/*	vertical-align: middle;*/
+	text-decoration: none;  		/* hide underline for links */
+	/*color: #a4f333;*/
+	color: black;
+}
+
+.text-sidebar a:hover .words {		/*change only those "a"s which are inside div of .text-sidebar class */
+	color: green;
+	/*font-size: 32px;*/
+}
+
+.text-sidebar a:hover .resize  {		/* resize pics when hovering over text */
 	transform: scale(1.1); 
 }
 
-.resize:hover > .words {display: hidden;}
-
-.footer {
-	font-size: 11px;
-	/*text-align: center;*/
-	margin-left: 45%;
+.header, .sidebar, .content, .footer {
+	box-shadow: 2px 2px 1px #888888;		/* shadow effect for main blocks */
 }
+
 html, body, .wrap
 {
 	height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's children (sidebar, content) could reach the bottom */
 	margin: 0;
-	font-family: Brookes;/*Verdana, Geneva, sans-serif;*/
-	font-size: 14px;
+	font-family: Verdana, Geneva, sans-serif;
+	/*font-weight: 600;*/
+	font-size: 18px;
+	position: relative;
 }
 .wrap {
+	background-color: #E4E7E8;
 }
+
 .header {
 /*			position: fixed;*/
-	height: 10%;
+	height: 8%;
 	width: 100%;
 	float: left;
+	background: linear-gradient(to top, #474949, #666767);
+	margin-bottom: 1%;
 }
 .header-left {
 	width: 20%;
-	background-color: #45413c;
 	/*background-color: #6f6868;*/
 	height: 100%;
 	float: left;
+}
+.header-left, .sidebar {
+	/*background-color: #FAFAFA;*/
+/*	border-right: 1px solid black;*/
+	/*#45413c;*/
+}
+.header-right, .content {
+/*	margin-left: -1px;*/
 }
 .header-right {
 	width: 80%;
@@ -53,31 +106,59 @@ html, body, .wrap
 .sidebar {
 	float: left;
 	width: 20%;
-	background-color: #45413c;
+	/*border: 0px solid #000;*/
+	height: 55%;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	background-color: white;
 }
 .content {
 	float: left;
-	width: 80%;
+	width: 65%;
+	background-color: white;
 	/*background-color: #ececec;*/
+	height: 76%;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-top: 1%;
+	margin-bottom: 1%;
 }
-.content {
-	/*border: 0px solid #000;*/
-	height: 85%;
-}
-.sidebar {
-	/*border: 0px solid #000;*/
-	height: 90%;
-}
-.text-sidebar {
+.footer {
+	font-size: 11px;
+	/*text-align: center;*/
+	/*margin-left: 45%;*/
+	height: 6%;
 	float: left;
-	/*margin-top: 20%;*/
-	font-family: Papyrus, fantasy;
-	font-size: 22px;
+	width: 65%;
+	background-color: white;
+	margin-left: 23%;
+	margin-right: 1%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	text-align: center;
 }
+.footer p {						/* text in footer section */
+	vertical-align: middle;
+}
+
+
+/* START!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START
+START!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!
+START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!
+CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
+CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
+CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
+CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
+CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
+CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
+*/
+
 .text-content {
 	float: left;
 	margin-left: 5%;
-	width: 80%;		/* needed so that its child divs take all the space to the left */
+	width: 95%;		/* needed so that its child divs take all the space to the left */
 
 
 	
@@ -88,6 +169,11 @@ html, body, .wrap
 
 
 
+}
+.test-area {
+	float: left;
+	margin-left: 15%;
+	margin-top: 5%;
 }
 .fi-text-content {
 	float: left;
@@ -104,22 +190,29 @@ html, body, .wrap
 ul {
 	list-style-type: none; /* remove bullets in all the lists */
 }
-.text-sidebar a {		/* change only those "a"s which are inside div of .text-sidebar class */
-	text-decoration: none;
-	color: #a4f333;
-}
-.text-sidebar a:hover {		/* change only those "a"s which are inside div of .text-sidebar class */
-	color: green;
-}
-h1 {
-	background-color: #565656;
+
+.header p {
+	font-family: Brookes;
+	font-size: 20px;
+	background-color: white;/*#565656;*/
 	color: transparent;
-	text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+	text-shadow: 0px 2px 3px #999;/*rgba(255,255,255,0.5);*/
 	-webkit-background-clip: text;
 	-moz-background-clip: text;
 	background-clip: text;
-	text-align: center;
+	text-align: right;
+	margin-right: 15%;
+	margin-bottom: 15%;
+	vertical-align: middle;
+	cursor: pointer;
 }
+.header a {
+	text-decoration: none;
+	color: white;
+}
+.red-text {
+	color: yellow;
+} 
 .each-word {
 	/*display: inline;*/
 	overflow: auto;
@@ -145,7 +238,7 @@ h1 {
 	padding: 2% 3.5% 5% 0; /*15px 30px 30px 0 */
 	position: relative;
 	cursor: pointer;
-	font-size: 14px;
+	font-size: 18px;
 }
 .arrowUp {
     transform: rotate(-180deg);
