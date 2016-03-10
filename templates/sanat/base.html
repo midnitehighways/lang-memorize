@@ -26,6 +26,7 @@
  				{% else %}
   					<p><a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Log in with Twitter</a>
   					<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Log in with Google</a></p>
+  					<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Log in with Facebook</a></p>
 				{% endif %}
  				<!-- {% if user and not user.is_anonymous %}
 					<p>Hello, &nbsp; {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>

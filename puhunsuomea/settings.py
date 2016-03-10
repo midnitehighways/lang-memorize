@@ -56,6 +56,9 @@ SOCIAL_AUTH_LOGIN_URL = '/login'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '562066370311-sbstca9bp5k69bi3pmt8cf8t8ri9cjvm.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'tz2U5-7Qu0Zl4ncex_X2DwDn'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '825970364216172'
+SOCIAL_AUTH_FACEBOOK_SECRET = '7b2f7951102eccea564c06aa67296565'
 # above + python-social-auth!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 MIDDLEWARE_CLASSES = (
