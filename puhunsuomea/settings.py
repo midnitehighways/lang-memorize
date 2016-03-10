@@ -53,6 +53,9 @@ SOCIAL_AUTH_TWITTER_KEY = 'AvsS3Hp9Bf9RAF95eSyM7vyDQ'
 SOCIAL_AUTH_TWITTER_SECRET = 'jINTMh9bsSFqQMqg1maGXhCfJWvdQ793SUVwsfzbVOiZZYoOlQ'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/take-a-test'
 SOCIAL_AUTH_LOGIN_URL = '/login'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '562066370311-sbstca9bp5k69bi3pmt8cf8t8ri9cjvm.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'tz2U5-7Qu0Zl4ncex_X2DwDn'
 # above + python-social-auth!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 MIDDLEWARE_CLASSES = (

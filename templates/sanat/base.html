@@ -18,14 +18,21 @@
 				<p>B e &nbsp; a &nbsp; <span class="red-text">P o l y g l o t</span> </p>
 			</div>
 			<div class="header-right">
-				{% if user and not user.is_anonymous %}
+ 				{% if user and not user.is_anonymous %}
 					<p>Hello, &nbsp; {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
-  <!-- 
+   <!-- 
   <br>
   <a href="/logout">Logout</a> -->
-				{% else %}
-  					<p><a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Log in with Twitter</a></p>
+ 				{% else %}
+  					<p><a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Log in with Twitter</a>
+  					<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Log in with Google</a></p>
 				{% endif %}
+ 				<!-- {% if user and not user.is_anonymous %}
+					<p>Hello, &nbsp; {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
+				{% else %}
+  					<p><a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Log in with Google</a></p>
+				{% endif %} -->
+
 			</div>
 		</div>
 							<!--				 Sidebar 			-->
