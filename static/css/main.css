@@ -79,9 +79,8 @@ html, body, .wrap
 	height: 8%;
 	width: 100%;
 	float: left;
-	/*background-color: white;*/
-	    background: linear-gradient(to top, #474949, #666767);
-	    margin-bottom: 1%;
+	background: linear-gradient(to top, #474949, #666767);
+	margin-bottom: 1%;
 }
 .header-left {
 	width: 20%;
@@ -203,6 +202,7 @@ ul {
 	background-clip: text;
 	text-align: right;
 	margin-right: 15%;
+	margin-bottom: 15%;
 	vertical-align: middle;
 	cursor: pointer;
 }

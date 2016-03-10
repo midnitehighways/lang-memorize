@@ -24,9 +24,9 @@
   <br>
   <a href="/logout">Logout</a> -->
  				{% else %}
-  					<p><a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Log in with Twitter</a>
-  					<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Log in with Google</a></p>
-  					<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Log in with Facebook</a></p>
+  					<p><a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Log in using <img src="{% static "img/twitter.png" %}" /></a>
+  					<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"> | <img src="{% static "img/google.png" %}" /> |</a>
+  					<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><img src="{% static "img/facebook.png" %}" /></a></p>
 				{% endif %}
  				<!-- {% if user and not user.is_anonymous %}
 					<p>Hello, &nbsp; {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
