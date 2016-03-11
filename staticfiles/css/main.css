@@ -14,13 +14,16 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 */
 
 
-
+.icon-login { width: 40px; height: 40px; display: inline-block;} 	/* sprite - by default showing the left side of the pic */
+.icon-login:hover { background-position: right; } 					/* on hover - move pic to the right */
+.facebook { background: url('../img/f-sprite.png'); }				/* 'double-class' for icons' urls */
+.twitter { background: url('../img/t-sprite.png'); }
+.google { background: url('../img/g-sprite.png'); }
 
 @font-face {
 	font-family: 'Brookes'; 
 	src: url('../fonts/BrookeS8.ttf');  
 }
-
 .gradient {
     background: linear-gradient(to top, #474949, #808181);
     padding: 10px;
@@ -194,17 +197,36 @@ ul {
 .header p {
 	font-family: Brookes;
 	font-size: 20px;
-	background-color: white;/*#565656;*/
+/*	background-color: white;
 	color: transparent;
-	text-shadow: 0px 2px 3px #999;/*rgba(255,255,255,0.5);*/
+	text-shadow: 0px 2px 3px #999;
 	-webkit-background-clip: text;
 	-moz-background-clip: text;
 	background-clip: text;
+
+*/	
 	text-align: right;
 	margin-right: 15%;
-	margin-bottom: 15%;
+	/*vertical-align: middle;*/
+	cursor: pointer;
+	color: white;
+}
+.login-section {
+	font-family: Brookes;
+	font-size: 20px;
+/*	background-color: white;
+	color: transparent;
+	text-shadow: 0px 2px 3px #999;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+
+*/	
+	text-align: right;
+	margin-right: 15%;
 	vertical-align: middle;
 	cursor: pointer;
+	color: white;
 }
 .header a {
 	text-decoration: none;

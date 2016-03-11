@@ -16,9 +16,6 @@ def index(request):
 		}
 	return render(request, "sanat/index.html", context,)
 
-# def insert_form(request):
-# 	return render(request, "sanat/insert_form.html",)
-
 def insert_form(request):
 	if request.method == 'POST':
 		form = WordForm(request.POST)
