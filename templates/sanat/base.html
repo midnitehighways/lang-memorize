@@ -19,7 +19,7 @@
 					<p>Hello, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
  				{% else %}
   					<div class="login-section">
-	  					Log in using
+	  					<div class="text-login">Log in using</div>
 	  					<a class='icon-login twitter' href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
 	  					<a  class='icon-login google' href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
 	  					<a class='icon-login facebook' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
