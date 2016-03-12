@@ -5,6 +5,7 @@
 <div class="content">
 	<div class="text-content">
 		<!-- <a href="{% url 'index' %}" >click to go back</a> -->
+			user - {{user.id }}
 			<form method="POST">{% csrf_token %}
 		       	<input type="text" name="fi" id="fi" autofocus>fi</input><br />
 		       	<input type="text" name="en" id="en">en</input><br />

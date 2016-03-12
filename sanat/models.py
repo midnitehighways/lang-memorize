@@ -14,6 +14,8 @@ class Word(models.Model):
 			)
 	tyyppi = models.TextField(choices = TYYPIT, default='E')
 	userid = models.SmallIntegerField(default=0)
+	useruid = models.TextField(default='0')
+	user = models.ForeignKey(User, null=True)
 	def __str__(self):
 		return self.fi 
 

@@ -28,7 +28,9 @@ def insert_form(request):
 			word.en = form.cleaned_data['en']
 			word.tyyppi = form.cleaned_data['tyyppi']
 			# word.user = userr
+			word.user = request.user
 			word.userid = request.user.social_auth.get().id
+			word.useruid = request.user.social_auth.get().uid
 			word.save()
 			return HttpResponseRedirect('/')
 		#else:
@@ -63,8 +65,9 @@ def take_a_test(request):
 
 def about(request):
 	# collection = dir(request.user.social_auth)
-	collection = request.user.social_auth.get().id
-	# collection = request.user.social_auth.extra_data['access_token']
+	# collection = request.user.social_auth.get().id
+	collection = request.user.social_auth.values
+	# collection = request.user.social_auth.get().uid
 	context = {
 		'words_list': models.Word.objects.order_by('-fi'),
 		'site_title':"About | Puhun suomea",
