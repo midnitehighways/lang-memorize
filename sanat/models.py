@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Word(models.Model):
 	fi = models.TextField(max_length=50)
@@ -12,7 +13,7 @@ class Word(models.Model):
 				('E', 'Ei mitaan'),
 			)
 	tyyppi = models.TextField(choices = TYYPIT, default='E')
-	
+	userid = models.SmallIntegerField(default=0)
 	def __str__(self):
 		return self.fi 
 
@@ -22,3 +23,7 @@ class Example(models.Model):
 	en = models.TextField(max_length=100, default='')
 	def __str__(self):
 		return self.word.fi
+
+# class UserProfile(models.Model):
+# 	username = models.TextField(default='anonymous')
+# 	user = models.OneToOneField(User, unique=True)

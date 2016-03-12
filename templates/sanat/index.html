@@ -4,6 +4,8 @@
 			<div class="text-content">
 				<ul class="accordion css-accordion">
 					{% for word in words_list %}
+							{% if word.userid == user.id or user.is_anonymous %}
+						
 						<div class="each-word">
 						    <div class="accordion-item-hd" id="word{{ forloop.counter }}">
 								<div class="fi-text-content">{{ word.fi }}</div>						
@@ -27,6 +29,7 @@
 								</form>
 							</div>		
 						</div>
+						{% endif %}
 					{% endfor %} 
 				</ul> 
 			</div>

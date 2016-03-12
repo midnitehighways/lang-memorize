@@ -3,6 +3,7 @@
 		<div class="content">
 			<div class="text-content">
 				<ul class="accordion css-accordion">
+					{{ users }}
 					{% for word in words_list %}
 						<div class="each-word">
 						    <div class="accordion-item-hd" id="word{{ forloop.counter }}">

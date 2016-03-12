@@ -18,12 +18,17 @@ def index(request):
 
 def insert_form(request):
 	if request.method == 'POST':
+		# userr = request.user
+		# social = userr.social_auth.get(provider='twitter')
+		userid = request.user.social_auth.get().id
 		form = WordForm(request.POST)
 		if form.is_valid():
 			word = form.save(commit=False)
 			word.fi = form.cleaned_data['fi']
 			word.en = form.cleaned_data['en']
 			word.tyyppi = form.cleaned_data['tyyppi']
+			# word.user = userr
+			word.userid = request.user.social_auth.get().id
 			word.save()
 			return HttpResponseRedirect('/')
 		#else:
@@ -47,7 +52,7 @@ def add_example_form(request, id):
 def delete_word(request, id):
     word = get_object_or_404(models.Word, pk=id).delete()
     return HttpResponseRedirect(reverse('index'))
-@login_required(login_url='/take_a_test')
+# @login_required(login_url='/take_a_test')
 def take_a_test(request):
 	data = serializers.serialize("json", models.Word.objects.all())
 	context = {
@@ -57,9 +62,13 @@ def take_a_test(request):
 	return render(request, "sanat/take_a_test.html", context,)
 
 def about(request):
+	# collection = dir(request.user.social_auth)
+	collection = request.user.social_auth.get().id
+	# collection = request.user.social_auth.extra_data['access_token']
 	context = {
 		'words_list': models.Word.objects.order_by('-fi'),
-		'site_title':"About | Puhun suomea"
+		'site_title':"About | Puhun suomea",
+		'users':collection,
 		}
 	return render(request, "sanat/about.html", context,)
 

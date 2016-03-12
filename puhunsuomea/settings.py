@@ -61,6 +61,15 @@ SOCIAL_AUTH_FACEBOOK_KEY = '825970364216172'
 SOCIAL_AUTH_FACEBOOK_SECRET = '7b2f7951102eccea564c06aa67296565'
 # above + python-social-auth!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+
+# SOCIAL_AUTH_TWITTER_EXTRA_DATA = [('id', 'id'),
+#                                    ('firstName', 'first_name'),
+#                                    ('lastName', 'last_name')]
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = [('id', 'id'),
+#                                    ('firstName', 'first_name'),
+#                                    ('lastName', 'last_name')]
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
