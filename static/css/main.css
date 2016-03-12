@@ -12,8 +12,12 @@ Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with 
 Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 © Chris Anderson 2011
 */
-#no-words { display: none;font-family: 'Brookes';
-	font-size: 28px;}
+#no-words { 
+	display: none;
+	font-family: 'Brookes';
+	font-size: 28px;
+	text-align: center;
+}
 
 
 .icon-login { width: 40px; height: 40px; display: inline-block;} 	/* sprite - by default showing the left side of the pic */
