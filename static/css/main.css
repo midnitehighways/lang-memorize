@@ -12,6 +12,8 @@ Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with 
 Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 © Chris Anderson 2011
 */
+#no-words { display: none;font-family: 'Brookes';
+	font-size: 28px;}
 
 
 .icon-login { width: 40px; height: 40px; display: inline-block;} 	/* sprite - by default showing the left side of the pic */
@@ -110,7 +112,7 @@ html, body, .wrap
 	float: left;
 	width: 20%;
 	/*border: 0px solid #000;*/
-	height: 45%;
+	height: 50%;
 	margin-left: 1%;
 	margin-right: 1%;
 	margin-top: 1%;

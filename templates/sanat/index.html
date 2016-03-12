@@ -1,10 +1,12 @@
 {% extends 'sanat/base.html' %}
+{% load staticfiles %}
 {% block content %}
 		<div class="content">
 			<div class="text-content">
 				<ul class="accordion css-accordion">
-					{% for word in words_list %}
-						{% if word.user == user or user.is_anonymous %}
+					{% with words_exists as true %}{% for word in words_list %}
+						{{words_exists }}{% if word.user == user or user.is_anonymous %}
+						
 						<div class="each-word">
 						    <div class="accordion-item-hd" id="word{{ forloop.counter }}">
 								<div class="fi-text-content">{{ word.fi }}</div>						
@@ -29,8 +31,9 @@
 							</div>		
 						</div>
 						{% endif %}
-					{% endfor %} 
-				</ul> 
+					{% endfor %} {% endwith %}
+				</ul>
+				<div id="no-words"> Currently there are no words in your own vocabulary. Please, don't hesitate to add them:) <img class="image" src="{% static "img/grumpy.jpg" %}" /></div> 
 			</div>
 		</div>
 {% endblock content %}
