@@ -20,7 +20,7 @@ def insert_form(request):
 	if request.method == 'POST':
 		# userr = request.user
 		# social = userr.social_auth.get(provider='twitter')
-		userid = request.user.social_auth.get().id
+		# userid = request.user.social_auth.get().id
 		form = WordForm(request.POST)
 		if form.is_valid():
 			word = form.save(commit=False)
@@ -29,8 +29,8 @@ def insert_form(request):
 			word.tyyppi = form.cleaned_data['tyyppi']
 			# word.user = userr
 			word.user = request.user
-			word.userid = request.user.social_auth.get().id
-			word.useruid = request.user.social_auth.get().uid
+			# word.userid = request.user.social_auth.get().id
+			# word.useruid = request.user.social_auth.get().uid
 			word.save()
 			return HttpResponseRedirect('/')
 		#else:
@@ -66,12 +66,12 @@ def take_a_test(request):
 def about(request):
 	# collection = dir(request.user.social_auth)
 	# collection = request.user.social_auth.get().id
-	collection = request.user.social_auth.values
+	# collection = request.user.social_auth.values
 	# collection = request.user.social_auth.get().uid
 	context = {
 		'words_list': models.Word.objects.order_by('-fi'),
 		'site_title':"About | Puhun suomea",
-		'users':collection,
+		# 'users':collection,
 		}
 	return render(request, "sanat/about.html", context,)
 

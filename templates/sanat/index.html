@@ -3,14 +3,12 @@
 		<div class="content">
 			<div class="text-content">
 				<ul class="accordion css-accordion">
-					user - {{user.id }}
 					{% for word in words_list %}
 						{% if word.user == user or user.is_anonymous %}
-						
 						<div class="each-word">
 						    <div class="accordion-item-hd" id="word{{ forloop.counter }}">
-								<div class="fi-text-content">{{ word.fi }}{{user.username}}</div>						
-								<div class="en-text-content">{{ word.en }}{{word.user.username}}</div>
+								<div class="fi-text-content">{{ word.fi }}</div>						
+								<div class="en-text-content">{{ word.en }}</div>
 								<div class="tools-text-content"></div>
 						    	<span class="arrowUp">&#9651;</span>
 						    </div>
