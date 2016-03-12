@@ -16,7 +16,7 @@
 			</div>
 			<div class="header-right">
  				{% if user and not user.is_anonymous %}
-					<p>Hello, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
+					<p>Hello, {{ user.get_full_name }}!---{{user.id}} &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
  				{% else %}
   					<div class="login-section">
 	  					<div class="text-login">Log in using&nbsp;</div>
