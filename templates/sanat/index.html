@@ -8,8 +8,8 @@
 						
 						<div class="each-word">
 						    <div class="accordion-item-hd" id="word{{ forloop.counter }}">
-								<div class="fi-text-content">{{ word.fi }}</div>						
-								<div class="en-text-content">{{ word.en }}</div>
+								<div class="fi-text-content">{{ word.fi }}{{user.id}}</div>						
+								<div class="en-text-content">{{ word.en }}{{word.userid}}</div>
 								<div class="tools-text-content"></div>
 						    	<span class="arrowUp">&#9651;</span>
 						    </div>
