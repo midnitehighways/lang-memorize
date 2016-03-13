@@ -5,18 +5,35 @@
 <div class="content">
 	<div class="text-content">
 		<!-- <a href="{% url 'index' %}" >click to go back</a> -->
-			<form method="POST">{% csrf_token %}
-		       	<input type="text" name="fi" id="fi" autofocus>fi</input><br />
-		       	<input type="text" name="en" id="en">en</input><br />
-		    	<select name="tyyppi" id="tyyppi" size="6">
-			  		<option value="V">Verb</option>
-					<option value="S">Noun</option>
-					<option value="A">Adjective</option>
-					<option value="D">Adverb</option>
-					<option value="M">Other</option>
-					<option value="E" selected="selected">Nothing</option>
-				</select>
+			<form method="POST" class="form-style-7">{% csrf_token %}
+		       	<ul>
+					<li>
+					    <label for="name">Original</label>
+					    <input type="text" name="fi" id="fi"maxlength="100" autofocus />
+					    <span>Enter original word</span>
+					</li>
+					<li>
+					    <label for="name">Translation</label>
+					    <input type="text" name="en" id="en" maxlength="100" />
+					    <span>Enter translation</span>
+					</li>
+
+					<li>
+				    	<label for="name">Type</label>
+				    	<select name="tyyppi" id="tyyppi" size="6">
+					  		<option value="V">Verb</option>
+							<option value="S">Noun</option>
+							<option value="A">Adjective</option>
+							<option value="D">Adverb</option>
+							<option value="M">Other</option>
+							<option value="E" selected="selected">Nothing</option>
+						</select>
+						<span>Choose suitable word type</span>
+					</li>
+				</ul>
+
 		    	<button type="submit">Save</button>
+
 		    </form>
 	</div>
 </div>

@@ -18,8 +18,6 @@ def index(request):
 
 def insert_form(request):
 	if request.method == 'POST':
-		# userr = request.user
-		# social = userr.social_auth.get(provider='twitter')
 		# userid = request.user.social_auth.get().id
 		form = WordForm(request.POST)
 		if form.is_valid():
@@ -27,10 +25,9 @@ def insert_form(request):
 			word.fi = form.cleaned_data['fi']
 			word.en = form.cleaned_data['en']
 			word.tyyppi = form.cleaned_data['tyyppi']
-			# word.user = userr
-			word.user = request.user
+			if request.user.is_authenticated():				# possibility to add words anonymously
+				word.user = request.user
 			# word.userid = request.user.social_auth.get().id
-			# word.useruid = request.user.social_auth.get().uid
 			word.save()
 			return HttpResponseRedirect('/')
 		#else:
