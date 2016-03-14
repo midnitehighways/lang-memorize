@@ -6,6 +6,7 @@
 	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="{% static "js/main.js" %}"></script>
 </head>
 <body>
 	<div class="wrap">
@@ -20,7 +21,7 @@
  				{% else %}
   					<div class="login-section">
 	  					<div class="text-login">Log in using&nbsp;</div>
-	  					<a  class='icon-login google' href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
+	  					<a class='icon-login google' href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
 	  					<a class='icon-login twitter' href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
 	  					<a class='icon-login facebook' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
   					</div>
@@ -33,15 +34,18 @@
 				<ul>
 					<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static "img/dict_ico.png" %}" />
 					<span class="words"> Show words  </span></a></li>
-					<!-- <br /><br /> <br />-->
+
 					<li ><a href="{% url 'insert_form' %}" ><img class="resize" src="{% static "img/pen4.png" %}" />
 					<span class="words"> Add new </span> </a></li>
-					<!-- <br /><br /> <br />-->
+
 					<li ><a href="{% url 'take_a_test' %}" ><img class="resize" src="{% static "img/test6.png" %}" />
 					<span class="words"> Take a test </span></a></li>
-					<li ><a href="{% url 'login' %}" ><img class="resize" src="{% static "img/signup1.png" %}" />
-					<span class="words"> Log in </span></a></li>
-					<!-- <br /><br /> <br />-->
+
+					{% if user.is_anonymous %}
+						<li ><a href="{% url 'login' %}" ><img class="resize" src="{% static "img/signup1.png" %}" />
+						<span class="words"> Log in </span></a></li>
+					{% endif %}
+
 					<li ><a href="{% url 'about' %}"><img class="resize" src="{% static "img/about1.png" %}" />
 					<span class="words"> About </span></a></li>
 				</ul>
@@ -51,12 +55,10 @@
 		{% block content %}{% endblock content %}
 		{% block insert_form %} {% endblock insert_form %}
 		{% block test %} {% endblock test %}
-		{% block about %} {% endblock about %}
-		
+		{% block about %} {% endblock about %}	
 							<!--				 Footer 			-->
 		<div class="footer"> 
 			<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | alexandru.oat@gmail.com  </p></div>
 		</div>	
-	<script src="{% static "js/main.js" %}"></script>
 </body>
 </html>

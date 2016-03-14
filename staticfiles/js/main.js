@@ -1,5 +1,6 @@
 $(document).ready(function() { 
 
+    /* Inform user if there're no words in his/her own vocabulary */
     $(function () {
         var element = $('.accordion');      // thus we make sure to load this function only on the certain page
         if (element.length) {               // if there's such element on the page, we're surely on index-page
@@ -9,23 +10,27 @@ $(document).ready(function() {
             }
             else {console.log("YES");}
         }
-});
+    });
 
+    /* Open/close word details */
     $(function () {
         var element = $('.accordion-item-hd');
         element.click(function () {
             var e = $(this).siblings(('.accordion-item-bd'));
             var e2 = $(this).children(('.arrowUp'));
+            console.log(e.children('.edit-word').text());
             e2.toggleClass("arrowDown");
             if(e.is(':hidden')) {
                 e.slideDown();
             }
             else { 
-            	e.slideUp();
+            	// if(e.children('.edit-word').text()=="Edit word")
+                    e.slideUp();
             }
         });
     });
 
+    /* Add example(s) to any word */
     $(function () {
         var element = $('.add-example');
         element.click(function () {
@@ -40,6 +45,8 @@ $(document).ready(function() {
             });
         });
     });
+    
+    /* Edit words. Without back-end so far! */
     $(function () {
         var element = $('.edit-word');
         element.click(function () {

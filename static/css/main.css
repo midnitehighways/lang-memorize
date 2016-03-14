@@ -24,11 +24,18 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 }
 
 
-.icon-login { width: 40px; height: 40px; display: inline-block;} 	/* sprite - by default showing the left side of the pic */
-.icon-login:hover { background-position: right; } 					/* on hover - move pic to the right */
-.facebook { background: url('../img/f-sprite.png'); }				/* 'double-class' for icons' urls */
+.icon-login { width: 47px; height: 44px; display: inline-block;} 	/* sprite - by default showing the left side of the pic */
+.icon-login:hover { background-position: bottom; } 					/* on hover - move pic to the right */
+.facebook { background: url('../img/facebook-sprite.png'); }				/* 'double-class' for icons' urls */
 .twitter { background: url('../img/t-sprite.png'); }
-.google { background: url('../img/g-sprite.png'); }
+.twitter { background: url('../img/twitter-sprite.png'); }
+.google { background: url('../img/google-sprite.png'); }
+
+.text-login {
+	position: relative;
+	display: inline-block;
+	bottom: 14px;
+}
 
 @font-face {
 	font-family: 'Brookes'; 
@@ -95,6 +102,7 @@ html, body, .wrap
 	/*background-image: url('../img/metal2.png');*/
 	/*background-image: url('../img/metal3.jpg');*/
 	background-image: url('../img/metal4.jpg');
+	/*background-image: url('../img/fon.jpg');*/
 }
 
 .header {
@@ -102,7 +110,8 @@ html, body, .wrap
 	height: 8%;
 	width: 100%;
 	float: left;
-	background: linear-gradient(to top, #474949, #666767);
+	/*background: linear-gradient(to top, #474949, #666767);*/
+background-image: url('../img/fon2.png');
 	margin-bottom: 1%;
 }
 .header-left {
@@ -110,6 +119,9 @@ html, body, .wrap
 	/*background-color: #6f6868;*/
 	height: 100%;
 	float: left;
+}
+.header-left p {			/* Be a polyglote - text*/
+	bottom: 10px;
 }
 .header-left, .sidebar {
 	/*background-color: #FAFAFA;*/
@@ -251,15 +263,11 @@ ul {
 	cursor: pointer;
 	color: white;
 }
- .icons {
+ /*.icons {
 
 	top: 10%;
-}
-.text-login {
-	position: relative;
-	display: inline-block;
-	bottom: 10px;
-}
+}*/
+
 .header a {
 	text-decoration: none;
 	color: white;
