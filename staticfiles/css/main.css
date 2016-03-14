@@ -2,9 +2,11 @@
 
 
 /*TO DO
+----- header MUST be responsive. It's size must be more than social icon's size on any devices
 ----- github icon in footer
------ user field in Word object in models
------ social auth
+----- user field in Word object in models 
+
+----- social auth DONE
 
 
 
@@ -108,6 +110,7 @@ html, body, .wrap
 .header {
 /*			position: fixed;*/
 	height: 8%;
+	min-height: 50px;
 	width: 100%;
 	float: left;
 	/*background: linear-gradient(to top, #474949, #666767);*/
