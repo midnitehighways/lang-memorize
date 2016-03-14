@@ -13,16 +13,12 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 #'=1(tkqt3(y_1+5riigw)k-t5mg-^^zaakt*15i5ox_ww$430w@'
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -50,16 +46,6 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/take-a-test'
 SOCIAL_AUTH_LOGIN_URL = '/login'
 
 from puhunsuomea.config import *
-# SOCIAL_AUTH_TWITTER_KEY = 'AvsS3Hp9Bf9RAF95eSyM7vyDQ'
-# SOCIAL_AUTH_TWITTER_SECRET = 'jINTMh9bsSFqQMqg1maGXhCfJWvdQ793SUVwsfzbVOiZZYoOlQ'
-
-# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '562066370311-sbstca9bp5k69bi3pmt8cf8t8ri9cjvm.apps.googleusercontent.com'
-# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'tz2U5-7Qu0Zl4ncex_X2DwDn'
-
-# SOCIAL_AUTH_FACEBOOK_KEY = '825970364216172'
-# SOCIAL_AUTH_FACEBOOK_SECRET = '7b2f7951102eccea564c06aa67296565'
-# above + python-social-auth!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 
 # SOCIAL_AUTH_TWITTER_EXTRA_DATA = [('id', 'id'),
 #                                    ('firstName', 'first_name'),
@@ -75,6 +61,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.middleware.locale.LocaleMiddleware',                        # LANGUAGE TRANSLATION!!! MAYBE USELESS?? CHECK!!!!!
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -145,7 +132,7 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 

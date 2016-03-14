@@ -16,7 +16,15 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from django.conf.urls.i18n import i18n_patterns
+from django.conf import settings
+from sanat import views
+
 urlpatterns = [
+    url(r'^setlang', 'django.views.i18n.set_language', name='setlang'),
+]
+
+urlpatterns += i18n_patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('sanat.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
@@ -24,5 +32,4 @@ urlpatterns = [
     url(r'^take-a-test$', 'sanat.views.take_a_test', name='take_a_test'),
     # url(r'^home/$', 'sanat.views.home'),
     url(r'^logout/$', 'sanat.views.logout', name='logout'),
-
-]
+)

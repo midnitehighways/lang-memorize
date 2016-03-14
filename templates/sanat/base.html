@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load staticfiles %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
 <head>
 	<meta charset="utf-8" />
 	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
@@ -17,7 +20,7 @@
 			</div>
 			<div class="header-right">
  				{% if user and not user.is_anonymous %}
-					<p>Hello, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
+					<p>{% trans "Hello" %}, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a> {{LANGUAGES}}</p>
  				{% else %}
   					<div class="login-section">
 	  					<div class="text-login">Log in using&nbsp;</div>
