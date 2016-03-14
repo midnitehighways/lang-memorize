@@ -28,7 +28,7 @@
 	  					<a class='icon-login twitter' href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
 	  					<a class='icon-login facebook' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
 	  					<!-- <a class='icon-login facebook' href="{% url 'index' %}">{{LANGUAGE_CODE}} </a> -->
-	  					<form action="{% url 'setlang' %}" method="post">
+<!-- 	  					<form action="{% url 'setlang' %}" method="post">
         {% csrf_token %}
         <input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
         <select name="language"> 
@@ -38,7 +38,7 @@
         </select>
         <input type="submit" value="Switch Language"/>
       </form>
-  					</div>
+ -->  					</div>
 				{% endif %}
 			</div>
 		</div>
