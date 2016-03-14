@@ -4,10 +4,6 @@
 {% load staticfiles %}
 <div class="content">
 	<div class="text-content">
-		<!-- <a href="{% url 'index' %}" >click to go back</a> -->
-			{% if user.is_anonymous %}
-		    	<div class="note">Add word to common vocabulary as anonymous user <img class="image" src="{% static 'img/anonymous.png' %}" /></div>
-		    {% endif %}
 			<form method="POST" class="form-style-7">{% csrf_token %}
 		       	<ul>
 					<li>
@@ -33,9 +29,13 @@
 						<span>Choose suitable word type</span>
 					</li>
 				</ul>
-
-		    	<button type="submit" class="add-button"><img class="resize" src="{% static "img/dict_ico.png" %}" />&nbsp;Save to vocabulary</button>
-
+		    	<button type="submit" class="add-button">
+					{% if user.is_anonymous %}
+			    		<img class="resize" src="{% static "img/anonymous.png" %}" />&nbsp;Add to common anonymous
+			    	{%else%}
+						&nbsp;&nbsp;<img class="resize" src="{% static "img/dict_ico.png" %}" />&nbsp;Add to own vocabulary&nbsp;&nbsp;
+					{% endif %}
+		    	</button>
 		    </form>
 
 	</div>

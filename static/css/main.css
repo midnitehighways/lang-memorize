@@ -12,11 +12,15 @@ Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with 
 Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 © Chris Anderson 2011
 */
+
 #no-words { 
 	display: none;
 	font-family: 'Brookes';
 	font-size: 28px;
 	text-align: center;
+	margin-top: 5%;
+}
+#no-words img {				/* grumpy cat image */
 }
 
 
@@ -86,7 +90,11 @@ html, body, .wrap
 	position: relative;
 }
 .wrap {
-	background-color: #E4E7E8;
+	/*background-color: #E4E7E8;*/
+	/*background-image: url('../img/metallic.jpeg'); */
+	/*background-image: url('../img/metal2.png');*/
+	/*background-image: url('../img/metal3.jpg');*/
+	background-image: url('../img/metal4.jpg');
 }
 
 .header {
@@ -454,29 +462,26 @@ ul {
     /*margin:50px auto;*/
     /*background: #ffa;*/
     border-radius:2px;
-    padding: 40px 50px;
+    padding: 40px 55px;
+    /*padding-left: 50px;*/
     font-family: Georgia, "Times New Roman", Times, serif;
 }
 .form-style-7 li {
     display: inline-block;
     padding: 9px;
-    border:1px solid #DDDDDD;
+    border:1px solid #A4A4A4;
     margin-bottom: 30px;
     border-radius: 3px;
     width: 40%;
-    /*width: -webkit-fit-content;
-       width: -moz-fit-content;
-            width: fit-content;*/
 }
 
 .form-style-7 label {
-    /*display: block;*/
     float: left;
     margin-top: -19px;
     background: #FFFFFF;
     height: 14px;
     padding: 2px 5px 2px 4px;
-    color: #B9B9B9;
+    color: #170B3B;
     font-size: 14px;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
@@ -486,7 +491,6 @@ ul {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     width: 100%;
-    /*display: inline-block;*/
     outline: none;
     border: none;
     /*height: 25px;*/
@@ -508,7 +512,7 @@ ul {
     font-size: 11px;
 }
 #middle {
-	margin-left: 20%;
+	margin-left: 20%;	/* special id for 'Choose word's type' select-form */
 }
 
 .add-button {
@@ -518,14 +522,15 @@ ul {
   font-family: 'Brookes';
   font-weight: 600;
   color: #000;
-  font-size: 22px;
+  font-size: 18px;
   background: #c4c9cc;
   padding: 5px 10px 5px 10px;
   text-decoration: none;
   text-align: left;
-  margin-left: 27%;
+  margin-left: 25%;
+  border: 0;			/* remove 3d effect */
 }
 .add-button:hover {
-  background: #FAFAFA;
+  background: #088A08;
   text-decoration: none;
 }
