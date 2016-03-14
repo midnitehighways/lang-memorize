@@ -20,13 +20,24 @@
 			</div>
 			<div class="header-right">
  				{% if user and not user.is_anonymous %}
-					<p>{% trans "Hello" %}, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a> {{LANGUAGES}}</p>
+					<p>{% trans "Hello" %}, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
  				{% else %}
   					<div class="login-section">
 	  					<div class="text-login">Log in using&nbsp;</div>
 	  					<a class='icon-login google' href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
 	  					<a class='icon-login twitter' href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
 	  					<a class='icon-login facebook' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
+	  					<!-- <a class='icon-login facebook' href="{% url 'index' %}">{{LANGUAGE_CODE}} </a> -->
+	  					<form action="{% url 'setlang' %}" method="post">
+        {% csrf_token %}
+        <input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
+        <select name="language"> 
+          {% for lang in LANGUAGES %}
+            <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Switch Language"/>
+      </form>
   					</div>
 				{% endif %}
 			</div>
