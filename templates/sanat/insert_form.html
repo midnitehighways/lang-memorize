@@ -1,24 +1,26 @@
 {% extends 'sanat/base.html' %}
 {% block title %} Insert words into DB {% endblock title %}  <!-- it's possible to change title and this way -->
 {% block insert_form %} 
-
+{% load staticfiles %}
 <div class="content">
 	<div class="text-content">
 		<!-- <a href="{% url 'index' %}" >click to go back</a> -->
+			{% if user.is_anonymous %}
+		    	<div class="note">Add word to common vocabulary as anonymous user <img class="image" src="{% static 'img/anonymous.png' %}" /></div>
+		    {% endif %}
 			<form method="POST" class="form-style-7">{% csrf_token %}
 		       	<ul>
 					<li>
 					    <label for="name">Original</label>
-					    <input type="text" name="fi" id="fi"maxlength="100" autofocus />
+					    <input type="text" name="fi" id="fi" maxlength="50" autofocus />
 					    <span>Enter original word</span>
 					</li>
-					<li>
+					<li id='right'>
 					    <label for="name">Translation</label>
-					    <input type="text" name="en" id="en" maxlength="100" />
+					    <input type="text" name="en" id="en" maxlength="50" />
 					    <span>Enter translation</span>
 					</li>
-
-					<li>
+					<li id='middle'>
 				    	<label for="name">Type</label>
 				    	<select name="tyyppi" id="tyyppi" size="6">
 					  		<option value="V">Verb</option>
@@ -32,9 +34,10 @@
 					</li>
 				</ul>
 
-		    	<button type="submit">Save</button>
+		    	<button type="submit" class="add-button"><img class="resize" src="{% static "img/dict_ico.png" %}" />&nbsp;Save to vocabulary</button>
 
 		    </form>
+
 	</div>
 </div>
 {% endblock insert_form %}
