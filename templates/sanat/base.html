@@ -10,11 +10,36 @@
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="{% static "js/main.js" %}"></script>
+<script type="text/javascript">
+								function Mysubmitform(lang)
+								{
+								  
+								  document.getElementById('language8').value = lang;
+								  
+								  document.getElementById('language8').style.display = 'none'; // temrorary solution - hide the previous lang form
+								  //alert(document.getElementById('language8').value);
+								  document.myform8.submit();
+								}
+								</script>
 </head>
 <body>
 	<div class="wrap">
 							<!--				 Header 			-->
 		<div class="header">
+      <form type = "hidden" name="myform8" action="{% url 'setlang' %}" method="post">{% csrf_token %}
+									<input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
+									<select  style="display:none" id="language8" name="language">
+										{% get_current_language as LANGUAGE_CODE %}
+										{% get_available_languages as LANGUAGES %}
+										{% get_language_info_list for LANGUAGES as languages %}
+										{% for language in languages %}
+										<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+												{{ language.name_local }} ({{ language.code }})
+										</option>
+										{% endfor %}
+									</select>
+								</form>
+								
 			<div class="header-left">
 				<p>B e &nbsp; a &nbsp; <span class="red-text">P o l y g l o t</span> </p>
 			</div>
@@ -23,22 +48,16 @@
 					<p>{% trans "Hello" %}, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
  				{% else %}
   					<div class="login-section">
-	  					<div class="text-login">Log in using&nbsp;</div>
+	  					
+	  					<div class="text-login">
+						<a  href="#" onclick="Mysubmitform('fi');">FI</a>&nbsp;&nbsp;
+						<a  href="#" onclick="Mysubmitform('en');">EN</a>	
+	  					&nbsp;&nbsp;&nbsp;Log in using&nbsp;</div>
 	  					<a class='icon-login google' href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
 	  					<a class='icon-login twitter' href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
 	  					<a class='icon-login facebook' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
-	  					<!-- <a class='icon-login facebook' href="{% url 'index' %}">{{LANGUAGE_CODE}} </a> -->
-<!-- 	  					<form action="{% url 'setlang' %}" method="post">
-        {% csrf_token %}
-        <input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
-        <select name="language"> 
-          {% for lang in LANGUAGES %}
-            <option value="{{ lang.0 }}">{{ lang.1 }}</option>
-          {% endfor %}
-        </select>
-        <input type="submit" value="Switch Language"/>
-      </form>
- -->  					</div>
+	  					 			
+  					</div>
 				{% endif %}
 			</div>
 		</div>
