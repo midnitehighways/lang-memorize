@@ -15,10 +15,8 @@
 								{
 								  
 								  document.getElementById('language8').value = lang;
-								  
-								  document.getElementById('language8').style.display = 'none'; // temrorary solution - hide the previous lang form
-								  //alert(document.getElementById('language8').value);
 								  document.myform8.submit();
+								  // $(#"fi-flag".css("class"))
 								}
 								</script>
 </head>
@@ -26,7 +24,7 @@
 	<div class="wrap">
 							<!--				 Header 			-->
 		<div class="header">
-      <form type = "hidden" name="myform8" action="{% url 'setlang' %}" method="post">{% csrf_token %}
+      		<form type = "hidden" name="myform8" action="{% url 'setlang' %}" method="post">{% csrf_token %}
 									<input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
 									<select  style="display:none" id="language8" name="language">
 										{% get_current_language as LANGUAGE_CODE %}
@@ -48,17 +46,16 @@
 					<p>{% trans "Hello" %}, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
  				{% else %}
   					<div class="login-section">
-	  					
-	  					<div class="text-login">
-						<a  href="#" onclick="Mysubmitform('fi');">FI</a>&nbsp;&nbsp;
-						<a  href="#" onclick="Mysubmitform('en');">EN</a>	
-	  					&nbsp;&nbsp;&nbsp;Log in using&nbsp;</div>
+	  					<div class="text-login">Log in using&nbsp;</div>
 	  					<a class='icon-login google' href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
 	  					<a class='icon-login twitter' href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
 	  					<a class='icon-login facebook' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
-	  					 			
   					</div>
 				{% endif %}
+				<div class="flag-section">
+					<img {% if LANGUAGE_CODE == 'en' %} class="black-and-white" {% endif %}src="{% static 'img/fi-flag.png' %}" onclick="Mysubmitform('fi');" />
+					<img {% if LANGUAGE_CODE == 'fi' %} class="black-and-white" {% endif %} src="{% static 'img/en-flag.png' %}" onclick="Mysubmitform('en');" />
+				</div>	
 			</div>
 		</div>
 							<!--				 Sidebar 			-->

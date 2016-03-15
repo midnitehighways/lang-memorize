@@ -4,7 +4,7 @@
 /*TO DO
 ----- header MUST be responsive. It's size must be more than social icon's size on any devices
 ----- github icon in footer
------ user field in Word object in models 
+----- user field in Word object in models DONE
 
 ----- social auth DONE
 
@@ -24,7 +24,8 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 }
 #no-words img {				/* grumpy cat image */
 }
-
+.flag {
+}
 
 .icon-login { width: 47px; height: 44px; display: inline-block;} 	/* sprite - by default showing the left side of the pic */
 .icon-login:hover { background-position: bottom; } 					/* on hover - move pic to the right */
@@ -141,6 +142,68 @@ background-image: url('../img/fon2.png');
 	float: left;
 	height: 100%;
 }
+
+.header p {
+	font-family: Brookes;
+	font-size: 20px;
+/*	background-color: white;
+	color: transparent;
+	text-shadow: 0px 2px 3px #999;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+
+*/	
+	text-align: right;
+	/*margin-right: 15%;*/
+	/*vertical-align: middle;*/
+	cursor: pointer;
+	color: white;
+}
+.login-section {
+	font-family: Brookes;
+	font-size: 20px;
+	position: relative;
+	top: 15%;
+	width: 85%;
+	text-align: right;
+	cursor: default;		/* to avoid changing cursor while hovering over text 'Log in using'*/
+	color: white;
+	/*background-color: black;*/
+	float: left;
+}
+
+.flag-section {
+	/*background-color: yellow;*/
+	float: right;
+	right: 2%;
+	position: relative;
+	top: 24%;
+}
+
+.flag-section img {
+	max-width: 30px;
+	max-height: 30px;
+	cursor: pointer;
+	float: right;
+	margin-right: 10px; 
+}
+.black-and-white {
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+}
+.header a {
+	text-decoration: none;
+	color: white;
+}
+.red-text {
+	color: yellow;
+} 
+
+
+/* END OF HEADER */
+
+
 .sidebar {
 	float: left;
 	width: 20%;
@@ -229,56 +292,6 @@ ul {
 	list-style-type: none; /* remove bullets in all the lists */
 }
 
-.header p {
-	font-family: Brookes;
-	font-size: 20px;
-/*	background-color: white;
-	color: transparent;
-	text-shadow: 0px 2px 3px #999;
-	-webkit-background-clip: text;
-	-moz-background-clip: text;
-	background-clip: text;
-
-*/	
-	text-align: right;
-	margin-right: 15%;
-	/*vertical-align: middle;*/
-	cursor: pointer;
-	color: white;
-}
-.login-section {
-	font-family: Brookes;
-	font-size: 20px;
-	position: relative;
-	top: 15%;
-
-/*	background-color: white;
-	color: transparent;
-	text-shadow: 0px 2px 3px #999;
-	-webkit-background-clip: text;
-	-moz-background-clip: text;
-	background-clip: text;
-
-*/	
-	text-align: right;
-	margin-right: 15%;
-	/*vertical-align: middle;*/
-	cursor: pointer;
-	color: white;
-}
- /*.icons {
-
-	top: 10%;
-}*/
-
-.header a {
-	text-decoration: none;
-	color: white;
-
-}
-.red-text {
-	color: yellow;
-} 
 .each-word {
 	/*display: inline;*/
 	overflow: auto;
