@@ -10,51 +10,30 @@
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="{% static "js/main.js" %}"></script>
-<script type="text/javascript">
-								function Mysubmitform(lang)
-								{
-								  
-								  document.getElementById('language8').value = lang;
-								  document.myform8.submit();
-								  // $(#"fi-flag".css("class"))
-								}
-								</script>
 </head>
 <body>
 	<div class="wrap">
 							<!--				 Header 			-->
-		<div class="header">
-      		<form type = "hidden" name="myform8" action="{% url 'setlang' %}" method="post">{% csrf_token %}
-									<input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
-									<select  style="display:none" id="language8" name="language">
-										{% get_current_language as LANGUAGE_CODE %}
-										{% get_available_languages as LANGUAGES %}
-										{% get_language_info_list for LANGUAGES as languages %}
-										{% for language in languages %}
-										<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-												{{ language.name_local }} ({{ language.code }})
-										</option>
-										{% endfor %}
-									</select>
-								</form>
-								
+		<div class="header">																							
 			<div class="header-left">
 				<p>B e &nbsp; a &nbsp; <span class="red-text">P o l y g l o t</span> </p>
 			</div>
 			<div class="header-right">
+				<div class="login-section">
  				{% if user and not user.is_anonymous %}
-					<p>{% trans "Hello" %}, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">Log out</a></p>
+					<div class="text-login">{% trans "Hello" %}, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">{% trans "Log out" %}</a></div>
  				{% else %}
-  					<div class="login-section">
-	  					<div class="text-login">Log in using&nbsp;</div>
+	  					<div class="text-login">{% trans "Log in using" %} &nbsp;</div>
 	  					<a class='icon-login google' href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
 	  					<a class='icon-login twitter' href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
 	  					<a class='icon-login facebook' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
-  					</div>
 				{% endif %}
+				</div>
 				<div class="flag-section">
-					<img {% if LANGUAGE_CODE == 'en' %} class="black-and-white" {% endif %}src="{% static 'img/fi-flag.png' %}" onclick="Mysubmitform('fi');" />
-					<img {% if LANGUAGE_CODE == 'fi' %} class="black-and-white" {% endif %} src="{% static 'img/en-flag.png' %}" onclick="Mysubmitform('en');" />
+					<img {% if LANGUAGE_CODE == 'en' %} class="black-and-white" {% endif %} 
+					src="{% static 'img/fi-flag.png' %}" onclick="submitLangForm('fi');" />
+					<img {% if LANGUAGE_CODE == 'fi' %} class="black-and-white" {% endif %} 
+					src="{% static 'img/en-flag.png' %}" onclick="submitLangForm('en');" />
 				</div>	
 			</div>
 		</div>
@@ -63,21 +42,21 @@
 			<div class="text-sidebar">
 				<ul>
 					<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static "img/dict_ico.png" %}" />
-					<span class="words"> Show words  </span></a></li>
+					<span class="words"> {% trans "Show words" %} </span></a></li>
 
 					<li ><a href="{% url 'insert_form' %}" ><img class="resize" src="{% static "img/pen4.png" %}" />
-					<span class="words"> Add new </span> </a></li>
+					<span class="words"> {% trans "Add new" %} </span> </a></li>
 
 					<li ><a href="{% url 'take_a_test' %}" ><img class="resize" src="{% static "img/test6.png" %}" />
-					<span class="words"> Take a test </span></a></li>
+					<span class="words"> {% trans "Take a test" %} </span></a></li>
 
 					{% if user.is_anonymous %}
 						<li ><a href="{% url 'login' %}" ><img class="resize" src="{% static "img/signup1.png" %}" />
-						<span class="words"> Log in </span></a></li>
+						<span class="words"> {% trans "Log in" %} </span></a></li>
 					{% endif %}
 
 					<li ><a href="{% url 'about' %}"><img class="resize" src="{% static "img/about1.png" %}" />
-					<span class="words"> About </span></a></li>
+					<span class="words"> {% trans "About" %} </span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -89,6 +68,10 @@
 							<!--				 Footer 			-->
 		<div class="footer"> 
 			<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | alexandru.oat@gmail.com  </p></div>
+			<form name="langForm" action="{% url 'setlang' %}" method="post">{% csrf_token %} 		<!-- HIDDEN FORM -->
+				<input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+				<input type="hidden" id="selected-lang" name="language">
+			</form>
 		</div>	
 </body>
 </html>

@@ -38,6 +38,7 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 	position: relative;
 	display: inline-block;
 	bottom: 14px;
+	background-color: black;
 }
 
 @font-face {
@@ -146,17 +147,7 @@ background-image: url('../img/fon2.png');
 .header p {
 	font-family: Brookes;
 	font-size: 20px;
-/*	background-color: white;
-	color: transparent;
-	text-shadow: 0px 2px 3px #999;
-	-webkit-background-clip: text;
-	-moz-background-clip: text;
-	background-clip: text;
-
-*/	
 	text-align: right;
-	/*margin-right: 15%;*/
-	/*vertical-align: middle;*/
 	cursor: pointer;
 	color: white;
 }
