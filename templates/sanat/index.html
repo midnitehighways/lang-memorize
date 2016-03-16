@@ -1,6 +1,7 @@
 {% extends 'sanat/base.html' %}
 {% load staticfiles %}
 {% block content %}
+{% load i18n %}
 		<div class="content">
 			<div class="text-content">
 				<ul class="accordion css-accordion">
@@ -21,19 +22,19 @@
 									<br />
 								{% endfor %}
 								{% endwith %}
-								<a class='add-example' href="#">Add an example</a>&nbsp&nbsp&nbsp
-								<a class='edit-word' href="#">Edit word</a>&nbsp&nbsp&nbsp
-								<a href="{% url 'delete_word' word.id %}">Delete word</a>&nbsp&nbsp&nbsp
+								<a class='add-example' href="#">{% trans "Add an example" %}</a>&nbsp&nbsp&nbsp
+								<a class='edit-word' href="#">{% trans "Edit word" %}</a>&nbsp&nbsp&nbsp
+								<a href="{% url 'delete_word' word.id %}">{% trans "Delete word" %}</a>&nbsp&nbsp&nbsp
 								<form class='header-search-form' id='form{{ forloop.counter }}' action="{% url 'add_example_form' word.id %}" method='POST' autocomplete='off'>{% csrf_token %}
 									<input class='add-example-field' type='text' id='line{{ forloop.counter }}' name='fi' />
-									<button type=submit class='add-example-button'>Add example</button>
+									<button type=submit class='add-example-button'>{% trans "Add example" %}</button>
 								</form>
 							</div>		
 						</div>
 						{% endif %}
 					{% endfor %} {% endwith %}
 				</ul>
-				<div id="no-words"> Currently there are no words in your own vocabulary. <p>Please, don't hesitate to add them :)</p> <img class="image" src="{% static "img/grumpy2.jpg" %}" /></div> 
+				<div id="no-words"> {% trans "Currently there are no words in your own vocabulary." %} <p>{% trans "Please, don't hesitate to add them :)" %}</p> <img class="image" src="{% static "img/grumpy2.jpg" %}" /></div> 
 			</div>
 		</div>
 {% endblock content %}

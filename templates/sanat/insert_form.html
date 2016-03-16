@@ -2,38 +2,39 @@
 {% block title %} Insert words into DB {% endblock title %}  <!-- it's possible to change title and this way -->
 {% block insert_form %} 
 {% load staticfiles %}
+{% load i18n %}
 <div class="content">
 	<div class="text-content">
 			<form method="POST" class="form-style-7">{% csrf_token %}
 		       	<ul>
-					<li>
-					    <label for="name">Original</label>
+					<li id='left'>
+					    <label for="name">{% trans "Original" %}</label>
 					    <input type="text" name="fi" id="fi" maxlength="50" autofocus />
-					    <span>Enter original word</span>
+					    <span>{% trans "Enter original word" %}</span>
 					</li>
 					<li id='right'>
-					    <label for="name">Translation</label>
+					    <label for="name">{% trans "Translation" %}</label>
 					    <input type="text" name="en" id="en" maxlength="50" />
-					    <span>Enter translation</span>
+					    <span>{% trans "Enter translation" %}</span>
 					</li>
 					<li id='middle'>
-				    	<label for="name">Type</label>
+				    	<label for="name">{% trans "Type" %}</label>
 				    	<select name="tyyppi" id="tyyppi" size="6">
-					  		<option value="V">Verb</option>
-							<option value="S">Noun</option>
-							<option value="A">Adjective</option>
-							<option value="D">Adverb</option>
-							<option value="M">Other</option>
-							<option value="E" selected="selected">Nothing</option>
+					  		<option value="V">{% trans "Verb" %}</option>
+							<option value="S">{% trans "Noun" %}</option>
+							<option value="A">{% trans "Adjective" %}</option>
+							<option value="D">{% trans "Adverb" %}</option>
+							<option value="M">{% trans "Other" %}</option>
+							<option value="E" selected="selected">{% trans "Nothing" %}</option>
 						</select>
-						<span>Choose suitable word type</span>
+						<span>{% trans "Choose suitable word type" %}</span>
 					</li>
 				</ul>
 		    	<button type="submit" class="add-button">
 					{% if user.is_anonymous %}
-			    		<img class="resize" src="{% static "img/anonymous.png" %}" />&nbsp;Add to common anonymous
+			    		<img class="resize" src="{% static "img/anonymous.png" %}" />&nbsp;{% trans "Add to common anonymous" %}
 			    	{%else%}
-						&nbsp;&nbsp;<img class="resize" src="{% static "img/dict_ico.png" %}" />&nbsp;Add to own vocabulary&nbsp;&nbsp;
+						&nbsp;&nbsp;<img class="resize" src="{% static "img/dict_ico.png" %}" />&nbsp;{% trans "Add to own vocabulary" %}&nbsp;&nbsp;
 					{% endif %}
 		    	</button>
 		    </form>
