@@ -21,12 +21,15 @@
 			<div class="header-right">
 				<div class="login-section">
  				{% if user and not user.is_anonymous %}
-					<div class="text-login">{% trans "Hello" %}, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">{% trans "Log out" %}</a></div>
+					<div class="text-logged-in">
+						{% trans "Hello" %}, {{ user.get_full_name }}! &nbsp; <a href="{% url 'logout' %}">{% trans "Log out" %}</a>
+					</div>
  				{% else %}
-	  					<div class="text-login">{% trans "Log in using" %} &nbsp;</div>
+	  				<div class="text-login">{% trans "Log in using" %} &nbsp;</div>
 	  					<a class='icon-login google' href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
 	  					<a class='icon-login twitter' href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
 	  					<a class='icon-login facebook' href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
+	  				
 				{% endif %}
 				</div>
 				<div class="flag-section">

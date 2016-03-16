@@ -1,5 +1,12 @@
 $(document).ready(function() { 
 
+$(function () {                         // TESTING ONLY
+        var element = $('.header');
+        element.click(function () {
+            console.log($('.header-right'.siblings));
+        }
+    )});
+
     /* Inform user if there're no words in his/her own vocabulary */
     $(function () {
         var element = $('.accordion');      // thus we make sure to load this function only on the certain page

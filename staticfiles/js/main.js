@@ -1,5 +1,12 @@
 $(document).ready(function() { 
 
+$(function () {                         // TESTING ONLY
+        var element = $('.header');
+        element.click(function () {
+            console.log($('.header-right'.siblings));
+        }
+    )});
+
     /* Inform user if there're no words in his/her own vocabulary */
     $(function () {
         var element = $('.accordion');      // thus we make sure to load this function only on the certain page
@@ -96,7 +103,6 @@ $(document).ready(function() {
         	handle_answer($(this).text());
         }
     )})
-
 });             // end of $(document).ready
 
 //the function prepare_test MUST be outside of $(document).ready, since it has to be ready before the page opens for user
@@ -123,7 +129,8 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
     var rand = Math.floor(Math.random( ) * 4);                          // the generated number (0..3) defines which word --->
     document.getElementById('asked_word').value = eng[numerot[rand]];   // ---> is going to be asked among the 4 chosen previously
     right_answer = fin[numerot[rand]];                                  // text variable
-    ids = [document.getElementById('choice_1'), document.getElementById('choice_2'), document.getElementById('choice_3'), document.getElementById('choice_4')];
+    ids =  [document.getElementById('choice_1'), document.getElementById('choice_2'), 
+            document.getElementById('choice_3'), document.getElementById('choice_4')];
     // for (var i = numerot.length - 1; i > 0; i--) {               // shuffling the numerot-array
     //     var j = Math.floor(Math.random() * (i + 1));
     //     var temp = numerot[i];
@@ -135,4 +142,11 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
     }
     $("#asked_word").show(300);
     $("#choices").show(300);
+}
+/* submit the hidden language form */
+function submitLangForm(lang)
+{
+  
+  document.getElementById('selected-lang').value = lang;
+  document.langForm.submit();
 }

@@ -15,6 +15,9 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 © Chris Anderson 2011
 */
 
+* {		/*make sure that the padding and border are included in the total width and height of the elements */
+    box-sizing: border-box;
+}
 #no-words { 
 	display: none;
 	font-family: 'Brookes';
@@ -27,19 +30,12 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 .flag {
 }
 
-.icon-login { width: 47px; height: 44px; display: inline-block;} 	/* sprite - by default showing the left side of the pic */
-.icon-login:hover { background-position: bottom; } 					/* on hover - move pic to the right */
+.icon-login { width: 47px; height: 44px; display: inline-block;} 	/* sprite - by default showing the upper side of the pic */
+.icon-login:hover { background-position: bottom; } 					/* on hover - move pic down */
 .facebook { background: url('../img/facebook-sprite.png'); }				/* 'double-class' for icons' urls */
 .twitter { background: url('../img/t-sprite.png'); }
 .twitter { background: url('../img/twitter-sprite.png'); }
 .google { background: url('../img/google-sprite.png'); }
-
-.text-login {
-	position: relative;
-	display: inline-block;
-	bottom: 14px;
-	background-color: black;
-}
 
 @font-face {
 	font-family: 'Brookes'; 
@@ -112,34 +108,22 @@ html, body, .wrap
 .header {
 /*			position: fixed;*/
 	height: 8%;
-	min-height: 50px;
 	width: 100%;
-	float: left;
 	/*background: linear-gradient(to top, #474949, #666767);*/
-background-image: url('../img/fon2.png');
-	margin-bottom: 1%;
+	background-image: url('../img/fon2.png');
+	/*margin-bottom: 1%;*/										/*NOT SURE!!!!! COMMENTED 15.03 AT 20.15!!!!*/
 }
 .header-left {
-	width: 20%;
+	width: 21%;
 	/*background-color: #6f6868;*/
 	height: 100%;
 	float: left;
 }
 .header-left p {			/* Be a polyglote - text*/
-	bottom: 10px;
 }
-.header-left, .sidebar {
-	/*background-color: #FAFAFA;*/
-/*	border-right: 1px solid black;*/
-	/*#45413c;*/
-}
-.header-right, .content {
-/*	margin-left: -1px;*/
-}
+
 .header-right {
-	width: 80%;
-	/*background-color: #f2f1f4;*/
-	/*background-color: #ececec;*/
+	width: 79%;
 	float: left;
 	height: 100%;
 }
@@ -155,21 +139,29 @@ background-image: url('../img/fon2.png');
 	font-family: Brookes;
 	font-size: 20px;
 	position: relative;
-	top: 15%;
+	top: 10%;
 	width: 85%;
 	text-align: right;
 	cursor: default;		/* to avoid changing cursor while hovering over text 'Log in using'*/
 	color: white;
-	/*background-color: black;*/
 	float: left;
+}
+.text-login {
+	position: relative;
+	display: inline-block;
+	bottom: 14px;
+}
+.text-logged-in {
+	position: relative;
+	display: inline-block;
+	top: 14px;
 }
 
 .flag-section {
-	/*background-color: yellow;*/
 	float: right;
 	right: 2%;
 	position: relative;
-	top: 24%;
+	top: 23%;
 }
 
 .flag-section img {
@@ -185,7 +177,7 @@ background-image: url('../img/fon2.png');
 }
 .header a {
 	text-decoration: none;
-	color: white;
+	color: white;			/* needed this specially for link text "Log out". Otherwise it is blue */
 }
 .red-text {
 	color: yellow;
