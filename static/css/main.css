@@ -323,10 +323,14 @@ ul {
 .accordion > * + * { border-top: 1px solid lightgrey; }
 
 .accordion-item-hd {
-	padding: 2% 3.5% 5% 0; /*15px 30px 30px 0 */
+	/*padding: 2% 3.5% 5% 0; */
+	/*padding: 1.5% 2% 4% 0; */
+	padding: 1.5% 2% 3.5% 0;
+	/*15px 30px 30px 0 */
 	position: relative;
 	cursor: pointer;
 	font-size: 18px;
+	/*background-color: grey;*/
 }
 .arrowUp {
     transform: rotate(-180deg);
