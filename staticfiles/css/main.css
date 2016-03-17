@@ -30,18 +30,22 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 .flag {
 }
 
-.icon-login { width: 47px; height: 44px; display: inline-block;} 	/* sprite - by default showing the upper side of the pic */
-.icon-login:hover { background-position: bottom; } 					/* on hover - move pic down */
-.facebook { background: url('../img/facebook-sprite.png'); }				/* 'double-class' for icons' urls */
-.twitter { background: url('../img/t-sprite.png'); }
-.twitter { background: url('../img/twitter-sprite.png'); }
-.google { background: url('../img/google-sprite.png'); }
+.icon-login { 												/* sprite method - showing the lower side of the pic */
+	background-position: bottom !important; 				/* override child's background-position */
+	width: 47px; 
+	height: 43px; 
+	display: inline-block;
+} 	
+.icon-login:hover { background-position: top; } 						/* on hover - move pic up */
+.facebook { background: url('../img/facebook-sprite.png');}				/* 'double-class' for icons' urls */
+.twitter { background: url('../img/twitter-sprite.png');}
+.google { background: url('../img/google-sprite.png');}
 
 @font-face {
-	font-family: 'Brookes'; 
+	font-family: 'Comfortaa-Regular'; 
+	src: url('../fonts/Comfortaa-Regular.ttf'); 
 	/*src: url('../fonts/BrookeS8.ttf');  */
 	/*src: url('../fonts/Leoscar Serif.ttf');  */
-	src: url('../fonts/Comfortaa-Regular.ttf'); 
 	/*src: url('../fonts/Essai.ttf');   */
 	/*src: url('../fonts/Bless.otf');  */
 }
@@ -50,9 +54,8 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 	src: url('../fonts/Mf Sippin On Sunshine.ttf');  
 }
 @font-face {
-	font-family: 'Leoscar'; 
-/*	src: url('../fonts/Leoscar Serif.ttf');  */
-src: url('../fonts/Comfortaa-Light.ttf');  
+	font-family: 'Comfortaa-Light'; 
+	src: url('../fonts/Comfortaa-Light.ttf');  
 }
 .gradient {
     background: linear-gradient(to top, #474949, #808181);
@@ -73,7 +76,7 @@ src: url('../fonts/Comfortaa-Light.ttf');
 }
 
 .text-sidebar a {					/* change only those "a"s which are inside div of .text-sidebar class */
-	font-family: 'Brookes';
+	font-family: 'Comfortaa-Regular';
 	font-size: 20px;
 /*	vertical-align: middle;*/
 	text-decoration: none;  		/* hide underline for links */
@@ -109,14 +112,14 @@ html, body, .wrap
 	/*font-weight: 600;*/
 	font-size: 18px;
 	position: relative;
-	font-family: 'Leoscar';
+	font-family: Comfortaa-Light;
 }
 .wrap {
 	/*background-color: #E4E7E8;*/
 	/*background-image: url('../img/metallic.jpeg'); */
-	/*background-image: url('../img/metal2.png');*/
+	background-image: url('../img/metal2.png');
 	/*background-image: url('../img/metal3.jpg');*/
-	background-image: url('../img/metal4.jpg');
+	/*background-image: url('../img/metal4.jpg');*/
 	/*background-image: url('../img/fon.jpg');*/
 }
 
@@ -133,11 +136,11 @@ html, body, .wrap
 	/*background-color: #6f6868;*/
 	height: 100%;
 	float: left;
-	font-family: 'Brookes';
+	font-family: Comfortaa-Regular;
 }
 .header-left p {			/* Be a polyglote - text*/
 	letter-spacing: 7px;
-	font-family: 'Leoscar';
+	/*font-family: 'Comfortaa-Light';*/
 }
 
 .header-right {
@@ -147,14 +150,14 @@ html, body, .wrap
 }
 
 .header p {
-	font-family: Brookes;
+	font-family: Comfortaa-Regular;
 	font-size: 20px;
 	text-align: right;
 	cursor: pointer;
 	color: white;
 }
 .login-section {
-	font-family: Leoscar;
+	font-family: Comfortaa-Light;
 	font-size: 16px;
 	position: relative;
 	top: 10%;
@@ -472,7 +475,7 @@ ul {
     border-radius:2px;
     padding: 40px 55px;
     /*padding-left: 50px;*/
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: Comfortaa-Light;
 }
 .form-style-7 li {
     display: inline-block;
@@ -485,14 +488,14 @@ ul {
 
 .form-style-7 label {
     float: left;
-    margin-top: -19px;
+    margin-top: -18px;
     background: #FFFFFF;
     height: 19px;
     padding: 2px 5px 2px 4px;
     color: #170B3B;
     font-size: 14px;
     overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Comfortaa-Light;
 }
 .form-style-7 input, .form-style-7 select {
     box-sizing: border-box;
@@ -505,7 +508,6 @@ ul {
     line-height: 25px;
     font-size: 16px;
     padding: 0;
-    font-family: Georgia, "Times New Roman", Times, serif;
     text-align: center;
 }
 
@@ -516,7 +518,6 @@ ul {
     margin: 0 -9px -9px -9px;
     text-align: center;
     color: #C0C0C0;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
 }
 #middle {
@@ -530,7 +531,7 @@ ul {
   -webkit-border-radius: 7;
   -moz-border-radius: 7;
   border-radius: 7px;
-  font-family: 'Brookes';
+  font-family: Comfortaa-Light;
   font-weight: 600;
   color: #000;
   font-size: 18px;
@@ -538,7 +539,7 @@ ul {
   padding: 5px 10px 5px 10px;
   text-decoration: none;
   text-align: left;
-  margin-left: 25%;
+  margin-left: 20%;
   border: 0;			/* remove 3d effect */
 }
 .add-button:hover {
