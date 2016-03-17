@@ -139,7 +139,7 @@ html, body, .wrap
 	/*margin-bottom: 1%;*/										/*NOT SURE!!!!! COMMENTED 15.03 AT 20.15!!!!*/
 }
 .header-left {
-	width: 21%;
+	width: 32%;
 	/*background-color: #6f6868;*/
 	height: 100%;
 	float: left;
@@ -160,16 +160,18 @@ html, body, .wrap
 	width: 15%;
 	/*background-color: white;*/
 	float: left;
-	margin-left: 5%;
+	margin-left: 3%;
 }
 .header-left-2 {
 	height: 100%;
-	width: 80%;	
+	width: 79%;	
+	text-align: left;
 	/*background-color: grey;*/
 		float: left;
+		margin-left: 3%
 }
 .header-right {
-	width: 79%;
+	width: 68%;
 	float: left;
 	height: 100%;
 }
@@ -228,7 +230,8 @@ html, body, .wrap
 
 .sidebar {
 	float: left;
-	width: 20%;
+	/*width: 20%;*/
+	width: 250px;
 	/*border: 0px solid #000;*/
 	height: 300px;
 	/*height: 50%;*/
