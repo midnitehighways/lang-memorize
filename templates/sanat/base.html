@@ -16,7 +16,13 @@
 							<!--				 Header 			-->
 		<div class="header">																							
 			<div class="header-left">
-				<p>{% trans "Be  a" %}  <span class="red-text">{% trans "Polyglot" %}</span></p>
+				<div class="header-left-1">
+					<img class="smile" src="{% static "img/about1.png" %}" />
+				</div>
+				<div class="header-left-2">
+					<p>{% trans "Be  a" %}  <span class="red-text">{% trans "Polyglot" %}</span>
+					</p>
+				</div>
 			</div>
 			<div class="header-right">
 				<div class="login-section">
@@ -44,25 +50,25 @@
 		<div class="sidebar">
 			<div class="text-sidebar">
 				<ul>
-					<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static "img/dict_ico.png" %}" />
+					<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static 'img/dict_ico.png' %}" />
 					<span class="words"> {% trans "Show words" %} </span></a></li>
 
-					<li ><a href="{% url 'insert_form' %}" ><img class="resize" src="{% static "img/pen4.png" %}" />
+					<li ><a href="{% url 'insert_form' %}" ><img class="resize" src="{% static 'img/pen4.png' %}" />
 					<span class="words"> {% trans "Add new" %} </span> </a></li>
 
-					<li ><a href="{% url 'take_a_test' %}" ><img class="resize" src="{% static "img/test6.png" %}" />
+					<li ><a href="{% url 'take_a_test' %}" ><img class="resize" src="{% static 'img/test6.png' %}" />
 					<span class="words"> {% trans "Take a test" %} </span></a></li>
 
 					{% if user.is_anonymous %}
-						<li ><a href="{% url 'login' %}" ><img class="resize" src="{% static "img/signup1.png" %}" />
+						<li ><a href="{% url 'login' %}" ><img class="resize" src="{% static 'img/signup1.png' %}" />
 						<span class="words"> {% trans "Log in" %} </span></a></li>
 					
 					{% else %}
-						<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static "img/dict_ico.png" %}" />
+						<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static 'img/dict_ico.png' %}" />
 						<span class="words"> {% trans "Show common" %} </span></a></li>
 					{% endif %}
 
-					<li ><a href="{% url 'about' %}"><img class="resize" src="{% static "img/about1.png" %}" />
+					<li ><a href="{% url 'about' %}"><img class="resize" src="{% static 'img/about1.png' %}" />
 					<span class="words"> {% trans "About" %} </span></a></li>
 				</ul>
 			</div>
