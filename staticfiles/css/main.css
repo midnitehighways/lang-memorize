@@ -1,4 +1,4 @@
-
+@charset "utf-8";
 
 
 /*TO DO
@@ -7,7 +7,7 @@
 ----- user field in Word object in models DONE
 
 ----- social auth DONE
-
+------ Main words menu - decorate somehow
 
 
 Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with MongoHQ.
@@ -20,7 +20,7 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 }
 #no-words { 
 	display: none;
-	font-family: 'Brookes';
+	font-family: 'Sunshine';
 	font-size: 28px;
 	text-align: center;
 	margin-top: 5%;
@@ -39,7 +39,20 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 
 @font-face {
 	font-family: 'Brookes'; 
-	src: url('../fonts/BrookeS8.ttf');  
+	/*src: url('../fonts/BrookeS8.ttf');  */
+	/*src: url('../fonts/Leoscar Serif.ttf');  */
+	src: url('../fonts/Comfortaa-Regular.ttf'); 
+	/*src: url('../fonts/Essai.ttf');   */
+	/*src: url('../fonts/Bless.otf');  */
+}
+@font-face {
+	font-family: 'Sunshine'; 
+	src: url('../fonts/Mf Sippin On Sunshine.ttf');  
+}
+@font-face {
+	font-family: 'Leoscar'; 
+/*	src: url('../fonts/Leoscar Serif.ttf');  */
+src: url('../fonts/Comfortaa-Light.ttf');  
 }
 .gradient {
     background: linear-gradient(to top, #474949, #808181);
@@ -47,21 +60,21 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
     border: 0px solid #333;
    }
 .text-sidebar li {			/*each of sidebar menu elements*/
-	line-height: 55px;
+	line-height: 50px;
 }
 
 .resize { 	
 	vertical-align: middle;
 	height: auto; 
     width: auto; 
-    max-width: 45px; 
-    max-height: 45px;
+    max-width: 40px; 
+    max-height: 40px;
     transition: all .2s ease-in-out; 
 }
 
 .text-sidebar a {					/* change only those "a"s which are inside div of .text-sidebar class */
 	font-family: 'Brookes';
-	font-size: 28px;
+	font-size: 20px;
 /*	vertical-align: middle;*/
 	text-decoration: none;  		/* hide underline for links */
 	/*color: #a4f333;*/
@@ -92,10 +105,11 @@ html, body, .wrap
 {
 	height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's children (sidebar, content) could reach the bottom */
 	margin: 0;
-	font-family: Verdana, Geneva, sans-serif;
+	/*font-family: Verdana, Geneva, sans-serif;*/
 	/*font-weight: 600;*/
 	font-size: 18px;
 	position: relative;
+	font-family: 'Leoscar';
 }
 .wrap {
 	/*background-color: #E4E7E8;*/
@@ -119,9 +133,11 @@ html, body, .wrap
 	/*background-color: #6f6868;*/
 	height: 100%;
 	float: left;
+	font-family: 'Brookes';
 }
 .header-left p {			/* Be a polyglote - text*/
 	letter-spacing: 7px;
+	font-family: 'Leoscar';
 }
 
 .header-right {
@@ -138,8 +154,8 @@ html, body, .wrap
 	color: white;
 }
 .login-section {
-	font-family: Brookes;
-	font-size: 20px;
+	font-family: Leoscar;
+	font-size: 16px;
 	position: relative;
 	top: 10%;
 	width: 85%;
@@ -226,29 +242,16 @@ html, body, .wrap
 }
 
 
-/* START!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START
-START!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!
-START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!START!!!!!!!!!!!!!!!!!!!!
-CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
-CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
-CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
-CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
-CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
-CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!CONTINUE!!!!!!!!!!!!! BUT CAN STOP!!!!!!!!
-*/
-
 .text-content {
 	float: left;
 	margin-left: 5%;
 	width: 95%;		/* needed so that its child divs take all the space to the left */
-
 
 	
 /*---------------------------------------------*/
 	height: 90%;	
 	overflow: auto; 
 /*---------------------------------------------*/
-
 
 
 }

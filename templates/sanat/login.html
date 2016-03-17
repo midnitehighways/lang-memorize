@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load i18n %}
 {% if user and not user.is_anonymous %}
   <a>Hello, {{ user.get_full_name }}!</a>
   <br>

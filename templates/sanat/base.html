@@ -5,7 +5,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
 	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -16,7 +16,7 @@
 							<!--				 Header 			-->
 		<div class="header">																							
 			<div class="header-left">
-				<p>{% trans "Be  a" %}  <span class="red-text">{% trans "Polyglot" %}u"aööäa"</span> </p>
+				<p>{% trans "Be  a" %}  <span class="red-text">{% trans "Polyglot" %}</span></p>
 			</div>
 			<div class="header-right">
 				<div class="login-section">
@@ -56,6 +56,10 @@
 					{% if user.is_anonymous %}
 						<li ><a href="{% url 'login' %}" ><img class="resize" src="{% static "img/signup1.png" %}" />
 						<span class="words"> {% trans "Log in" %} </span></a></li>
+					
+					{% else %}
+						<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static "img/dict_ico.png" %}" />
+						<span class="words"> {% trans "Show common" %} </span></a></li>
 					{% endif %}
 
 					<li ><a href="{% url 'about' %}"><img class="resize" src="{% static "img/about1.png" %}" />
