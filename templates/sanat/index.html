@@ -5,8 +5,8 @@
 		<div class="content">
 			<div class="text-content">
 				<ul class="accordion css-accordion">
-					{% with words_exists as true %}{% for word in words_list %}
-						{{words_exists }}{% if word.user == user or user.is_anonymous %}
+					{% for word in words_list %}
+						{% if word.user == user or user.is_anonymous or is_common %}
 						
 						<div class="each-word">
 						    <div class="accordion-item-hd" id="word{{ forloop.counter }}">
@@ -18,7 +18,7 @@
 						    <div id="div{{ forloop.counter }}"class="accordion-item-bd">
 								{% with word.example_set.all as examples %}		<!-- this way we get access to examples of each particular word -->
 								{% for example in examples %}
-									<div> {{ forloop.counter }}. {{ example.fi }} - {{ example.en }} </div>
+									<div> {{ forloop.counter }}. {{ example.fi }} </div>
 									<br />
 								{% endfor %}
 								{% endwith %}
@@ -32,7 +32,7 @@
 							</div>		
 						</div>
 						{% endif %}
-					{% endfor %} {% endwith %}
+					{% endfor %}
 				</ul>
 				<div id="no-words"> {% trans "Currently there are no words in your own vocabulary." %} <p>{% trans "Please, don't hesitate to add them :)" %}</p> <img class="image" src="{% static "img/grumpy2.jpg" %}" /></div> 
 			</div>

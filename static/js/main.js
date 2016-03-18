@@ -150,3 +150,34 @@ function submitLangForm(lang)
   document.getElementById('selected-lang').value = lang;
   document.langForm.submit();
 }
+
+
+
+
+
+
+
+$('#scrollbox3').enscroll({
+    showOnHover: true,
+    verticalTrackClass: 'track3',
+    verticalHandleClass: 'handle3'
+});
+
+
+$('#scrollbox4').enscroll({
+    verticalTrackClass: 'track4',
+    verticalHandleClass: 'handle4',
+    minScrollbarLength: 28
+});
+
+
+
+
+
+
+
+
+
+
+
+

@@ -65,7 +65,7 @@
 						<span class="words"> {% trans "Log in" %} </span></a></li>
 					
 					{% else %}
-						<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static 'img/dict_ico.png' %}" />
+						<li ><a href="{% url 'common' %}"> <img class="resize" src="{% static 'img/dict_ico.png' %}" />
 						<span class="words"> {% trans "Show common" %} </span></a></li>
 					{% endif %}
 
@@ -82,7 +82,7 @@
 		{% block about %} {% endblock about %}	
 							<!--				 Footer 			-->
 		<div class="footer"> 
-			<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | alexandru.oat@gmail.com  </p>
+			<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | <a href="mailto:alexandru.oat@gmail.com?Subject=Hei%20Alex" target="_top">alexandru.oat@gmail.com </p>
 		</div>
 			<form name="langForm" action="{% url 'setlang' %}" method="post">{% csrf_token %} 		<!-- HIDDEN FORM -->
 				<input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
