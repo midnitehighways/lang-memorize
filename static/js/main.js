@@ -4,7 +4,7 @@ function flip() {
 
 $(document).ready(function() { 
 
-$("#hooray").show().delay(1000).fadeOut();
+$("#hooray").show().delay(2000).fadeOut();
 $(function () {                         // TESTING ONLY
         var element = $('.header');
         element.click(function () {

@@ -4,17 +4,17 @@
 {% load staticfiles %}
 {% load i18n %}
 <div class="content">
-	<div class="text-content">
+	<div class="form-area">
 			<form method="POST" class="form-style-7">{% csrf_token %}
 				<ul>
 					<li id='left'>
 					    <label for="name">{% trans "Original" %}</label>
-					    <input type="text" name="fi" id="fi" maxlength="50" autofocus />
+					    <input type="text" name="fi" id="fi" maxlength="50" autofocus required />
 					    <span>{% trans "Enter original word" %}</span>
 					</li>
 					<li id='right'>
 					    <label for="name">{% trans "Translation" %}</label>
-					    <input type="text" name="en" id="en" maxlength="50" />
+					    <input type="text" name="en" id="en" maxlength="50" required />
 					    <span>{% trans "Enter translation" %}</span>
 					</li>
 					<li id='middle'>
@@ -43,7 +43,8 @@
 			    <div id="hooray">
 			{% if messages %}
 				{% for message in messages %}
-					{{message}} <img class="image" src="{% static "img/thumbs-up3.png" %}" />
+					<img class="image" src="{% static "img/thumbs-up3.png" %}" />
+					{{message}} 
 				{% endfor %}
 			{% endif %}
 			</div>
