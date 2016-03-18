@@ -157,27 +157,5 @@ function submitLangForm(lang)
 
 
 
-$('#scrollbox3').enscroll({
-    showOnHover: true,
-    verticalTrackClass: 'track3',
-    verticalHandleClass: 'handle3'
-});
-
-
-$('#scrollbox4').enscroll({
-    verticalTrackClass: 'track4',
-    verticalHandleClass: 'handle4',
-    minScrollbarLength: 28
-});
-
-
-
-
-
-
-
-
-
-
 
 
