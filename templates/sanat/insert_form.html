@@ -6,7 +6,7 @@
 <div class="content">
 	<div class="text-content">
 			<form method="POST" class="form-style-7">{% csrf_token %}
-		       	<ul>
+				<ul>
 					<li id='left'>
 					    <label for="name">{% trans "Original" %}</label>
 					    <input type="text" name="fi" id="fi" maxlength="50" autofocus />
@@ -40,5 +40,12 @@
 		    </form>
 
 	</div>
+			    <div id="hooray">
+			{% if messages %}
+				{% for message in messages %}
+					{{message}} <img class="image" src="{% static "img/thumbs-up3.png" %}" />
+				{% endfor %}
+			{% endif %}
+			</div>
 </div>
 {% endblock insert_form %}

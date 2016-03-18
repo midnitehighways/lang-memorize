@@ -2,12 +2,11 @@
 {% load staticfiles %}
 {% block content %}
 {% load i18n %}
-		<div class="content gradient">
+		<div class="content">
 			<div class="text-content">
 				<ul class="accordion css-accordion">
 					{% for word in words_list %}
 						{% if word.user == user or user.is_anonymous or is_common %}
-						
 						<div class="each-word">
 						    <div class="accordion-item-hd" id="word{{ forloop.counter }}">
 								<div class="fi-text-content">{{ word.fi }}</div>						

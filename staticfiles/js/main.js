@@ -1,9 +1,22 @@
+function flip() {
+    $('.card').toggleClass('flipped');
+}
+
 $(document).ready(function() { 
 
+$("#hooray").show().delay(1000).fadeOut();
 $(function () {                         // TESTING ONLY
         var element = $('.header');
         element.click(function () {
             console.log($('.header-right'.siblings));
+            // $(".header-right").show().delay(1000).fadeOut();
+        }
+    )});
+$(function () {                         // TESTING ONLY
+        var element = $('.header');
+        element.click(function () {
+            console.log($('.header-right'.siblings));
+            // $(".header-right").show().delay(1000).fadeOut();
         }
     )});
 
@@ -150,3 +163,12 @@ function submitLangForm(lang)
   document.getElementById('selected-lang').value = lang;
   document.langForm.submit();
 }
+
+
+
+
+
+
+
+
+

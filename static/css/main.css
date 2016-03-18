@@ -1,4 +1,65 @@
+
+/*#hooray {
+	background-color: black;
+}*/
+
 @charset "utf-8";
+
+.container {
+    width: 200px;
+    height: 260px;
+    position: relative;
+    border: 1px solid #ccc;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+}
+.card {
+    width: 100%;
+    height: 100%;
+    /*position: absolute;*/
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+}
+.card div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 260px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 140px;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.card .front {
+  background: red;
+}
+.card .back {
+    background: blue;
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+.card.flipped {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
 
 /*TO DO
 ----- header MUST be responsive. It's size must be more than social icon's size on any devices
@@ -10,12 +71,17 @@
 
 ------ TEST - improve design
 			- test using common/own words
+			- FADE effects, or FLIP?
 
 -----SETTINGS: 	1. Don't add my words to common vocabulary
 				2. Test design - animation 1, animation 2, no animation
 				3. Fonts, letter size and backgrounds
 				4. Memorize my test statistics
 ------ user statistics - model User
+
+........ FORM - stay on the page after adding word!! предусмотреть в форме проверку данных
+
+--------- background - accordeon-bd
 
 Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with MongoHQ.
 Polyglot, Indeed uses Ideone API © by Sphere Research Labs
@@ -331,7 +397,9 @@ ul {
 	list-style: none outside;
 }
 
-.accordion > * + * { border-top: 1px solid lightgrey; }
+.accordion > * + * { 
+border-top: 1px solid #d2d2d2;
+	/*border-top: 1px solid #999999;*/ }
 
 .accordion-item-hd {
 	/*padding: 2% 3.5% 5% 0; */

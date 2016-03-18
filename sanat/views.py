@@ -8,6 +8,7 @@ import json
 from django.core import serializers
 from django.contrib.auth import logout as auth_logout 	###
 from django.contrib.auth.decorators import login_required  ###
+from django.contrib import messages
 
 # -*- coding: utf-8 -*-
 def index(request):
@@ -17,6 +18,7 @@ def index(request):
 		'is_common':False,									# does user want to display common or own vocabulary?
 		}
 	return render(request, "sanat/index.html", context,)
+
 @login_required
 def common(request):										# uses the same template as index.view, displays common vocabulary for logged-in user
 	context = {
@@ -37,12 +39,12 @@ def insert_form(request):
 			word.tyyppi = form.cleaned_data['tyyppi']
 			if request.user.is_authenticated():				# possibility to add words anonymously
 				word.user = request.user
-			# word.userid = request.user.social_auth.get().id
 			word.save()
-			return HttpResponseRedirect('/')
+			messages.add_message(request, messages.SUCCESS, 'Hooray! Your word is added.')		# sending the success message
+			return HttpResponseRedirect(reverse('insert_form'),)				# get back to the insert_form page
 		#else:
 	form = WordForm()
-	return render(request, "sanat/insert_form.html",{'form':form})
+	return render(request, "sanat/insert_form.html",{'form':form,})
 
 def add_example_form(request, id):
 	if request.method == 'POST':

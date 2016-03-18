@@ -7,3 +7,15 @@
 {% else %}
   <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>
 {% endif %}
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
+	<link href="{% static "css/main.css" %}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="{% static "js/main.js" %}"></script>
+<button onclick="flip()">flip the card</button>
+<section class="container">
+  <div class="card" onclick="flip()">
+    <div class="front">1</div>
+    <div class="back">2</div>
+  </div>
+</section>

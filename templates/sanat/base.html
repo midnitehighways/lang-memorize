@@ -48,7 +48,7 @@
 		</div>
 <!-- <div class="main"><div class="main-left">		 -->			
 						<!--				 Sidebar 			-->
-		<div class="sidebar gradient">
+		<div class="sidebar">
 			<div class="text-sidebar">
 				<ul>
 					<li ><a href="{% url 'index' %}" > <img class="resize" src="{% static 'img/dict_ico.png' %}" />
@@ -81,7 +81,7 @@
 		{% block test %} {% endblock test %}
 		{% block about %} {% endblock about %}	
 							<!--				 Footer 			-->
-		<div class="footer gradient"> 
+		<div class="footer"> 
 			<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | <a href="mailto:alexandru.oat@gmail.com?Subject=Hei%20Alex" target="_top">alexandru.oat@gmail.com </p>
 		</div>
 			<form name="langForm" action="{% url 'setlang' %}" method="post">{% csrf_token %} 		<!-- HIDDEN FORM -->
