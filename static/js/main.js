@@ -1,10 +1,15 @@
-function flip() {
-    $('.card').toggleClass('flipped');
+function flip(yes_or_no) {
+    console.log($('.card').attr('class'));
+    if($('.card').attr('class')==yes_or_no)
+        return;
+    else
+        $('.card').toggleClass('flipped');
 }
 
 $(document).ready(function() { 
 
 $("#hooray").show().delay(2000).fadeOut();
+// $("#hooray").fadeIn('slow').animate({opacity: 1.0}, 1500).effect("pulsate", { times: 2 }, 800).fadeOut('slow'); 
 $(function () {                         // TESTING ONLY
         var element = $('.header');
         element.click(function () {
@@ -100,14 +105,23 @@ $(function () {                         // TESTING ONLY
     {
         document.getElementById('asked_word').style.display = "none";
         if(answer == right_answer) {
-            document.getElementById('result').innerHTML = "joo";
-            document.getElementById('result').className = "joo";
+            // document.getElementById('result').innerHTML = "joo";
+            // document.getElementById('result').className = "joo";
+            flip('card');   // yes
         }
         else {
-            document.getElementById('result').innerHTML = "ei";
-            document.getElementById('result').className = "ei";
+            // document.getElementById('result').innerHTML = "ei";
+            // document.getElementById('result').className = "ei";
+            flip('card flipped');   // no
         }
-        $("#choices").hide(300);
+        // --- comic
+        // $("#choices").hide(300); 
+
+        // --- classic
+        $("#choices").css('visibility', 'hidden');
+        $("#choices").hide();
+       
+
         prepare_test(words);		// now prepare the new test
     }
 
@@ -150,11 +164,23 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
     //     numerot[i] = numerot[j];
     //     numerot[j] = temp;
     // }
+    
+    
+    // --- comic
+    // $("#asked_word").show(300);
+    // $("#choices").show(300);
+
+    // --- classic
+    $("#choices").css('visibility', 'visible');
+    $("#asked_word").fadeIn(600);
+    $("#choices").fadeIn(600);
+
     for (var i = 0; i < 4; i++) {
         ids[i].innerHTML = fin[numerot[i]];     // assigning corresponding words to inputs in "choices"-section
     }
-    $("#asked_word").show(300);
-    $("#choices").show(300);
+    // $("#asked_word").show(300);
+    // $("#choices").show(300);
+    
 }
 /* submit the hidden language form */
 function submitLangForm(lang)

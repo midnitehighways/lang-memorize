@@ -21,15 +21,17 @@
 
 @charset "utf-8";
 
-.container {
-    width: 200px;
-    height: 260px;
-    position: relative;
-    border: 1px solid #ccc;
-    -webkit-perspective: 800px;
+.result {
+    width: 70px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*border: 1px solid #ccc;*/
+    /*-webkit-perspective: 800px;
     -moz-perspective: 800px;
     -o-perspective: 800px;
-    perspective: 800px;
+    perspective: 800px;*/
 }
 .card {
     width: 100%;
@@ -49,22 +51,37 @@
     display: block;
     height: 100%;
     width: 100%;
-    line-height: 260px;
-    color: white;
+    line-height: 50px;
     text-align: center;
-    font-weight: bold;
-    font-size: 140px;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+	border-radius: 16px;
+	color: white;
+	font-size: 24px;
+	font-family: Comic Sans MS;
+	font-weight: bold;
     position: absolute;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
 }
-.card .front {
-  background: red;
+.card .yes {
+  background: #0c400f;
+	background: -webkit-gradient(linear, left top, left bottom, from(#33eb17), to(#0c400f));
+	background: -webkit-linear-gradient(top, #33eb17, #0c400f);
+	background: -moz-linear-gradient(top, #33eb17, #0c400f);
+	background: -ms-linear-gradient(top, #33eb17, #0c400f);
+	background: -o-linear-gradient(top, #33eb17, #0c400f);
 }
-.card .back {
-    background: blue;
+.card .no {
+    background: #b01106;
+    	background: -webkit-gradient(linear, left top, left bottom, from(#f20944), to(#b01106));
+	background: -webkit-linear-gradient(top, #f20944, #b01106);
+	background: -moz-linear-gradient(top, #f20944, #b01106);
+	background: -ms-linear-gradient(top, #f20944, #b01106);
+	background: -o-linear-gradient(top, #f20944, #b01106);
+
     -webkit-transform: rotateY( 180deg );
     -moz-transform: rotateY( 180deg );
     -o-transform: rotateY( 180deg );
@@ -90,7 +107,7 @@
 			- FADE effects, or FLIP?
 
 -----SETTINGS: 	1. Don't add my words to common vocabulary
-				2. Test design - animation 1, animation 2, no animation
+				2. Test design - animation 1, animation 2, no animation - classic anim., comic anim., no anim.
 				3. Fonts, letter size and backgrounds
 				4. Memorize my test statistics
 ------ user statistics - model User
@@ -565,7 +582,8 @@ border-top: 1px solid #d2d2d2;
 	color: white;
 	font-size: 24px;
 	font-family: Comic Sans MS;
-	font-weight:bold;
+	font-weight: bold;
+	width: 70px;
 }
   
 .ei{
@@ -582,9 +600,9 @@ border-top: 1px solid #d2d2d2;
 	color: white;
 	font-size: 24px;
 	font-family: Comic Sans MS;
-	font-weight:bold;
+	font-weight: bold;
 	text-decoration: none;
-	vertical-align: middle;
+	width: 70px;
 }
 
 /* input form */

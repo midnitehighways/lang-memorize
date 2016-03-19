@@ -31,6 +31,7 @@ def common(request):										# uses the same template as index.view, displays c
 def insert_form(request):
 	if request.method == 'POST':
 		# userid = request.user.social_auth.get().id
+		messages.add_message(request, messages.SUCCESS, 'Hooray! Your word is added.')		# sending the success message
 		form = WordForm(request.POST)
 		if form.is_valid():
 			word = form.save(commit=False)
@@ -40,7 +41,7 @@ def insert_form(request):
 			if request.user.is_authenticated():				# possibility to add words anonymously
 				word.user = request.user
 			word.save()
-			messages.add_message(request, messages.SUCCESS, 'Hooray! Your word is added.')		# sending the success message
+			#messages.add_message(request, messages.SUCCESS, 'Hooray! Your word is added.')		# sending the success message
 			return HttpResponseRedirect(reverse('insert_form'),)				# get back to the insert_form page
 		#else:
 	form = WordForm()
