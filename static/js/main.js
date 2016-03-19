@@ -1,29 +1,13 @@
-function flip(yes_or_no) {
-    $('.result').css('visibility', 'visible');  // show yes-no-button after first click in test. By default it's invisible
-    if($('.card').attr('class')==yes_or_no)
-        return;
-    else
-        $('.card').toggleClass('flipped');
-}
-
 $(document).ready(function() { 
+    $(function () {                         // FOR TESTING PURPOSES ONLY
+        var element = $('.header');
+        element.click(function () {
+            console.log($('.header-right'.siblings));
+            // $(".header-right").show().delay(1000).fadeOut();
+        }
+    )});
 
-$("#hooray").show().delay(2000).fadeOut();
-// $("#hooray").fadeIn('slow').animate({opacity: 1.0}, 1500).effect("pulsate", { times: 2 }, 800).fadeOut('slow'); 
-$(function () {                         // TESTING ONLY
-        var element = $('.header');
-        element.click(function () {
-            console.log($('.header-right'.siblings));
-            // $(".header-right").show().delay(1000).fadeOut();
-        }
-    )});
-$(function () {                         // TESTING ONLY
-        var element = $('.header');
-        element.click(function () {
-            console.log($('.header-right'.siblings));
-            // $(".header-right").show().delay(1000).fadeOut();
-        }
-    )});
+    $("#hooray").show().delay(2000).fadeOut();      // show hooray-message and hide it in 2 seconds
 
     /* Inform user if there're no words in his/her own vocabulary */
     $(function () {
@@ -50,7 +34,7 @@ $(function () {                         // TESTING ONLY
             }
             else { 
             	// if(e.children('.edit-word').text()=="Edit word")
-                    e.slideUp();
+                e.slideUp();
             }
         });
     });
@@ -97,8 +81,18 @@ $(function () {                         // TESTING ONLY
         });
     });
 
-    // functions for take-a-test section are below
+    /* rotate given div using .card class */
+    function flip(yes_or_no) {
+        $('.result').css('visibility', 'visible');  // show yes-no-button after first click in test. By default it's invisible
+        if($('.card').attr('class')==yes_or_no)
+            return;
+        else
+            $('.card').toggleClass('flipped');
+    }
 
+    
+
+    ///////////// functions for take-a-test section are below
 
 
     function handle_answer(answer)		// check whether answer is correct and react correspondingly
@@ -114,14 +108,16 @@ $(function () {                         // TESTING ONLY
             // document.getElementById('result').className = "ei";
             flip('card flipped');   // no
         }
-        // --- comic
-        // $("#choices").hide(300); 
-
-        // --- classic
-        $("#choices").css('visibility', 'hidden');
-        $("#choices").hide();
-       
-
+        if(testType == 'comic') {                           // --- comic
+            $("#choices").hide(300); 
+        }
+        else if(testType == 'classic') {                    // --- classic
+            $("#choices").css('visibility', 'hidden');
+            $("#choices").hide();
+       }
+       else {                                               // --- no animation
+            $("#choices").hide(0); 
+        }
         prepare_test(words);		// now prepare the new test
     }
 
@@ -138,10 +134,16 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
     var maara = words_list.length;              // number of words
     var fin = [];
     var eng = [];
+
     for(var i = 0; i < maara; i++) {
-        fin.push(words_list[i].fields.fi);
-        eng.push(words_list[i].fields.en);
+        if(userID==words_list[i].fields.user) {
+            // console.log(words_list[i].fields.fi);
+            fin.push(words_list[i].fields.fi);
+            eng.push(words_list[i].fields.en);
+        }
     }
+    // if(fin.length >= 4) !!!!!!!!!!!!!!!!!!!!!!!!
+    maara = fin.length;         // in case we take into account only OWN words we need to assign maara once again 
     var numerot = [];
     for (var i = 0; i < 4; i++) {                                       // create array numerot[] and populate it with 4 random numbers
         numerot[i] = Math.floor(Math.random( ) * (maara));              // generate these random numbers, each less than 'maara'
@@ -165,15 +167,19 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
     //     numerot[j] = temp;
     // }
     
-    
-    // --- comic
-    // $("#asked_word").show(300);
-    // $("#choices").show(300);
-
-    // --- classic
-    $("#choices").css('visibility', 'visible');
-    $("#asked_word").fadeIn(600);
-    $("#choices").fadeIn(600);
+    if(testType == 'comic') {               // --- comic
+        $("#asked_word").show(300);
+        $("#choices").show(300);
+    }
+    else if(testType == 'classic') {                                  // --- classic
+        $("#choices").css('visibility', 'visible');
+        $("#asked_word").fadeIn(600);
+        $("#choices").fadeIn(600);
+    }
+    else {                                  // --- no animation
+        $("#asked_word").show(0);
+        $("#choices").show(0);
+    }
 
     for (var i = 0; i < 4; i++) {
         ids[i].innerHTML = fin[numerot[i]];     // assigning corresponding words to inputs in "choices"-section
@@ -182,6 +188,8 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
     // $("#choices").show(300);
     
 }
+///////////////////////////// END OF TAKE-A-TEST SECTION 
+
 /* submit the hidden language form */
 function submitLangForm(lang)
 {

@@ -15,7 +15,7 @@ def index(request):
 	context = {
 		'words_list': models.Word.objects.order_by('-fi'),
 		'site_title':"Home | Puhun suomea",
-		'is_common':False,									# does user want to display common or own vocabulary?
+		'is_common':False,									# which particular vocabulary user wants to display - common or own?
 		}
 	return render(request, "sanat/index.html", context,)
 
