@@ -28,6 +28,11 @@ def common(request):										# uses the same template as index.view, displays c
 		}
 	return render(request, "sanat/index.html", context,)
 
+def settings(request):
+	test = request.POST.get('test','')
+	request.session['test'] = test
+	return HttpResponseRedirect(reverse('login'),)
+
 def insert_form(request):
 	if request.method == 'POST':
 		# userid = request.user.social_auth.get().id

@@ -1,5 +1,5 @@
 function flip(yes_or_no) {
-    console.log($('.card').attr('class'));
+    $('.result').css('visibility', 'visible');  // show yes-no-button after first click in test. By default it's invisible
     if($('.card').attr('class')==yes_or_no)
         return;
     else

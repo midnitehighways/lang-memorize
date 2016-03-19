@@ -12,10 +12,12 @@
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="{% static "js/main.js" %}"></script>
-<button onclick="flip()">flip the card</button>
-<section class="container">
-  <div class="card" onclick="flip('card flipped')">
-    <div class="yes">Joo</div>
-    <div class="no">Ei</div>
-  </div>
-</section>
+
+<form action="{% url 'settings' %}" method="post">{% csrf_token %}
+  <input type="radio" name="test" value="comic" /> Comic
+  <input type="radio" name="test" value="classic" /> Classic
+  <input type="radio" name="test" value="no" /> No animation
+  <button type=submit class='add-button'>{% trans "Add example" %}</button>
+</form>
+{{request.session.test}}
+

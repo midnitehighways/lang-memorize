@@ -1,3 +1,32 @@
+/*TO DO
+----- header MUST be responsive. It's size must be more than social icon's size on any devices
+----- github icon in footer
+----- user field in Word object in models DONE
+
+----- social auth DONE
+------ Main words menu - decorate somehow
+
+------ TEST - improve design
+			- test using common/own words
+			- FADE effects, or FLIP?		DONE
+
+-----SETTINGS: 	1. Don't add my words to common vocabulary
+				2. Test design - animation 1, animation 2, no animation - classic anim., comic anim., no anim.
+				3. Fonts, letter size and backgrounds
+				4. Memorize my test statistics
+------ user statistics - model User
+
+........ FORM - stay on the page after adding word!! предусмотреть в форме проверку данных
+
+--------- background - accordeon-bd
+
+Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with MongoHQ.
+Polyglot, Indeed uses Ideone API © by Sphere Research Labs
+© Chris Anderson 2011
+*/
+
+@charset "utf-8";
+
 
 #hooray {
 	/*background-color: black;*/
@@ -19,19 +48,13 @@
 	margin-left: 5%;
 }
 
-@charset "utf-8";
-
 .result {
     width: 70px;
     height: 50px;
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
-    /*border: 1px solid #ccc;*/
-    /*-webkit-perspective: 800px;
-    -moz-perspective: 800px;
-    -o-perspective: 800px;
-    perspective: 800px;*/
+    visibility: hidden;
 }
 .card {
     width: 100%;
@@ -93,33 +116,6 @@
     -o-transform: rotateY( 180deg );
     transform: rotateY( 180deg );
 }
-
-/*TO DO
------ header MUST be responsive. It's size must be more than social icon's size on any devices
------ github icon in footer
------ user field in Word object in models DONE
-
------ social auth DONE
------- Main words menu - decorate somehow
-
------- TEST - improve design
-			- test using common/own words
-			- FADE effects, or FLIP?
-
------SETTINGS: 	1. Don't add my words to common vocabulary
-				2. Test design - animation 1, animation 2, no animation - classic anim., comic anim., no anim.
-				3. Fonts, letter size and backgrounds
-				4. Memorize my test statistics
------- user statistics - model User
-
-........ FORM - stay on the page after adding word!! предусмотреть в форме проверку данных
-
---------- background - accordeon-bd
-
-Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with MongoHQ.
-Polyglot, Indeed uses Ideone API © by Sphere Research Labs
-© Chris Anderson 2011
-*/
 
 * {		/*make sure that the padding and border are included in the total width and height of the elements */
     box-sizing: border-box;
@@ -361,9 +357,9 @@ html, body, .wrap
     }
 }
 .footer {
-	font-size: 11px;
+	font-size: 12px;
 	/*text-align: center;*/
-	height: 6%;
+	height: 5%;
 	width: 65%;
 	margin-bottom: 1%;
 	text-align: center;
@@ -373,7 +369,7 @@ html, body, .wrap
 	margin-right: 9%;
 }
 .footer p {						/* text in footer section */
-	vertical-align: middle;
+	/*vertical-align: middle;*/
 }
 
 
@@ -393,7 +389,7 @@ html, body, .wrap
 .test-area {
 	float: left;
 	margin-left: 15%;
-	margin-top: 5%;
+	margin-top: 10%;
 }
 .fi-text-content {
 	float: left;
