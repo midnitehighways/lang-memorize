@@ -1,4 +1,5 @@
 {% extends 'sanat/base.html' %}
+{% load i18n %}
 {% block test %}
 
 <div class="content">
@@ -14,8 +15,8 @@
 
 	    <section class="result">
 	  		<div class="card" onclick="flip('card flipped')">
-	    		<div class="yes">joo</div>
-	    		<div class="no">ei</div>
+	    		<div class="yes">{% trans "yes" %}</div>
+	    		<div class="no">{% trans "no" %}</div>
 	  		</div>
 		</section>
 

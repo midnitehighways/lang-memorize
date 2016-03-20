@@ -1,0 +1,23 @@
+{% extends 'sanat/base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+{% block settings %}
+<div class="content">
+<form action="{% url 'settings' %}" method="post">{% csrf_token %}
+  Test animation type<br />
+  <input type="radio" name="test" value="comic" checked="checked" /> Comic
+  <input type="radio" name="test" value="classic" /> Classic
+  <input type="radio" name="test" value="no" /> No animation<br /><br />
+  Test using<br />
+  <input type="radio" name="test_scope" value="common" checked="checked" /> Common vocabulary
+  <input type="radio" name="test_scope" value="own" /> Own words only
+  <button type=submit class='add-button'>{% trans "Save settings" %}</button>
+</form>
+
+<br /><br /><br /><br />Current settings are:
+<br /><br />
+{{request.session.test}}
+{{request.session.test_scope}}
+
+</div>
+{% endblock settings %}

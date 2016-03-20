@@ -70,6 +70,9 @@
 						<li ><a href="{% url 'common' %}"> <img class="resize" src="{% static 'img/dict_ico.png' %}" />
 						<span class="words"> {% trans "Show common" %} </span></a></li>
 					{% endif %}
+					
+					<li ><a href="{% url 'settings' %}" ><img class="resize" src="{% static 'img/signup1.png' %}" />
+					<span class="words"> {% trans "Settings" %} </span></a></li>
 
 					<li ><a href="{% url 'about' %}"><img class="resize" src="{% static 'img/about1.png' %}" />
 					<span class="words"> {% trans "About" %} </span></a></li>
@@ -81,7 +84,9 @@
 		{% block content %}{% endblock content %}
 		{% block insert_form %} {% endblock insert_form %}
 		{% block test %} {% endblock test %}
+		{% block settings %} {% endblock settings %}	
 		{% block about %} {% endblock about %}	
+
 							<!--				 Footer 			-->
 		<div class="footer"> 
 			<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | <a href="mailto:alexandru.oat@gmail.com?Subject=Hei%20Alex" target="_top">alexandru.oat@gmail.com</a> | Powered by Django 1.8.6</p>

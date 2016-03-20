@@ -101,7 +101,7 @@ $(document).ready(function() {
         if(answer == right_answer) {
             // document.getElementById('result').innerHTML = "joo";
             // document.getElementById('result').className = "joo";
-            flip('card');   // yes
+            flip('card');           // yes
         }
         else {
             // document.getElementById('result').innerHTML = "ei";
@@ -136,35 +136,35 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
     var eng = [];
 
     for(var i = 0; i < maara; i++) {
-        if(userID==words_list[i].fields.user) {
+        // if(userID==words_list[i].fields.user) {
             // console.log(words_list[i].fields.fi);
             fin.push(words_list[i].fields.fi);
             eng.push(words_list[i].fields.en);
-        }
+        // }
     }
     // if(fin.length >= 4) !!!!!!!!!!!!!!!!!!!!!!!!
     maara = fin.length;         // in case we take into account only OWN words we need to assign maara once again 
-    var numerot = [];
-    for (var i = 0; i < 4; i++) {                                       // create array numerot[] and populate it with 4 random numbers
-        numerot[i] = Math.floor(Math.random( ) * (maara));              // generate these random numbers, each less than 'maara'
+    var numbers = [];
+    for (var i = 0; i < 4; i++) {                                       // create array numbers[] and populate it with 4 random numbers
+        numbers[i] = Math.floor(Math.random( ) * (maara));              // generate these random numbers, each less than 'maara'
         for (var j = i; j > 0; j--) {                                   // check for repetitive numbers in the array
-            if (numerot[i] == numerot[j-1]) {                           // if same number found --->
-                numerot[i] = Math.floor(Math.random( ) * (maara));      // ----> generate a new one
+            if (numbers[i] == numbers[j-1]) {                           // if same number found --->
+                numbers[i] = Math.floor(Math.random( ) * (maara));      // ----> generate a new one
                 i--;
                 break;
             }
         }
     }
     var rand = Math.floor(Math.random( ) * 4);                          // the generated number (0..3) defines which word --->
-    document.getElementById('asked_word').value = eng[numerot[rand]];   // ---> is going to be asked among the 4 chosen previously
-    right_answer = fin[numerot[rand]];                                  // text variable
+    document.getElementById('asked_word').value = eng[numbers[rand]];   // ---> is going to be asked among the 4 chosen previously
+    right_answer = fin[numbers[rand]];                                  // text variable
     ids =  [document.getElementById('choice_1'), document.getElementById('choice_2'), 
             document.getElementById('choice_3'), document.getElementById('choice_4')];
-    // for (var i = numerot.length - 1; i > 0; i--) {               // shuffling the numerot-array
+    // for (var i = numbers.length - 1; i > 0; i--) {               // shuffling the numbers-array
     //     var j = Math.floor(Math.random() * (i + 1));
-    //     var temp = numerot[i];
-    //     numerot[i] = numerot[j];
-    //     numerot[j] = temp;
+    //     var temp = numbers[i];
+    //     numbers[i] = numbers[j];
+    //     numbers[j] = temp;
     // }
     
     if(testType == 'comic') {               // --- comic
@@ -182,7 +182,7 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
     }
 
     for (var i = 0; i < 4; i++) {
-        ids[i].innerHTML = fin[numerot[i]];     // assigning corresponding words to inputs in "choices"-section
+        ids[i].innerHTML = fin[numbers[i]];     // assigning corresponding words to inputs in "choices"-section
     }
     // $("#asked_word").show(300);
     // $("#choices").show(300);

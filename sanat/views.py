@@ -28,10 +28,28 @@ def common(request):										# uses the same template as index.view, displays c
 		}
 	return render(request, "sanat/index.html", context,)
 
+# @login_required(login_url='/take_a_test')
+def take_a_test(request):
+	if 'test_scope' not in request.session:					# if there's no key in session - add value (use common by default)
+		request.session['test_scope'] = 'common'
+	if request.user.is_authenticated() and request.session['test_scope'] == 'own':
+		data = serializers.serialize("json", models.Word.objects.filter(user=request.user))		# pick only current user's words
+	else:
+		data = serializers.serialize("json", models.Word.objects.all())
+	context = {
+		'words_list': data,
+		'site_title':"Test | Puhun suomea"
+		}
+	return render(request, "sanat/take_a_test.html", context,)
+
 def settings(request):
-	test = request.POST.get('test','')
-	request.session['test'] = test
-	return HttpResponseRedirect(reverse('login'),)
+	if request.method == 'POST':
+		test = request.POST.get('test','')
+		test_scope = request.POST.get('test_scope','')
+		request.session['test'] = test
+		request.session['test_scope'] = test_scope
+		return HttpResponseRedirect(reverse('settings'),)
+	return render(request, "sanat/settings.html",)
 
 def insert_form(request):
 	if request.method == 'POST':
@@ -69,14 +87,6 @@ def add_example_form(request, id):
 def delete_word(request, id):
     word = get_object_or_404(models.Word, pk=id).delete()
     return HttpResponseRedirect(reverse('index'))
-# @login_required(login_url='/take_a_test')
-def take_a_test(request):
-	data = serializers.serialize("json", models.Word.objects.all())
-	context = {
-		'words_list': data,
-		'site_title':"Test | Puhun suomea"
-		}
-	return render(request, "sanat/take_a_test.html", context,)
 
 def about(request):
 	# collection = dir(request.user.social_auth)
