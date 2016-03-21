@@ -5,19 +5,30 @@
 <div class="content">
 <form action="{% url 'settings' %}" method="post">{% csrf_token %}
   Test animation type<br />
-  <input type="radio" name="test" value="comic" checked="checked" /> Comic
-  <input type="radio" name="test" value="classic" /> Classic
-  <input type="radio" name="test" value="no" /> No animation<br /><br />
+  <div class="radio-div"><input type="radio" name="test" class="radio" id="radio1" value="comic" checked="checked"/> 
+  <label for="radio1">Comic</label></div>
+  <div class="radio-div"><input type="radio" name="test" class="radio" id="radio2" value="classic"/> 
+  <label for="radio2">Classic</label></div>
+  <div class="radio-div"><input type="radio" name="test" class="radio" id="radio3" value="no" /> 
+  <label for="radio3">No animation</label></div><br /><br />
   Test using<br />
-  <input type="radio" name="test_scope" value="common" checked="checked" /> Common vocabulary
-  <input type="radio" name="test_scope" value="own" /> Own words only
+  <div class="radio-div"><input type="radio" name="test_scope" class="radio" id="vocab1" value="common" checked="checked" />
+  <label for="vocab1">Commmon vocabulary</label></div>
+  <div class="radio-div"><input type="radio" name="test_scope" class="radio" id="vocab2" value="own" /> 
+  <label for="vocab2">Own words only</label></div> <br/ ><br />
+  Show own words in common vocabulary<br />
+  <div class="radio-div"><input type="radio" name="show" class="radio" id="own1" value="True" checked="checked" />
+  <label for="own1">Show</label></div>
+  <div class="radio-div"><input type="radio" name="show" class="radio" id="own2" value="False" /> 
+  <label for="own2">Do not show</label></div>
   <button type=submit class='add-button'>{% trans "Save settings" %}</button>
 </form>
 
-<br /><br /><br /><br />Current settings are:
+Current settings are:
 <br /><br />
 {{request.session.test}}
 {{request.session.test_scope}}
+{{request.session.show}}
 
 </div>
 {% endblock settings %}

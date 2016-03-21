@@ -12,19 +12,24 @@ from django.contrib import messages
 
 # -*- coding: utf-8 -*-
 def index(request):
+	if request.user.is_authenticated():
+		words_list = models.Word.objects.order_by('-fi').filter(user=request.user)
+	else:
+		words_list = models.Word.objects.order_by('-fi').filter(show_in_common=True)
 	context = {
-		'words_list': models.Word.objects.order_by('-fi'),
-		'site_title':"Home | Puhun suomea",
-		'is_common':False,									# which particular vocabulary user wants to display - common or own?
+		'words_list': words_list,
+		'site_title': "Home | Puhun suomea",
+		'is_common': False,									# which particular vocabulary user wants to display - common or own?
 		}
 	return render(request, "sanat/index.html", context,)
 
 @login_required
 def common(request):										# uses the same template as index.view, displays common vocabulary for logged-in user
+	words_list = models.Word.objects.order_by('-fi').filter(show_in_common=True)#.exclude(user=request.user) 
 	context = {
-		'words_list': models.Word.objects.order_by('-fi'),
-		'site_title':"Common vocabulary | Puhun suomea",
-		'is_common':True,
+		'words_list': words_list,
+		'site_title': "Common vocabulary | Puhun suomea",
+		'is_common': True,
 		}
 	return render(request, "sanat/index.html", context,)
 
@@ -35,7 +40,7 @@ def take_a_test(request):
 	if request.user.is_authenticated() and request.session['test_scope'] == 'own':
 		data = serializers.serialize("json", models.Word.objects.filter(user=request.user))		# pick only current user's words
 	else:
-		data = serializers.serialize("json", models.Word.objects.all())
+		data = serializers.serialize("json", models.Word.objects.filter(show_in_common=True))
 	context = {
 		'words_list': data,
 		'site_title':"Test | Puhun suomea"
@@ -43,13 +48,23 @@ def take_a_test(request):
 	return render(request, "sanat/take_a_test.html", context,)
 
 def settings(request):
+	context = {
+		'site_title':"Settings | Puhun suomea",
+		}
 	if request.method == 'POST':
 		test = request.POST.get('test','')
 		test_scope = request.POST.get('test_scope','')
 		request.session['test'] = test
 		request.session['test_scope'] = test_scope
+		if request.POST.get('show','') == "False": # need this, cause otherwise bool values would be in quotes: "True"/"False" instead of True/False
+			show = False
+		else:
+			show = True
+		request.session['show'] = show
+		if request.user.is_authenticated():
+			models.Word.objects.filter(user=request.user).update(show_in_common=show)		# set current user's words field 'show_in_common'
 		return HttpResponseRedirect(reverse('settings'),)
-	return render(request, "sanat/settings.html",)
+	return render(request, "sanat/settings.html", context,)
 
 def insert_form(request):
 	if request.method == 'POST':
