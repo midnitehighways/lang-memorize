@@ -13,13 +13,14 @@ $(document).ready(function() {
         
     $(function () {                         
         var element = $('#b');
-        element.click(function showInfo() {
+        element.click(function () {
             $(".info").slideDown("slow").delay(2000).fadeOut(2000);
             // console.log($('.header-right'.siblings));
             // $(".header-right").show().delay(1000).fadeOut();
         }
     )});
-
+    // $('#proba').click(function showInfo() {
+    $(".info").slideDown("slow").delay(2000).fadeOut(2000);         // NOTIFICATION!!!!!!!!!!!!!!!!!!!!
 
 
     $(function () {                         // FOR TESTING PURPOSES ONLY

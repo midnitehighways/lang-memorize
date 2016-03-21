@@ -89,12 +89,12 @@
 		{% block about %} {% endblock about %}	
 <div class="info">
 <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. -->
-<img class="image" src="{% static "img/thumbs-up3.png" %}" />{% if messages %}
-				{% for message in messages %}
-					
-					<br />{{message}} 
-				{% endfor %}
-			{% endif %}
+	{% if messages %}
+		{% for message in messages %}
+			<img class="image" src="{% static "img/thumbs-up3.png" %}" />					
+			<br />{{message}} 
+		{% endfor %}
+	{% endif %}
 </div>
 							<!--				 Footer 			-->
 		<div class="footer"> 
