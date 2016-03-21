@@ -7,11 +7,11 @@
 ------ Main words menu - decorate somehow
 
 ------ TEST - improve design
-			- test using common/own words
+			- test using common/own words   DONE
 			- FADE effects, or FLIP?		DONE
 
------SETTINGS: 	1. Don't add my words to common vocabulary
-				2. Test design - animation 1, animation 2, no animation - classic anim., comic anim., no anim.
+-----SETTINGS: 	1. Don't add my words to common vocabulary 	DONE
+				2. Test design - animation 1, animation 2, no animation - classic anim., comic anim., no anim. DONE
 				3. Fonts, letter size and backgrounds
 				4. Memorize my test statistics
 ------ user statistics - model User
@@ -24,26 +24,71 @@
 
 Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with MongoHQ.
 Polyglot, Indeed uses Ideone API © by Sphere Research Labs
-© Chris Anderson 2011
+© Alexandru Oat 2016
 */
 
 @charset "utf-8";
 
 
+.settings-form {
+	height: 92%;
+	width: 92%;
+	margin: auto;
+	margin-top: 3%;
+	/*overflow: hidden;*/
+	/*position: absolute;*/
+	/*background-color: green;*/
+}
+.settings-form button {
+	/*display: inline-block;*/
+	float: left;
+	margin: 0;
+	margin-left: 50px;
+	margin-top: 20px;
+	/*display:inline-block;*/
+  
+  /*width: 200px;*/
+}
+#set1 {
+	/*background-color: grey;*/
+	float: left;
+	width: 45%;
+	margin-bottom: 3%;
+}
+#set2 {
+	/*background-color: grey;*/
+	float: right;
+	width: 50%;
+	margin-bottom: 3%;
+}
+
+#set3 {
+	/*background-color: red;*/
+	float: left;
+	width: 45%;
+}
+
+#set4 {
+	/*background-color: yellow;*/
+	float: right;
+	width: 50%;
+}
+
 .radio-div {
 	clear: both;
-	margin: 0 20px;
+	/*margin: 0 0px;*/
 }
 
 .radio-div label {
-  width: 300px;
+  width: 270px;
   border-radius: 3px;
   border: 1px solid #D1D3D4
 }
 
 /* hide input */
 input.radio:empty {
-	margin-left: -999px;
+	margin-left: -9999px;
+	/*display: none;*/
 }
 
 /* style label */
@@ -51,7 +96,7 @@ input.radio:empty ~ label {
 	position: relative;
 	float: left;
 	line-height: 2.0em;
-	text-indent: 3.25em;
+	text-indent: 3.0em;
 	margin-top: 1em;
 	cursor: pointer;
 	-webkit-user-select: none;
@@ -69,7 +114,7 @@ input.radio:empty ~ label:before {
 	content: '';
 	width: 2.5em;
 	background: #D1D3D4;
-	border-radius: 3px 0 0 3px;
+	/*border-radius: 3px 0 0 3px;*/
 }
 
 /* toggle hover */
@@ -94,12 +139,6 @@ input.radio:checked ~ label:before {
 input.radio:checked ~ label {
 	color: #777;
 }
-
-/* radio focus */
-input.radio:focus ~ label:before {
-	box-shadow: 0 0 0 3px #999;
-}
-
 
 
 

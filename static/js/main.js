@@ -7,6 +7,18 @@ $(document).ready(function() {
         }
     )});
 
+    $("[name=test]").val([testType]);               // set radio button values according to user settings
+    $("[name=test_scope]").val([testScope]);
+    $("[name=show]").val([showInCommon]);
+    
+    $("[name=back]").click(function() {
+        console.log(this.value+"aaaaaaaaaa");
+        $(".wrap").css("background-image", 'url(' + imageURLs[this.value] + ')');
+    });
+    var imageURLs = ['../static/img/metal4.jpg','../static/img/metallic.jpeg','../static/img/metal2.png','../static/img/metal3.jpg'];
+    
+
+
     $("#hooray").show().delay(2000).fadeOut();      // show hooray-message and hide it in 2 seconds
 
     /* Inform user if there're no words in his/her own vocabulary */
@@ -14,7 +26,7 @@ $(document).ready(function() {
         var element = $('.accordion');      // thus we make sure to load this function only on the certain page
         if (element.length) {               // if there's such element on the page, we're surely on index-page
             if (!$(".each-word").length){   // if there're no words in vocabulary
-                console.log("NO");
+                // console.log("NO");
                 $('#no-words').show();
             }
             else {console.log("YES");}

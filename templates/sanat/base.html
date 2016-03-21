@@ -10,7 +10,8 @@
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="{% static "js/main.js" %}"></script>
-	<script type="text/javascript"> var testType = "{{request.session.test}}"; var userID = "{{user.id}}";
+	<script type="text/javascript"> var testType = "{{request.session.test}}"; var userID = "{{user.id}}"; 
+	var testScope = "{{request.session.test_scope}}"; var showInCommon = "{{request.session.show}}"
 	console.log("{{user.id}}");</script>
 </head>
 <body>

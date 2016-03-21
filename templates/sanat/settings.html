@@ -3,32 +3,44 @@
 {% load i18n %}
 {% block settings %}
 <div class="content">
-<form action="{% url 'settings' %}" method="post">{% csrf_token %}
-  Test animation type<br />
-  <div class="radio-div"><input type="radio" name="test" class="radio" id="radio1" value="comic" checked="checked"/> 
-  <label for="radio1">Comic</label></div>
-  <div class="radio-div"><input type="radio" name="test" class="radio" id="radio2" value="classic"/> 
-  <label for="radio2">Classic</label></div>
-  <div class="radio-div"><input type="radio" name="test" class="radio" id="radio3" value="no" /> 
-  <label for="radio3">No animation</label></div><br /><br />
-  Test using<br />
-  <div class="radio-div"><input type="radio" name="test_scope" class="radio" id="vocab1" value="common" checked="checked" />
-  <label for="vocab1">Commmon vocabulary</label></div>
-  <div class="radio-div"><input type="radio" name="test_scope" class="radio" id="vocab2" value="own" /> 
-  <label for="vocab2">Own words only</label></div> <br/ ><br />
-  Show own words in common vocabulary<br />
-  <div class="radio-div"><input type="radio" name="show" class="radio" id="own1" value="True" checked="checked" />
-  <label for="own1">Show</label></div>
-  <div class="radio-div"><input type="radio" name="show" class="radio" id="own2" value="False" /> 
-  <label for="own2">Do not show</label></div>
-  <button type=submit class='add-button'>{% trans "Save settings" %}</button>
+<form action="{% url 'settings' %}" method="post" class="settings-form">{% csrf_token %}
+  	<div id="set1">
+		Test using<br />
+	 	<div class="radio-div"><input type="radio" name="test_scope" class="radio" id="vocab1" value="common" />
+	 	<label for="vocab1">Commmon vocabulary</label></div>
+	 	<div class="radio-div"><input type="radio" name="test_scope" class="radio" id="vocab2" value="own" /> 
+	 	<label for="vocab2">Own words only</label></div> <br/ ><br />
+  	</div>
+  	<div id="set2">
+	 	Show own words in common vocabulary<br />
+	 	<div class="radio-div"><input type="radio" name="show" class="radio" id="own1" value="True" />
+	 	<label for="own1">Show</label></div>
+	 	<div class="radio-div"><input type="radio" name="show" class="radio" id="own2" value="False" /> 
+	 	<label for="own2">Do not show</label></div><br/ ><br />
+  	</div>
+  	<div id="set3">
+  		Test animation type<br />
+		 <div class="radio-div"><input type="radio" name="test" class="radio" id="test1" value="comic" /> 
+		 <label for="test1">Comic</label></div>
+		 <div class="radio-div"><input type="radio" name="test" class="radio" id="test2" value="classic" /> 
+		 <label for="test2">Classic</label></div>
+		 <div class="radio-div"><input type="radio" name="test" class="radio" id="test3" value="no" /> 
+		 <label for="test3">No animation</label></div><br /><br />
+  	</div>
+  	<div id="set4">
+  	  	Background image (beta)<br />
+		 <div class="radio-div"><input type="radio" name="back" class="radio" id="img1" value="0" checked="checked" /> 
+		 <label for="img1">Light</label></div>
+		 <div class="radio-div"><input type="radio" name="back" class="radio" id="img2" value="1" /> 
+		 <label for="img2">Darker</label></div>
+		 <div class="radio-div"><input type="radio" name="back" class="radio" id="img3" value="2" /> 
+		 <label for="img3">Darkest</label></div>
+		 <div class="radio-div"><input type="radio" name="back" class="radio" id="img4" value="3" /> 
+		 <label for="img4">Grey</label></div><br /><br />
+  	</div>
+  	<button type=submit class='add-button'>
+		<img class="resize" src="{% static "img/signup1.png" %}" />&nbsp;{% trans "Save settings" %}
+  	</button>
 </form>
-
-Current settings are:
-<br /><br />
-{{request.session.test}}
-{{request.session.test_scope}}
-{{request.session.show}}
-
 </div>
 {% endblock settings %}
