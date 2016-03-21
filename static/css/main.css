@@ -30,24 +30,21 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 @charset "utf-8";
 
 
+.info { background: lightgrey; width: 250px; position: absolute; left: 1%; bottom: 0; display: none;}
+
+.image {margin-left:50px;opacity: 0.7; }
+
 .settings-form {
 	height: 92%;
 	width: 92%;
 	margin: auto;
 	margin-top: 3%;
-	/*overflow: hidden;*/
-	/*position: absolute;*/
-	/*background-color: green;*/
 }
 .settings-form button {
-	/*display: inline-block;*/
 	float: left;
 	margin: 0;
 	margin-left: 50px;
 	margin-top: 20px;
-	/*display:inline-block;*/
-  
-  /*width: 200px;*/
 }
 #set1 {
 	/*background-color: grey;*/
@@ -310,7 +307,7 @@ input.radio:checked ~ label {
 	color: black;
 }
 
-.text-sidebar a:hover .words {		/*change only those "a"s which are inside div of .text-sidebar class */
+.text-sidebar a:hover .words {		/* change only those "a"s which are inside div of .text-sidebar class */
 	color: green;
 	/*font-size: 32px;*/
 }
@@ -323,11 +320,12 @@ input.radio:checked ~ label {
 	box-shadow: 2px 2px 1px #555555;		/* shadow effect for main blocks; #888888 - lighter variant */
 }
 
-.sidebar, .content, .footer {	
-	-moz-border-radius: 10px; 
- 	-webkit-border-radius: 10px; 
+.sidebar, .content, .footer {				/* rounded corners */
+	-moz-border-radius: 5px; 
+ 	-webkit-border-radius: 5px; 
  	border-radius: 5px;
  	background-color: white;
+ 	border: 1px solid lightgrey;
  }
 
 html, body, .wrap
@@ -448,14 +446,17 @@ html, body, .wrap
 
 
 .sidebar {
-	float: left;
+	position: absolute;
+	left: 1%;
+	top: 11%;
+	/*float: left;*/
 	/*width: 20%;*/
 	/*height: 50%;*/
 	width: 250px;
 	height: 330px;
-	margin-left: 1%;
-	margin-top: 2%;
-	margin-bottom: 1%;
+	/*margin-left: 1%;*/
+	/*margin-top: 2%;*/
+	/*margin-bottom: 1%;*/
 }
 
 /*.main {
@@ -465,9 +466,9 @@ html, body, .wrap
 }*/
 .content {
 	width: 65%;
-	height: 76%;
-	margin-top: 2%;
-	margin-bottom: 2%;
+	height: 78%;
+	/*bottom: 13%;*/
+	top: 11%;
 	 ::-webkit-scrollbar {
         width: 0;
     }
@@ -477,12 +478,13 @@ html, body, .wrap
 	/*text-align: center;*/
 	height: 5%;
 	width: 65%;
-	margin-bottom: 1%;
+	/*margin-bottom: 1%;*/
 	text-align: center;
+	bottom: 2%;
 }
 .content, .footer {
-	float: right;
-	margin-right: 9%;
+	position: absolute;
+	left: 300px;
 }
 .footer p {						/* text in footer section */
 	/*vertical-align: middle;*/

@@ -1,4 +1,27 @@
 $(document).ready(function() { 
+
+    //     $(".info").css("bottom", -$(".info").height());
+    // setTimeout(function(){
+    //     $(".info").animate({bottom: 0}, 1000);
+    // }, 1);
+        
+        
+    // $(".info").css("bottom", -$(".info").height());
+    // setTimeout(function(){
+    // $(".info").animate({bottom: 0}, 1000);
+    // }, 1);
+        
+    $(function () {                         
+        var element = $('#b');
+        element.click(function showInfo() {
+            $(".info").slideDown("slow").delay(2000).fadeOut(2000);
+            // console.log($('.header-right'.siblings));
+            // $(".header-right").show().delay(1000).fadeOut();
+        }
+    )});
+
+
+
     $(function () {                         // FOR TESTING PURPOSES ONLY
         var element = $('.header');
         element.click(function () {

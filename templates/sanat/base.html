@@ -65,7 +65,7 @@
 
 					{% if user.is_anonymous %}
 						<li ><a href="{% url 'login' %}" ><img class="resize" src="{% static 'img/signup1.png' %}" />
-						<span class="words"> {% trans "Log in" %} </span></a></li>
+						<span class="words"> {% trans "Sign up" %} </span></a></li>
 					
 					{% else %}
 						<li ><a href="{% url 'common' %}"> <img class="resize" src="{% static 'img/dict_ico.png' %}" />
@@ -87,10 +87,18 @@
 		{% block test %} {% endblock test %}
 		{% block settings %} {% endblock settings %}	
 		{% block about %} {% endblock about %}	
-
+<div class="info">
+<!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. -->
+<img class="image" src="{% static "img/thumbs-up3.png" %}" />{% if messages %}
+				{% for message in messages %}
+					
+					<br />{{message}} 
+				{% endfor %}
+			{% endif %}
+</div>
 							<!--				 Footer 			-->
 		<div class="footer"> 
-			<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | <a href="mailto:alexandru.oat@gmail.com?Subject=Hei%20Alex" target="_top">alexandru.oat@gmail.com</a> | Powered by Django 1.8.6</p>
+			<p><button id="b">hey</button>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | <a href="mailto:alexandru.oat@gmail.com?Subject=Hei%20Alex" target="_top">alexandru.oat@gmail.com</a> | Powered by Django 1.8.6</p>
 		</div>
 			<form name="langForm" action="{% url 'setlang' %}" method="post">{% csrf_token %} 		<!-- HIDDEN FORM -->
 				<input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
