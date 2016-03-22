@@ -29,7 +29,7 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 
 @charset "utf-8";
 
-
+.about-text { margin: 20px 20px 20px; line-height: 1.5}
 .info { background: lightgrey; width: 250px; position: absolute; left: 1%; bottom: 0; display: none;}
 
 .image {margin-left:50px;opacity: 0.7; }

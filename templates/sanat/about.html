@@ -2,33 +2,11 @@
 {% block about %}
 		<div class="content">
 			<div class="text-content">
-				<ul class="accordion css-accordion">
-					{% for word in words_list %}
-						<div class="each-word">
-						    <div class="accordion-item-hd" id="word{{ forloop.counter }}">
-								<div class="fi-text-content">{{ word.fi }}</div>						
-								<div class="en-text-content">{{ word.en }}</div>
-								<div class="tools-text-content"></div>
-						    	<span class="arrowUp">&#9651;</span>
-						    </div>
-						    <div id="div{{ forloop.counter }}"class="accordion-item-bd">
-								{% with word.example_set.all as examples %}		<!-- this way we get access to examples of each particular word -->
-								{% for example in examples %}
-									<div> {{ forloop.counter }}. {{ example.fi }} - {{ example.en }} </div>
-									<br />
-								{% endfor %}
-								{% endwith %}
-								<a class='add-example' href="#">Add an example</a>&nbsp&nbsp&nbsp
-								<a class='edit-word' href="#">Edit word</a>&nbsp&nbsp&nbsp
-								<a href="{% url 'delete_word' word.id %}">Delete word</a>&nbsp&nbsp&nbsp
-								<form class='header-search-form' id='form{{ forloop.counter }}' action="{% url 'add_example_form' word.id %}" method='POST' autocomplete='off'>{% csrf_token %}
-									<input class='add-example-field' type='text' id='line{{ forloop.counter }}' name='fi' />
-									<button type=submit class='add-example-button'>Add example</button>
-								</form>
-							</div>		
-						</div>
-					{% endfor %} 
-				</ul>
+				<div class="about-text">Hi! My name is Alexandru, I'm the author of this app. It's aimed to help you in storing and memorizing new words and expressions. Surely, you're studying some language, aren't you? IMO, everyone today is learning something. And this site may happen to be an additional tool for you in such a process.<br /><br />
+				Although it's not finished yet, please feel free to use it. So far it's possible to log in using <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Google</a>, <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> Twitter</a> or <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">FB</a>. After logging in you'll have an opportunity to collect your own 'sanasto' and to test your knowledge once in a while. BTW, now you can add words and take test and anonymously, without logging in. 
+				<br /><br />
+				Hopefully, the full-workable version will be ready by mid-April. Please, check the code on <a href="https://github.com/midnitehighways/lang-memorize">Github</a>. If you have any questions or suggestions, please mail me at oat.alexandru@gmail.com<br /><br />
+				Be a polyglote! Learn one more language:) And have a nice studying day! </div>
 <!-- 				<table class="wordlist">
     <thead>
         <tr>

@@ -1,8 +1,8 @@
 {% load staticfiles %}
 {% load i18n %}
 <br /><br /><br /><br />
-THIS PAGE IS CURRENTLY UNDER CONSTRUCTION! <a href="{% url 'index' %}" > <img class="resize" src="{% static 'img/dict_ico.png' %}" />
-          <span class="words"> GET BACK to Home page </span></a>
+UNFORTUNATELY, THIS PAGE IS CURRENTLY UNDER CONSTRUCTION! <a href="{% url 'index' %}" > <img class="resize" src="{% static 'img/dict_ico.png' %}" />
+          <span class="words"> RETURN to Home page </span></a>
           <br /><br /><br /><br />
 {% if user and not user.is_anonymous %}
   <a>Hello, {{ user.get_full_name }}!</a>
@@ -24,6 +24,6 @@ THIS PAGE IS CURRENTLY UNDER CONSTRUCTION! <a href="{% url 'index' %}" > <img cl
   <button type=submit class='add-button'>{% trans "Add example" %}</button>
 </form>
 {{request.session.test}}
-THIS PAGE IS CURRENTLY UNDER CONSTRUCTION! <a href="{% url 'index' %}" > <img class="resize" src="{% static 'img/dict_ico.png' %}" />
-          <span class="words"> GET BACK to Home page </span></a>
+unfortunately, THIS PAGE IS CURRENTLY UNDER CONSTRUCTION! <a href="{% url 'index' %}" > <img class="resize" src="{% static 'img/dict_ico.png' %}" />
+          <span class="words"> click to RETURN to Home page </span></a>
 

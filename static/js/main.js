@@ -1,16 +1,5 @@
 $(document).ready(function() { 
 
-    //     $(".info").css("bottom", -$(".info").height());
-    // setTimeout(function(){
-    //     $(".info").animate({bottom: 0}, 1000);
-    // }, 1);
-        
-        
-    // $(".info").css("bottom", -$(".info").height());
-    // setTimeout(function(){
-    // $(".info").animate({bottom: 0}, 1000);
-    // }, 1);
-        
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -46,7 +35,6 @@ $.ajaxSetup({
         var wordid = $(this).attr("wordid")     // this way we send word.id from HTML to JS
         var example_text = $(this).children('.add-example-field').val()
         // console.log(wordid + " ---- " + example_text);
-
         $.ajax({
             url : wordid + "/add-example", // the endpoint
             type : "POST",
@@ -57,14 +45,14 @@ $.ajaxSetup({
                 $(this).children('.add-example-field').val(''); // remove the value from the input
                 console.log(json); // log the returned json to the console
                 console.log("success"); // another sanity check
+                
             },
             // handle a non-successful response
-            error : function(xhr,errmsg,err) {
-                // $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                //     " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+            error : function(xhr, errmsg, err) {
                 console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error 
             }
-        });})
+        });
+    })
 
 //         // addExample()
 //         console.log($(this).children('.add-example-field').val())

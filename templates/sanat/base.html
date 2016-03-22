@@ -99,7 +99,7 @@
 </div>
 							<!--				 Footer 			-->
 		<div class="footer"> 
-			<p><button id="b">hey</button>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | <a href="mailto:alexandru.oat@gmail.com?Subject=Hei%20Alex" target="_top">alexandru.oat@gmail.com</a> | Powered by Django 1.8.6</p>
+			<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | <a href="mailto:alexandru.oat@gmail.com?Subject=Hei%20Alex" target="_top">oat.alexandru@gmail.com</a> | Powered by Django 1.8.6</p>
 		</div>
 			<form name="langForm" action="{% url 'setlang' %}" method="post">{% csrf_token %} 		<!-- HIDDEN FORM -->
 				<input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
