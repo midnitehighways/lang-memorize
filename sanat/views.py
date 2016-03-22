@@ -12,6 +12,13 @@ from django.contrib import messages
 # from django.views.decorators.csrf import ensure_csrf_cookie
 # -*- coding: utf-8 -*-
 def index(request):
+	if 'test_scope' not in request.session:				# set default settings
+		request.session['test_scope'] = 'common'		# if there's no key in session - add value (use common by default)
+	if 'test' not in request.session:					
+		request.session['test'] = 'classic'
+	if 'show' not in request.session:					
+		request.session['show'] = 'True'
+
 	if request.user.is_authenticated():
 		words_list = models.Word.objects.order_by('-fi').filter(user=request.user)
 	else:
@@ -89,11 +96,15 @@ def insert_form(request):
 def add_example_form(request, id):
 	if request.method == 'POST':
 		word = get_object_or_404(models.Word, pk=id)
-		example = models.Example(word=word, fi=request.POST.get('example_text'))
+		example_text = request.POST.get('example_text')
+		example = models.Example(word=word, fi=example_text)
 		# example.fi = request.POST.get('example_text')
 		example.save()
+		number = models.Example.objects.filter(word=word).count()	# get the number of examples to a given word
 		response_data = {}
-		response_data['result'] = 'Example added successfully!'
+		# response_data['result'] = 'Example added successfully!'
+		response_data['number'] = number
+		response_data['example'] = example_text
 		return HttpResponse(
             json.dumps(response_data),
             content_type="application/json"

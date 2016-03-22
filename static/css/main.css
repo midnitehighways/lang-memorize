@@ -22,6 +22,8 @@
 
 --------- AJAX in main word menu. Pop up window at bottom - AJAX in insert_form
 
+--------- DEFAULT SETTINGS - checked radiobuttons in settings-section DONE
+
 Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with MongoHQ.
 Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 © Alexandru Oat 2016
@@ -235,7 +237,7 @@ input.radio:checked ~ label {
 }
 #no-words { 
 	display: none;
-	font-family: 'Sunshine';
+	font-family: 'Comfortaa-Regular';
 	font-size: 28px;
 	text-align: center;
 	margin-top: 5%;
@@ -453,7 +455,7 @@ html, body, .wrap
 	/*width: 20%;*/
 	/*height: 50%;*/
 	width: 250px;
-	height: 330px;
+	height: 320px;
 	/*margin-left: 1%;*/
 	/*margin-top: 2%;*/
 	/*margin-bottom: 1%;*/

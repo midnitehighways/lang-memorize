@@ -13,7 +13,7 @@
 	<script src="{% static "js/main.js" %}"></script>
 	<script type="text/javascript"> var testType = "{{request.session.test}}"; var userID = "{{user.id}}"; 
 	var testScope = "{{request.session.test_scope}}"; var showInCommon = "{{request.session.show}}"
-	// console.log("{{user.id}}");</script>
+	// console.log(testScope + " test - " + test + " show - " + show + " user - " "{{user.id}}");</script>
 </head>
 <body>
 	<div class="wrap">
@@ -65,8 +65,8 @@
 					<span class="words"> {% trans "Take a test" %} </span></a></li>
 
 					{% if user.is_anonymous %}
-						<li ><a href="{% url 'login' %}" ><img class="resize" src="{% static 'img/signup1.png' %}" />
-						<span class="words"> {% trans "Sign up" %} </span></a></li>
+						<!-- <li ><a href="{% url 'login' %}" ><img class="resize" src="{% static 'img/signup1.png' %}" />
+						<span class="words"> {% trans "Sign up" %} </span></a></li> -->
 					
 					{% else %}
 						<li ><a href="{% url 'common' %}"> <img class="resize" src="{% static 'img/dict_ico.png' %}" />

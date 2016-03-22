@@ -27,13 +27,15 @@ $.ajaxSetup({
     }
 });
 
-    $('.header-search-form').on('submit', function(event){
+$(function () {  
+    $('.header-search-form').on('submit', function(event) {
+        var element = $(this)
         event.preventDefault()
         // console.log("form submitted!")  // sanity check
         // console.log($(this).children('.add-example-field').val())
         // console.log($(this).attr("wordid"))        
-        var wordid = $(this).attr("wordid")     // this way we send word.id from HTML to JS
-        var example_text = $(this).children('.add-example-field').val()
+        var wordid = element.attr("wordid")     // this way we send word.id from HTML to JS
+        var example_text = element.children('.add-example-field').val()
         // console.log(wordid + " ---- " + example_text);
         $.ajax({
             url : wordid + "/add-example", // the endpoint
@@ -42,10 +44,13 @@ $.ajaxSetup({
             
             // handle a successful response
             success : function(json) {
-                $(this).children('.add-example-field').val(''); // remove the value from the input
+                element.children('.add-example-field').val('');                     // remove the value from the input
+                element.children('.add-example-field').fadeOut(400);
+                element.children('.add-example-button').fadeOut(400);
                 console.log(json); // log the returned json to the console
-                console.log("success"); // another sanity check
-                
+                // console.log(element.parent()); // another sanity check
+                element.siblings('.add-example').before("<div>" + json.number + ". " + json.example); // insert at the end of examples list
+
             },
             // handle a non-successful response
             error : function(xhr, errmsg, err) {
@@ -53,6 +58,7 @@ $.ajaxSetup({
             }
         });
     })
+});
 
 //         // addExample()
 //         console.log($(this).children('.add-example-field').val())
@@ -174,7 +180,7 @@ $.ajaxSetup({
         element.click(function () {
             //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
            //console.log($(this).children('.header-search-form').children());
-            console.log($(this).parent().children().children());
+            // console.log($(this).parent().children().children());
             var form = $(this).parent().children().children('.add-example-field');
             var button = form.siblings('.add-example-button');
             if (form.is(':hidden')) {form.show(); button.show(); form.focus();}
