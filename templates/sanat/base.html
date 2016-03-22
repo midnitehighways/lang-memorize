@@ -9,10 +9,11 @@
 	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
 	<script src="{% static "js/main.js" %}"></script>
 	<script type="text/javascript"> var testType = "{{request.session.test}}"; var userID = "{{user.id}}"; 
 	var testScope = "{{request.session.test_scope}}"; var showInCommon = "{{request.session.show}}"
-	console.log("{{user.id}}");</script>
+	// console.log("{{user.id}}");</script>
 </head>
 <body>
 	<div class="wrap">

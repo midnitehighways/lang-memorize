@@ -9,7 +9,7 @@ from django.core import serializers
 from django.contrib.auth import logout as auth_logout 	###
 from django.contrib.auth.decorators import login_required  ###
 from django.contrib import messages
-
+# from django.views.decorators.csrf import ensure_csrf_cookie
 # -*- coding: utf-8 -*-
 def index(request):
 	if request.user.is_authenticated():
@@ -85,17 +85,19 @@ def insert_form(request):
 	form = WordForm()
 	return render(request, "sanat/insert_form.html",{'form':form,})
 
+# @ensure_csrf_cookie
 def add_example_form(request, id):
 	if request.method == 'POST':
 		word = get_object_or_404(models.Word, pk=id)
-		form = ExampleForm(request.POST)
-		if form.is_valid():
-			example = form.save(commit=False)
-			example.word = word
-			example.fi = form.cleaned_data['fi']
-			#example.en = form.cleaned_data['en']
-			example.save()
-			return HttpResponseRedirect('/')
+		example = models.Example(word=word, fi=request.POST.get('example_text'))
+		# example.fi = request.POST.get('example_text')
+		example.save()
+		response_data = {}
+		response_data['result'] = 'Example added successfully!'
+		return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
 	form = ExampleForm()
 	return render(request, "sanat/index.html",{'form':form})
 

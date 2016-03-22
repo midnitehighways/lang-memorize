@@ -11,6 +11,111 @@ $(document).ready(function() {
     // $(".info").animate({bottom: 0}, 1000);
     // }, 1);
         
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+function csrfSafeMethod(method) {
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+    $('.header-search-form').on('submit', function(event){
+        event.preventDefault()
+        // console.log("form submitted!")  // sanity check
+        // console.log($(this).children('.add-example-field').val())
+        // console.log($(this).attr("wordid"))        
+        var wordid = $(this).attr("wordid")     // this way we send word.id from HTML to JS
+        var example_text = $(this).children('.add-example-field').val()
+        // console.log(wordid + " ---- " + example_text);
+
+        $.ajax({
+            url : wordid + "/add-example", // the endpoint
+            type : "POST",
+            data : {  example_text : example_text, csrfmiddlewaretoken: csrftoken }, // data sent with the post request
+            
+            // handle a successful response
+            success : function(json) {
+                $(this).children('.add-example-field').val(''); // remove the value from the input
+                console.log(json); // log the returned json to the console
+                console.log("success"); // another sanity check
+            },
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                // $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                //     " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error 
+            }
+        });})
+
+//         // addExample()
+//         console.log($(this).children('.add-example-field').val())
+//         console.log($(this).attr("wordid"))        // this way we send word.id from HTML to JS
+//         var wordid = $(this).attr("wordid")
+//         var example_text = $(this).children('.add-example-field').val()
+//         console.log(wordid + " ---- " + example_text);
+
+//         $.ajax({
+//             url : wordid + "/add-example", // the endpoint
+//             type : "POST",
+//             data : {  example_text : example_text, csrfmiddlewaretoken: csrftoken }, // data sent with the post request
+            
+//             // handle a successful response
+//             success : function(json) {
+//                 $(this).children('.add-example-field').val(''); // remove the value from the input
+//                 console.log(json); // log the returned json to the console
+//                 console.log("success"); // another sanity check
+//             },
+
+//             // handle a non-successful response
+//             error : function(xhr,errmsg,err) {
+//                 // $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+//                 //     " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+//                 console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+//             }
+//         });});    
+
+    
+
+    // $.ajax({
+    //     url : "create_post/", // the endpoint
+    //     type : "POST", // http method
+    //     data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+    //     // handle a successful response
+    //     success : function(json) {
+    //         $('#post-text').val(''); // remove the value from the input
+    //         console.log(json); // log the returned json to the console
+    //         console.log("success"); // another sanity check
+    //     },
+
+    //     // handle a non-successful response
+    //     error : function(xhr,errmsg,err) {
+    //         $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+    //             " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+    //         console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+    //     }
+    // });
+    // };
+
     $(function () {                         
         var element = $('#b');
         element.click(function () {
@@ -53,7 +158,7 @@ $(document).ready(function() {
                 // console.log("NO");
                 $('#no-words').show();
             }
-            else {console.log("YES");}
+            // else {console.log("YES");}
         }
     });
 
@@ -63,7 +168,7 @@ $(document).ready(function() {
         element.click(function () {
             var e = $(this).siblings(('.accordion-item-bd'));
             var e2 = $(this).children(('.arrowUp'));
-            console.log(e.children('.edit-word').text());
+            // console.log(e.children('.edit-word').text());
             e2.toggleClass("arrowDown");
             if(e.is(':hidden')) {
                 e.slideDown();

@@ -24,7 +24,7 @@
 								<a class='add-example' href="#">{% trans "Add an example" %}</a>&nbsp&nbsp&nbsp
 								<a class='edit-word' href="#">{% trans "Edit word" %}</a>&nbsp&nbsp&nbsp
 								<a href="{% url 'delete_word' word.id %}">{% trans "Delete word" %}</a>&nbsp&nbsp&nbsp
-								<form class='header-search-form' id='form{{ forloop.counter }}' action="{% url 'add_example_form' word.id %}" method='POST' autocomplete='off'>{% csrf_token %}
+								<form class='header-search-form' id='form{{ forloop.counter }}' wordid={{word.id}} action="{% url 'add_example_form' word.id %}" method='POST' autocomplete='off'>{% csrf_token %}
 									<input class='add-example-field' type='text' id='line{{ forloop.counter }}' name='fi' />
 									<button type=submit class='add-example-button'>{% trans "Add example" %}</button>
 								</form>
