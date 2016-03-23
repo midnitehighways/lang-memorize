@@ -161,12 +161,23 @@ input.radio:checked ~ label {
 	margin-left: 5%;
 }
 
+/* --------------------------Take a test-------------BEGINNING---- */
+#asked-word, .result, .card div, #choices {
+	position: absolute;
+}
+#asked-word {
+	top: 45%;
+	left: 5%;
+}
+#choices {
+	top: 10%;
+	left: 60%;
+}
 .result {
     width: 70px;
     height: 50px;
-    position: absolute;
-    top: 65%;
-    left: 50%;
+    top: 75%;
+    left: 40%;
     visibility: hidden;
 }
 .card {
@@ -174,7 +185,6 @@ input.radio:checked ~ label {
     height: 100%;
     font-family: 'Comfortaa-Regular';
 	font-size: 20px;
-    /*position: absolute;*/
     -webkit-transition: -webkit-transform 1s;
     -moz-transition: -moz-transform 1s;
     -o-transition: -o-transform 1s;
@@ -198,7 +208,6 @@ input.radio:checked ~ label {
 	font-size: 24px;
 	/*font-family: Comic Sans MS;*/
 	font-weight: bold;
-    position: absolute;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -o-backface-visibility: hidden;
@@ -231,6 +240,7 @@ input.radio:checked ~ label {
     -o-transform: rotateY( 180deg );
     transform: rotateY( 180deg );
 }
+/*---------------Take a test -------------- END -------*/
 
 * {		/*make sure that the padding and border are included in the total width and height of the elements */
     box-sizing: border-box;
@@ -508,8 +518,12 @@ html, body, .wrap
 }
 .test-area {
 	float: left;
-	margin-left: 15%;
-	margin-top: 10%;
+	margin: 10% 10%;
+	height: 70%;
+	width: 80%;
+	position: relative;
+
+	background-color: grey;
 }
 .fi-text-content {
 	float: left;
@@ -792,7 +806,8 @@ border-top: 1px solid #d2d2d2;
   padding: 5px 10px 5px 10px;
   text-decoration: none;
   text-align: left;
-  margin-left: 20%;
+  outline: none;
+  /*margin-left: 20%;*/
   border: 0;			/* remove 3d effect */
 }
 .add-button:hover {

@@ -232,7 +232,7 @@ $(function () {
 
     function handle_answer(answer)		// check whether answer is correct and react correspondingly
     {
-        document.getElementById('asked_word').style.display = "none";
+        document.getElementById('asked-word').style.display = "none";
         if(answer == right_answer) {
             // document.getElementById('result').innerHTML = "joo";
             // document.getElementById('result').className = "joo";
@@ -291,7 +291,7 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
         }
     }
     var rand = Math.floor(Math.random( ) * 4);                          // the generated number (0..3) defines which word --->
-    document.getElementById('asked_word').value = eng[numbers[rand]];   // ---> is going to be asked among the 4 chosen previously
+    document.getElementById('asked-word').value = eng[numbers[rand]];   // ---> is going to be asked among the 4 chosen previously
     right_answer = fin[numbers[rand]];                                  // text variable
     ids =  [document.getElementById('choice_1'), document.getElementById('choice_2'), 
             document.getElementById('choice_3'), document.getElementById('choice_4')];
@@ -303,23 +303,23 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
     // }
     
     if(testType == 'comic') {               // --- comic
-        $("#asked_word").show(300);
+        $("#asked-word").show(300);
         $("#choices").show(300);
     }
     else if(testType == 'classic') {                                  // --- classic
         $("#choices").css('visibility', 'visible');
-        $("#asked_word").fadeIn(600);
+        $("#asked-word").fadeIn(600);
         $("#choices").fadeIn(600);
     }
     else {                                  // --- no animation
-        $("#asked_word").show(0);
+        $("#asked-word").show(0);
         $("#choices").show(0);
     }
 
     for (var i = 0; i < 4; i++) {
         ids[i].innerHTML = fin[numbers[i]];     // assigning corresponding words to inputs in "choices"-section
     }
-    // $("#asked_word").show(300);
+    // $("#asked-word").show(300);
     // $("#choices").show(300);
     
 }
