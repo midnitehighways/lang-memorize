@@ -30,7 +30,7 @@
 						<span>{% trans "Choose suitable word type" %}</span>
 					</li>
 				</ul>
-		    	<button type="submit" class="add-button">
+		    	<button type="submit" class="add-button" id="add-button">
 					{% if user.is_anonymous %}
 			    		<img class="resize" src="{% static "img/anonymous.png" %}" />&nbsp;{% trans "Add to common anonymous" %}
 			    	{%else%}

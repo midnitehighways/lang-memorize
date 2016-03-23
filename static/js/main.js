@@ -262,7 +262,7 @@ $(function () {
         }
     )})
 });             // end of $(document).ready
-
+console.log($('#add-button').siblings());
 //the function prepare_test MUST be outside of $(document).ready, since it has to be ready before the page opens for user
 function prepare_test(words_list)   // initial function. Determining the 4 words and the asked word using random generation
 {

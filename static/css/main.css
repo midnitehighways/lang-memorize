@@ -158,7 +158,8 @@ input.radio:checked ~ label {
 }
 
 .form-area {
-	margin-left: 5%;
+	/*margin-left: 5%;*/
+	position: relative;
 }
 
 /* --------------------------Take a test-------------BEGINNING---- */
@@ -737,10 +738,11 @@ border-top: 1px solid #d2d2d2;
 
 .form-style-7 {
     width: 80%;
+    margin: auto;
+    margin-top: 5%;
     /*margin:50px auto;*/
-    /*background: #ffa;*/
     border-radius:2px;
-    padding: 40px 55px;
+    /*padding: 40px 55px;*/
     /*padding-left: 50px;*/
     font-family: Comfortaa-Light;
 }
@@ -807,8 +809,11 @@ border-top: 1px solid #d2d2d2;
   text-decoration: none;
   text-align: left;
   outline: none;
-  /*margin-left: 20%;*/
   border: 0;			/* remove 3d effect */
+}
+#add-button {			/* special id for add-button on insert_form page */
+	display: block;
+	margin: 0 auto;
 }
 .add-button:hover {
   background: #088A08;
