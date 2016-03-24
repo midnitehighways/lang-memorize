@@ -524,8 +524,6 @@ html, body, .wrap
 	height: 85%;
 	width: 90%;
 	position: relative;
-
-	background-color: grey;
 }
 .fi-text-content {
 	float: left;
