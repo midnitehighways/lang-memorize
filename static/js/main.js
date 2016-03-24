@@ -47,10 +47,9 @@ $(function () {
                 element.children('.add-example-field').val('');                     // remove the value from the input
                 element.children('.add-example-field').fadeOut(400);
                 element.children('.add-example-button').fadeOut(400);
-                console.log(json); // log the returned json to the console
+                //console.log(json); // log the returned json to the console
                 // console.log(element.parent()); // another sanity check
-                element.siblings('.add-example').before("<div>" + json.number + ". " + json.example); // insert at the end of examples list
-
+                element.siblings('.add-example').before(json.number + ". " + json.example + "<br /><br />"); // insert at the end of examples list
             },
             // handle a non-successful response
             error : function(xhr, errmsg, err) {

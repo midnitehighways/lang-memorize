@@ -15,6 +15,7 @@
 						    	<span class="arrowUp">&#9651;</span>
 						    </div>
 						    <div id="div{{ forloop.counter }}"class="accordion-item-bd">
+						    	<br />{{word.tyyppi_verbose}}<br />
 								{% with word.example_set.all as examples %}		<!-- this way we get access to examples of each particular word -->
 								{% for example in examples %}
 									<div> {{ forloop.counter }}. {{ example.fi }} </div>
