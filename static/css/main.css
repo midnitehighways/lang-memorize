@@ -16,11 +16,12 @@
 				4. Memorize my test statistics
 ------ user statistics - model User
 
-........ FORM - stay on the page after adding word!! предусмотреть в форме проверку данных
+........ FORM - stay on the page after adding word!! DONE
+предусмотреть в форме проверку данных
 
 --------- background - accordeon-bd
 
---------- AJAX in main word menu. Pop up window at bottom - AJAX in insert_form
+--------- AJAX in main word menu. Pop up window at bottom - AJAX in insert_form	DONE
 
 --------- DEFAULT SETTINGS - checked radiobuttons in settings-section DONE
 
@@ -167,17 +168,17 @@ input.radio:checked ~ label {
 	position: absolute;
 }
 #asked-word {
-	top: 45%;
+	top: 30%;
 	left: 5%;
 }
 #choices {
-	top: 10%;
+	top: 4%;
 	left: 60%;
 }
 .result {
     width: 70px;
     height: 50px;
-    top: 75%;
+    top: 70%;
     left: 40%;
     visibility: hidden;
 }
@@ -519,9 +520,9 @@ html, body, .wrap
 }
 .test-area {
 	float: left;
-	margin: 10% 10%;
-	height: 70%;
-	width: 80%;
+	margin: 5% 5%;
+	height: 85%;
+	width: 90%;
 	position: relative;
 
 	background-color: grey;

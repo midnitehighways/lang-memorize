@@ -60,17 +60,24 @@ def settings(request):
 		}
 	if request.method == 'POST':
 		test = request.POST.get('test','')
-		test_scope = request.POST.get('test_scope','')
 		request.session['test'] = test
-		request.session['test_scope'] = test_scope
-		if request.POST.get('show','') == "False": # need this, cause otherwise bool values would be in quotes: "True"/"False" instead of True/False
-			show = False
-		else:
-			show = True
-		request.session['show'] = show
 		if request.user.is_authenticated():
+			if request.POST.get('show','') == "False": # need this, cause otherwise bool values would be in quotes: "True"/"False" instead of True/False
+				show = False
+			else:
+				show = True
+			request.session['show'] = show
 			models.Word.objects.filter(user=request.user).update(show_in_common=show)		# set current user's words field 'show_in_common'
-		messages.add_message(request, messages.SUCCESS, ' Settings successfully saved!')		# sending the success message
+
+			test_scope = request.POST.get('test_scope','')
+			if models.Word.objects.filter(user=request.user).count() < 4 and test_scope == "own": # if user tries to save to "own" and has less than 4 words in own vocabulary
+				messages.add_message(request, messages.SUCCESS, 'Not enough words in own vocabulary to take a test. Other settings saved.')		# sending the warning message
+			else:
+				messages.add_message(request, messages.SUCCESS, ' Settings successfully saved!')		# sending the success message
+				request.session['test_scope'] = test_scope
+		else:
+			messages.add_message(request, messages.SUCCESS, 'You must be logged in to work with own vocabulary. Other settings saved.')		# sending the warning message
+		#messages.add_message(request, messages.SUCCESS, ' Settings successfully saved!')		# sending the success message
 		return HttpResponseRedirect(reverse('settings'),)
 	return render(request, "sanat/settings.html", context,)
 
