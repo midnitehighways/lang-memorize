@@ -1,5 +1,5 @@
 /*TO DO
------ header MUST be responsive. It's size must be more than social icon's size on any devices
+----- header MUST be responsive. It's size must be more than social icon's size on any devices DONE
 ----- github icon in footer
 ----- user field in Word object in models DONE
 
@@ -512,7 +512,7 @@ html, body, .wrap
 
 	
 /*---------------------------------------------*/
-	height: 90%;	
+	height: 98%;	
 	overflow: auto; 
 /*---------------------------------------------*/
 
@@ -595,6 +595,11 @@ border-top: 1px solid #d2d2d2;
 .add-example-field {
     width: 0px;
 }
+.word-type {
+	font-style: italic;
+	font-size: 14px;
+}
+
 
 /*hr {
 	opacity: 0.2;
@@ -802,24 +807,35 @@ border-top: 1px solid #d2d2d2;
   font-family: Comfortaa-Light;
   font-weight: 600;
   color: #000;
-  font-size: 18px;
+  font-size: 17px;
   background: #c4c9cc;
   padding: 5px 10px 5px 10px;
   text-decoration: none;
   text-align: left;
   outline: none;
   border: 0;			/* remove 3d effect */
+  transition: all .5s ease-in-out; 
 }
 #add-button {			/* special id for add-button on insert_form page */
 	display: block;
 	margin: 0 auto;
 }
-.add-button:hover {
-  background: #088A08;
+.add-button:hover, .tools-button:hover {
+  /*background: #088A08;*/
+  background-color: grey;
+  /*color: white;*/
   text-decoration: none;
+  transition: all .7s ease-in-out; 
 
-}.add-button:active {
-  transform: rotateY(180deg);
-
-transition: all 1s ease-in-out;   
+}
+.tools-button {
+	-webkit-border-radius: 7;
+	-moz-border-radius: 7;
+	border-radius: 7px;
+	border: 1px solid grey;  
+	outline: none;
+	background-color: white;
+	font-size: 16px;
+	font-family: Comfortaa-Light;
+	transition: all 0.6s ease-in-out;   
 }

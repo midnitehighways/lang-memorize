@@ -7,7 +7,7 @@
 				<ul class="accordion css-accordion">
 					{% for word in words_list %}
 						{% if word.user == user or user.is_anonymous or is_common %}
-						<div class="each-word">
+						<li class="each-word">
 						    <div class="accordion-item-hd" id="word{{ forloop.counter }}">
 								<div class="fi-text-content">{{ word.fi }}</div>						
 								<div class="en-text-content">{{ word.en }}</div>
@@ -15,7 +15,7 @@
 						    	<span class="arrowUp">&#9651;</span>
 						    </div>
 						    <div id="div{{ forloop.counter }}"class="accordion-item-bd">
-						    	<br />{{word.tyyppi_verbose}}<br />
+						    	<br /><div class="word-type">{% trans "Type" %}: {{word.tyyppi_verbose}}</div><br />
 								{% with word.example_set.all as examples %}		<!-- this way we get access to examples of each particular word -->
 								{% for example in examples %}
 									<div> {{ forloop.counter }}. {{ example.fi }} </div>
@@ -23,14 +23,14 @@
 								{% endfor %}
 								{% endwith %}
 								<a class='add-example' href="#">{% trans "Add an example" %}</a>&nbsp&nbsp&nbsp
-								<a class='edit-word' href="#">{% trans "Edit word" %}</a>&nbsp&nbsp&nbsp
+								<a class='edit-word tool-button' href="#">{% trans "Edit word" %}</a>&nbsp&nbsp&nbsp
 								<a href="{% url 'delete_word' word.id %}">{% trans "Delete word" %}</a>&nbsp&nbsp&nbsp
 								<form class='header-search-form' id='form{{ forloop.counter }}' wordid={{word.id}} action="{% url 'add_example_form' word.id %}" method='POST' autocomplete='off'>{% csrf_token %}
 									<input class='add-example-field' type='text' id='line{{ forloop.counter }}' name='fi' />
 									<button type=submit class='add-example-button'>{% trans "Add example" %}</button>
 								</form>
 							</div>		
-						</div>
+						</li>
 						{% endif %}
 					{% endfor %}
 				</ul>

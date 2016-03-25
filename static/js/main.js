@@ -41,12 +41,11 @@ $(function () {
             url : wordid + "/add-example", // the endpoint
             type : "POST",
             data : {  example_text : example_text, csrfmiddlewaretoken: csrftoken }, // data sent with the post request
-            
             // handle a successful response
             success : function(json) {
                 element.children('.add-example-field').val('');                     // remove the value from the input
-                element.children('.add-example-field').fadeOut(400);
-                element.children('.add-example-button').fadeOut(400);
+                element.children('.add-example-field').fadeOut(500);
+                element.children('.add-example-button').fadeOut(500);
                 //console.log(json); // log the returned json to the console
                 // console.log(element.parent()); // another sanity check
                 element.siblings('.add-example').before(json.number + ". " + json.example + "<br /><br />"); // insert at the end of examples list
@@ -59,65 +58,15 @@ $(function () {
     })
 });
 
-//         // addExample()
-//         console.log($(this).children('.add-example-field').val())
-//         console.log($(this).attr("wordid"))        // this way we send word.id from HTML to JS
-//         var wordid = $(this).attr("wordid")
-//         var example_text = $(this).children('.add-example-field').val()
-//         console.log(wordid + " ---- " + example_text);
-
-//         $.ajax({
-//             url : wordid + "/add-example", // the endpoint
-//             type : "POST",
-//             data : {  example_text : example_text, csrfmiddlewaretoken: csrftoken }, // data sent with the post request
-            
-//             // handle a successful response
-//             success : function(json) {
-//                 $(this).children('.add-example-field').val(''); // remove the value from the input
-//                 console.log(json); // log the returned json to the console
-//                 console.log("success"); // another sanity check
-//             },
-
-//             // handle a non-successful response
-//             error : function(xhr,errmsg,err) {
-//                 // $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-//                 //     " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-//                 console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-//             }
-//         });});    
-
-    
-
-    // $.ajax({
-    //     url : "create_post/", // the endpoint
-    //     type : "POST", // http method
-    //     data : { the_post : $('#post-text').val() }, // data sent with the post request
-
-    //     // handle a successful response
-    //     success : function(json) {
-    //         $('#post-text').val(''); // remove the value from the input
-    //         console.log(json); // log the returned json to the console
-    //         console.log("success"); // another sanity check
-    //     },
-
-    //     // handle a non-successful response
-    //     error : function(xhr,errmsg,err) {
-    //         $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-    //             " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-    //         console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+    // $(function () {                         
+    //     var element = $('#b');
+    //     element.click(function () {
+    //         $(".info").slideDown("slow").delay(2000).fadeOut(2000);
+    //         // console.log($('.header-right'.siblings));
+    //         // $(".header-right").show().delay(1000).fadeOut();
     //     }
-    // });
-    // };
+    // )});
 
-    $(function () {                         
-        var element = $('#b');
-        element.click(function () {
-            $(".info").slideDown("slow").delay(2000).fadeOut(2000);
-            // console.log($('.header-right'.siblings));
-            // $(".header-right").show().delay(1000).fadeOut();
-        }
-    )});
-    // $('#proba').click(function showInfo() {
     $(".info").slideDown("slow").delay(2000).fadeOut(2000);         // NOTIFICATION!!!!!!!!!!!!!!!!!!!!
 
 
@@ -167,8 +116,8 @@ $(function () {
                 e.slideDown();
             }
             else { 
-            	// if(e.children('.edit-word').text()=="Edit word")
-                e.slideUp();
+            	if(e.children('.edit-word').text()=="Edit word")   // don't close word details unless word is saved (not in edit mode)
+                    e.slideUp();
             }
         });
     });
