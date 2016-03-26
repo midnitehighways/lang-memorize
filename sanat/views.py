@@ -11,6 +11,10 @@ from django.contrib.auth.decorators import login_required  ###
 from django.contrib import messages
 # from django.views.decorators.csrf import ensure_csrf_cookie
 # -*- coding: utf-8 -*-
+# def number_of_words(request):
+# 	if request.user.is_authenticated():
+# 		words_list = models.Word.objects.order_by('-fi').filter(user=request.user)
+# 		request.session['words_number'] = words_list.count()	 
 def index(request):
 	if 'test_scope' not in request.session:				# set default settings
 		request.session['test_scope'] = 'common'		# if there's no key in session - add value (use common by default)
@@ -21,6 +25,7 @@ def index(request):
 
 	if request.user.is_authenticated():
 		words_list = models.Word.objects.order_by('-fi').filter(user=request.user)
+		request.session['words_number'] = words_list.count()
 	else:
 		words_list = models.Word.objects.order_by('-fi').filter(show_in_common=True)
 	context = {
@@ -62,7 +67,7 @@ def settings(request):
 		test = request.POST.get('test','')
 		request.session['test'] = test
 		if request.user.is_authenticated():
-			if request.POST.get('show','') == "False": # need this, cause otherwise bool values would be in quotes: "True"/"False" instead of True/False
+			if request.POST.get('show','') == "False": # need this, otherwise bool values would be in quotes: "True"/"False" instead of True/False
 				show = False
 			else:
 				show = True
@@ -71,12 +76,14 @@ def settings(request):
 
 			test_scope = request.POST.get('test_scope','')
 			if models.Word.objects.filter(user=request.user).count() < 4 and test_scope == "own": # if user tries to save to "own" and has less than 4 words in own vocabulary
-				messages.add_message(request, messages.SUCCESS, 'Not enough words in own vocabulary to take a test. Other settings saved.')		# sending the warning message
+				messages.add_message(request, messages.SUCCESS, 
+				'Not enough words in own vocabulary to take a test. Other settings saved.')		# sending the warning message
 			else:
 				messages.add_message(request, messages.SUCCESS, ' Settings successfully saved!')		# sending the success message
 				request.session['test_scope'] = test_scope
 		else:
-			messages.add_message(request, messages.SUCCESS, 'You must be logged in to work with own vocabulary. Other settings saved.')		# sending the warning message
+			messages.add_message(request, messages.SUCCESS, 
+			'You must be logged in to work with own vocabulary. Other settings saved for anonymous session.')		# sending the warning message
 		#messages.add_message(request, messages.SUCCESS, ' Settings successfully saved!')		# sending the success message
 		return HttpResponseRedirect(reverse('settings'),)
 	return render(request, "sanat/settings.html", context,)

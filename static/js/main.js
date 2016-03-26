@@ -67,7 +67,7 @@ $(function () {
     //     }
     // )});
 
-    $(".info").slideDown("slow").delay(2000).fadeOut(2000);         // NOTIFICATION!!!!!!!!!!!!!!!!!!!!
+    $(".info").slideDown("slow").delay(3000).fadeOut(3000);         // NOTIFICATION!!!!!!!!!!!!!!!!!!!! show for 3 sec. and hide in 3 more sec.
 
 
     $(function () {                         // FOR TESTING PURPOSES ONLY
@@ -83,14 +83,14 @@ $(function () {
     $("[name=show]").val([showInCommon]);
     
     $("[name=back]").click(function() {
-        console.log(this.value+"aaaaaaaaaa");
+        // console.log(this.value+"aaaaaaaaaa");
         $(".wrap").css("background-image", 'url(' + imageURLs[this.value] + ')');
     });
     var imageURLs = ['../static/img/metal4.jpg','../static/img/metallic.jpeg','../static/img/metal2.png','../static/img/metal3.jpg'];
     
 
 
-    $("#hooray").show().delay(2000).fadeOut();      // show hooray-message and hide it in 2 seconds
+    //$("#hooray").show().delay(2000).fadeOut();      // show hooray-message and hide it in 2 seconds
 
     /* Inform user if there're no words in his/her own vocabulary */
     $(function () {
@@ -122,7 +122,7 @@ $(function () {
         });
     });
 
-    /* Add example(s) to any word */
+    /* Add example(s) for a given word */
     $(function () {
         var element = $('.add-example');
         element.click(function () {
