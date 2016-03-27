@@ -25,8 +25,7 @@
 					<img class="smile" src="{% static "img/about1.png" %}" />
 				</div>
 				<div class="header-left-2">
-					<p>{% trans "Be  a" %}  <span class="red-text">{% trans "Polyglot" %}</span>
-					</p>
+					<p><a href="{% url 'about' %}">{% trans "Be  a" %}  <span class="red-text">{% trans "Polyglot" %}</span></a></p>
 				</div>
 			</div>
 			<div class="header-right">
@@ -34,8 +33,8 @@
  				{% if user and not user.is_anonymous %}
 					<div class="text-logged-in">
 						{% trans "Hello" %}, <a href="{% url 'settings' %}"><span class="red-text">{{ user.get_full_name }}</span></a>!
-						<a href="{% url 'index' %}"><span class="yellow-text">{% get_words_number request %} words in vocabulary</span></a>
-						&nbsp; <a href="{% url 'logout' %}">{% trans "Log out" %}</a>
+						<a href="{% url 'index' %}"><span class="yellow-text">{% get_words_number request %} 
+						{% trans "words in vocabulary" %}</span></a>&nbsp; <a href="{% url 'logout' %}">{% trans "Log out" %}</a>
 					</div>
  				{% else %}
 	  				<div class="text-login">{% trans "Log in using" %} &nbsp;</div>

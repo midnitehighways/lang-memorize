@@ -12,9 +12,6 @@ from django.contrib import messages
 # from django.views.decorators.csrf import ensure_csrf_cookie
 # -*- coding: utf-8 -*-
 # def number_of_words(request):
-# 	if request.user.is_authenticated():
-# 		words_list = models.Word.objects.order_by('-fi').filter(user=request.user)
-# 		request.session['words_number'] = words_list.count()	 
 def index(request):
 	if 'test_scope' not in request.session:				# set default settings
 		request.session['test_scope'] = 'common'		# if there's no key in session - add value (use common by default)
@@ -25,7 +22,6 @@ def index(request):
 
 	if request.user.is_authenticated():
 		words_list = models.Word.objects.order_by('-fi').filter(user=request.user)
-		request.session['words_number'] = words_list.count()
 	else:
 		words_list = models.Word.objects.order_by('-fi').filter(show_in_common=True)
 	context = {
@@ -96,7 +92,7 @@ def insert_form(request):
 			word = form.save(commit=False)
 			word.fi = form.cleaned_data['fi']
 			word.en = form.cleaned_data['en']
-			word.tyyppi = form.cleaned_data['tyyppi']
+			word.word_type = form.cleaned_data['word_type']
 			if request.user.is_authenticated():				# possibility to add words anonymously
 				word.user = request.user
 			word.save()
@@ -119,10 +115,7 @@ def add_example_form(request, id):
 		# response_data['result'] = 'Example added successfully!'
 		response_data['number'] = number
 		response_data['example'] = example_text
-		return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json"
-        )
+		return HttpResponse(json.dumps(response_data), content_type="application/json")
 	form = ExampleForm()
 	return render(request, "sanat/index.html",{'form':form})
 

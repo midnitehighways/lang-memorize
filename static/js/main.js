@@ -44,8 +44,8 @@ $(function () {
             // handle a successful response
             success : function(json) {
                 element.children('.add-example-field').val('');                     // remove the value from the input
-                element.children('.add-example-field').fadeOut(500);
-                element.children('.add-example-button').fadeOut(500);
+                element.children('.add-example-field').fadeOut(800);
+                element.children('.add-example-button').fadeOut(800);
                 //console.log(json); // log the returned json to the console
                 // console.log(element.parent()); // another sanity check
                 element.siblings('.add-example').before(json.number + ". " + json.example + "<br /><br />"); // insert at the end of examples list
@@ -116,7 +116,7 @@ $(function () {
                 e.slideDown();
             }
             else { 
-            	if(e.children('.edit-word').text()=="Edit word")   // don't close word details unless word is saved (not in edit mode)
+            	 if(e.children('.edit-word').text()!="Save")   // don't close word details unless word is saved (not in edit mode)
                     e.slideUp();
             }
         });
@@ -144,20 +144,20 @@ $(function () {
         element.click(function () {
             //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
            //console.log($(this).children('.header-search-form').children());
-            var target = $(this).parent().parent().children('.accordion-item-hd').children('.arrowDown');
-            // console.log($(this).parent().parent().children().children());//.children().children());
-        	console.log(target);
+            var target = $(this).parent().parent().children().children('.arrowDown'); //parentsUntil(
+
+            if($(this).text()=="Edit word") $(this).text("Save");
+            else $(this).text("Edit word");
         	target.siblings().each(
     			function() {
         			if ($(this).find('input').length) {
             			$(this).text($(this).find('input').val());
-            			element.text("Edit word");
         			}
         			else {
             			var el_text = $(this).text();
             			if (el_text!='') {		// this way we skip 'text-free' elements, in our case - tools-text-content
-            				$(this).html($('<input />',{'value' : el_text}).val(el_text));
-            				element.text("Save");
+                            $(this).html($('<input />',{'value' : el_text}).val(el_text));
+            				// if(element.text()=="Edit word") element.text("Save");                            
             			}
         			}
     			});

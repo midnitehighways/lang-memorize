@@ -4,7 +4,7 @@ from .models import Word, Example
 class WordForm(forms.ModelForm):
     class Meta:
         model = Word
-        fields = ['fi', 'en', 'tyyppi']
+        fields = ['fi', 'en', 'word_type']
 
 class ExampleForm(forms.ModelForm):
 	class Meta:
