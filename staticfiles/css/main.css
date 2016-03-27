@@ -1,5 +1,5 @@
 /*TO DO
------ header MUST be responsive. It's size must be more than social icon's size on any devices
+----- header MUST be responsive. It's size must be more than social icon's size on any devices DONE
 ----- github icon in footer
 ----- user field in Word object in models DONE
 
@@ -16,11 +16,17 @@
 				4. Memorize my test statistics
 ------ user statistics - model User
 
-........ FORM - stay on the page after adding word!! предусмотреть в форме проверку данных
+........ FORM - stay on the page after adding word!! DONE
+предусмотреть в форме проверку данных
 
 --------- background - accordeon-bd
 
---------- AJAX in main word menu. Pop up window at bottom - AJAX in insert_form
+--------- AJAX in main word menu. Pop up window at bottom - AJAX in insert_form	DONE
+
+--------- DEFAULT SETTINGS - checked radiobuttons in settings-section DONE
+
+---------- скрыть из теста - галочка в дополнительном меню слова
+---------- LOG OUT to current page
 
 Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with MongoHQ.
 Polyglot, Indeed uses Ideone API © by Sphere Research Labs
@@ -29,25 +35,22 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 
 @charset "utf-8";
 
+.about-text { margin: 20px 20px 20px; line-height: 1.5}
+.info { background: lightgrey; width: 250px; position: absolute; left: 1%; bottom: 0; display: none;}
+
+.image {margin-left:50px;opacity: 0.7; }
 
 .settings-form {
 	height: 92%;
 	width: 92%;
 	margin: auto;
 	margin-top: 3%;
-	/*overflow: hidden;*/
-	/*position: absolute;*/
-	/*background-color: green;*/
 }
 .settings-form button {
-	/*display: inline-block;*/
 	float: left;
 	margin: 0;
 	margin-left: 50px;
 	margin-top: 20px;
-	/*display:inline-block;*/
-  
-  /*width: 200px;*/
 }
 #set1 {
 	/*background-color: grey;*/
@@ -159,15 +162,27 @@ input.radio:checked ~ label {
 }
 
 .form-area {
-	margin-left: 5%;
+	/*margin-left: 5%;*/
+	position: relative;
 }
 
+/* --------------------------Take a test-------------BEGINNING---- */
+#asked-word, .result, .card div, #choices {
+	position: absolute;
+}
+#asked-word {
+	top: 30%;
+	left: 5%;
+}
+#choices {
+	top: 4%;
+	left: 60%;
+}
 .result {
     width: 70px;
     height: 50px;
-    position: absolute;
-    top: 65%;
-    left: 50%;
+    top: 70%;
+    left: 40%;
     visibility: hidden;
 }
 .card {
@@ -175,7 +190,6 @@ input.radio:checked ~ label {
     height: 100%;
     font-family: 'Comfortaa-Regular';
 	font-size: 20px;
-    /*position: absolute;*/
     -webkit-transition: -webkit-transform 1s;
     -moz-transition: -moz-transform 1s;
     -o-transition: -o-transform 1s;
@@ -199,7 +213,6 @@ input.radio:checked ~ label {
 	font-size: 24px;
 	/*font-family: Comic Sans MS;*/
 	font-weight: bold;
-    position: absolute;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -o-backface-visibility: hidden;
@@ -232,13 +245,14 @@ input.radio:checked ~ label {
     -o-transform: rotateY( 180deg );
     transform: rotateY( 180deg );
 }
+/*---------------Take a test -------------- END -------*/
 
 * {		/*make sure that the padding and border are included in the total width and height of the elements */
     box-sizing: border-box;
 }
 #no-words { 
 	display: none;
-	font-family: 'Sunshine';
+	font-family: 'Comfortaa-Regular';
 	font-size: 28px;
 	text-align: center;
 	margin-top: 5%;
@@ -310,7 +324,7 @@ input.radio:checked ~ label {
 	color: black;
 }
 
-.text-sidebar a:hover .words {		/*change only those "a"s which are inside div of .text-sidebar class */
+.text-sidebar a:hover .words {		/* change only those "a"s which are inside div of .text-sidebar class */
 	color: green;
 	/*font-size: 32px;*/
 }
@@ -323,11 +337,12 @@ input.radio:checked ~ label {
 	box-shadow: 2px 2px 1px #555555;		/* shadow effect for main blocks; #888888 - lighter variant */
 }
 
-.sidebar, .content, .footer {	
-	-moz-border-radius: 10px; 
- 	-webkit-border-radius: 10px; 
+.sidebar, .content, .footer {				/* rounded corners */
+	-moz-border-radius: 5px; 
+ 	-webkit-border-radius: 5px; 
  	border-radius: 5px;
  	background-color: white;
+ 	border: 1px solid lightgrey;
  }
 
 html, body, .wrap
@@ -442,20 +457,26 @@ html, body, .wrap
 .red-text {
 	color: yellow;
 } 
+.yellow-text {
+	color: grey;
+} 
 
 
 /* END OF HEADER */
 
 
 .sidebar {
-	float: left;
+	position: absolute;
+	left: 1%;
+	top: 11%;
+	/*float: left;*/
 	/*width: 20%;*/
 	/*height: 50%;*/
 	width: 250px;
-	height: 330px;
-	margin-left: 1%;
-	margin-top: 2%;
-	margin-bottom: 1%;
+	height: 320px;
+	/*margin-left: 1%;*/
+	/*margin-top: 2%;*/
+	/*margin-bottom: 1%;*/
 }
 
 /*.main {
@@ -465,9 +486,9 @@ html, body, .wrap
 }*/
 .content {
 	width: 65%;
-	height: 76%;
-	margin-top: 2%;
-	margin-bottom: 2%;
+	height: 78%;
+	/*bottom: 13%;*/
+	top: 11%;
 	 ::-webkit-scrollbar {
         width: 0;
     }
@@ -477,12 +498,13 @@ html, body, .wrap
 	/*text-align: center;*/
 	height: 5%;
 	width: 65%;
-	margin-bottom: 1%;
+	/*margin-bottom: 1%;*/
 	text-align: center;
+	bottom: 2%;
 }
 .content, .footer {
-	float: right;
-	margin-right: 9%;
+	position: absolute;
+	left: 300px;
 }
 .footer p {						/* text in footer section */
 	/*vertical-align: middle;*/
@@ -496,7 +518,7 @@ html, body, .wrap
 
 	
 /*---------------------------------------------*/
-	height: 90%;	
+	height: 98%;	
 	overflow: auto; 
 /*---------------------------------------------*/
 
@@ -504,8 +526,10 @@ html, body, .wrap
 }
 .test-area {
 	float: left;
-	margin-left: 15%;
-	margin-top: 10%;
+	margin: 5% 5%;
+	height: 85%;
+	width: 90%;
+	position: relative;
 }
 .fi-text-content {
 	float: left;
@@ -567,8 +591,8 @@ border-top: 1px solid #d2d2d2;
     position: absolute;
 }
 .accordion-item-bd {
-  margin-bottom: 3%; /*fffff---------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-  /*background-color: #FAFAFA;*/
+  margin-bottom: 1%; /*fffff---------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+  /*border-top: 1px solid grey;*/
 }
 
 .add-example-field, .add-example-button, .accordion-item-bd {
@@ -577,6 +601,11 @@ border-top: 1px solid #d2d2d2;
 .add-example-field {
     width: 0px;
 }
+.word-type {
+	font-style: italic;
+	font-size: 14px;
+}
+
 
 /*hr {
 	opacity: 0.2;
@@ -719,10 +748,11 @@ border-top: 1px solid #d2d2d2;
 
 .form-style-7 {
     width: 80%;
+    margin: auto;
+    margin-top: 5%;
     /*margin:50px auto;*/
-    /*background: #ffa;*/
     border-radius:2px;
-    padding: 40px 55px;
+    /*padding: 40px 55px;*/
     /*padding-left: 50px;*/
     font-family: Comfortaa-Light;
 }
@@ -783,20 +813,38 @@ border-top: 1px solid #d2d2d2;
   font-family: Comfortaa-Light;
   font-weight: 600;
   color: #000;
-  font-size: 18px;
+  font-size: 17px;
   background: #c4c9cc;
   padding: 5px 10px 5px 10px;
   text-decoration: none;
   text-align: left;
-  margin-left: 20%;
+  outline: none;
   border: 0;			/* remove 3d effect */
+  transition: all .5s ease-in-out; 
 }
-.add-button:hover {
-  background: #088A08;
+#add-button {			/* special id for add-button on insert_form page */
+	display: block;
+	margin: 0 auto;
+}
+.add-button:hover, .tools-button:hover {
+  /*background: #088A08;*/
+  /*background-color: grey;*/
+  /*background-color: #CEF6E3;*/
+  background-color: #81BEF7;
+  background-color: ##58FAF4;
+  /*color: white;*/
   text-decoration: none;
+  transition: all .7s ease-in-out; 
 
-}.add-button:active {
-  transform: rotateY(180deg);
-
-transition: all 1s ease-in-out;   
+}
+.tools-button {
+	-webkit-border-radius: 7;
+	-moz-border-radius: 7;
+	border-radius: 7px;
+	border: 1px solid grey;  
+	outline: none;
+	background-color: white;
+	font-size: 16px;
+	font-family: Comfortaa-Light;
+	transition: all 0.6s ease-in-out;   
 }

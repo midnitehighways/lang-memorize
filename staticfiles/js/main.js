@@ -1,4 +1,75 @@
 $(document).ready(function() { 
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+function csrfSafeMethod(method) {
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+$(function () {  
+    $('.header-search-form').on('submit', function(event) {
+        var element = $(this)
+        event.preventDefault()
+        // console.log("form submitted!")  // sanity check
+        // console.log($(this).children('.add-example-field').val())
+        // console.log($(this).attr("wordid"))        
+        var wordid = element.attr("wordid")     // this way we send word.id from HTML to JS
+        var example_text = element.children('.add-example-field').val()
+        // console.log(wordid + " ---- " + example_text);
+        $.ajax({
+            url : wordid + "/add-example", // the endpoint
+            type : "POST",
+            data : {  example_text : example_text, csrfmiddlewaretoken: csrftoken }, // data sent with the post request
+            // handle a successful response
+            success : function(json) {
+                element.children('.add-example-field').val('');                     // remove the value from the input
+                element.children('.add-example-field').fadeOut(800);
+                element.children('.add-example-button').fadeOut(800);
+                //console.log(json); // log the returned json to the console
+                // console.log(element.parent()); // another sanity check
+                element.siblings('.add-example').before(json.number + ". " + json.example + "<br /><br />"); // insert at the end of examples list
+            },
+            // handle a non-successful response
+            error : function(xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error 
+            }
+        });
+    })
+});
+
+    // $(function () {                         
+    //     var element = $('#b');
+    //     element.click(function () {
+    //         $(".info").slideDown("slow").delay(2000).fadeOut(2000);
+    //         // console.log($('.header-right'.siblings));
+    //         // $(".header-right").show().delay(1000).fadeOut();
+    //     }
+    // )});
+
+    $(".info").slideDown("slow").delay(3000).fadeOut(3000);         // NOTIFICATION!!!!!!!!!!!!!!!!!!!! show for 3 sec. and hide in 3 more sec.
+
+
     $(function () {                         // FOR TESTING PURPOSES ONLY
         var element = $('.header');
         element.click(function () {
@@ -12,14 +83,14 @@ $(document).ready(function() {
     $("[name=show]").val([showInCommon]);
     
     $("[name=back]").click(function() {
-        console.log(this.value+"aaaaaaaaaa");
+        // console.log(this.value+"aaaaaaaaaa");
         $(".wrap").css("background-image", 'url(' + imageURLs[this.value] + ')');
     });
     var imageURLs = ['../static/img/metal4.jpg','../static/img/metallic.jpeg','../static/img/metal2.png','../static/img/metal3.jpg'];
     
 
 
-    $("#hooray").show().delay(2000).fadeOut();      // show hooray-message and hide it in 2 seconds
+    //$("#hooray").show().delay(2000).fadeOut();      // show hooray-message and hide it in 2 seconds
 
     /* Inform user if there're no words in his/her own vocabulary */
     $(function () {
@@ -29,7 +100,7 @@ $(document).ready(function() {
                 // console.log("NO");
                 $('#no-words').show();
             }
-            else {console.log("YES");}
+            // else {console.log("YES");}
         }
     });
 
@@ -39,25 +110,25 @@ $(document).ready(function() {
         element.click(function () {
             var e = $(this).siblings(('.accordion-item-bd'));
             var e2 = $(this).children(('.arrowUp'));
-            console.log(e.children('.edit-word').text());
+            // console.log(e.children('.edit-word').text());
             e2.toggleClass("arrowDown");
             if(e.is(':hidden')) {
                 e.slideDown();
             }
             else { 
-            	// if(e.children('.edit-word').text()=="Edit word")
-                e.slideUp();
+            	 if(e.children('.edit-word').text()!="Save")   // don't close word details unless word is saved (not in edit mode)
+                    e.slideUp();
             }
         });
     });
 
-    /* Add example(s) to any word */
+    /* Add example(s) for a given word */
     $(function () {
         var element = $('.add-example');
         element.click(function () {
             //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
            //console.log($(this).children('.header-search-form').children());
-            console.log($(this).parent().children().children());
+            // console.log($(this).parent().children().children());
             var form = $(this).parent().children().children('.add-example-field');
             var button = form.siblings('.add-example-button');
             if (form.is(':hidden')) {form.show(); button.show(); form.focus();}
@@ -73,20 +144,20 @@ $(document).ready(function() {
         element.click(function () {
             //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
            //console.log($(this).children('.header-search-form').children());
-            var target = $(this).parent().parent().children('.accordion-item-hd').children('.arrowDown');
-            // console.log($(this).parent().parent().children().children());//.children().children());
-        	console.log(target);
+            var target = $(this).parent().parent().children().children('.arrowDown'); //parentsUntil(
+
+            if($(this).text()=="Edit word") $(this).text("Save");
+            else $(this).text("Edit word");
         	target.siblings().each(
     			function() {
         			if ($(this).find('input').length) {
             			$(this).text($(this).find('input').val());
-            			element.text("Edit word");
         			}
         			else {
             			var el_text = $(this).text();
             			if (el_text!='') {		// this way we skip 'text-free' elements, in our case - tools-text-content
-            				$(this).html($('<input />',{'value' : el_text}).val(el_text));
-            				element.text("Save");
+                            $(this).html($('<input />',{'value' : el_text}).val(el_text));
+            				// if(element.text()=="Edit word") element.text("Save");                            
             			}
         			}
     			});
@@ -109,7 +180,7 @@ $(document).ready(function() {
 
     function handle_answer(answer)		// check whether answer is correct and react correspondingly
     {
-        document.getElementById('asked_word').style.display = "none";
+        document.getElementById('asked-word').style.display = "none";
         if(answer == right_answer) {
             // document.getElementById('result').innerHTML = "joo";
             // document.getElementById('result').className = "joo";
@@ -139,7 +210,7 @@ $(document).ready(function() {
         }
     )})
 });             // end of $(document).ready
-
+console.log($('#add-button').siblings());
 //the function prepare_test MUST be outside of $(document).ready, since it has to be ready before the page opens for user
 function prepare_test(words_list)   // initial function. Determining the 4 words and the asked word using random generation
 {
@@ -168,7 +239,7 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
         }
     }
     var rand = Math.floor(Math.random( ) * 4);                          // the generated number (0..3) defines which word --->
-    document.getElementById('asked_word').value = eng[numbers[rand]];   // ---> is going to be asked among the 4 chosen previously
+    document.getElementById('asked-word').value = eng[numbers[rand]];   // ---> is going to be asked among the 4 chosen previously
     right_answer = fin[numbers[rand]];                                  // text variable
     ids =  [document.getElementById('choice_1'), document.getElementById('choice_2'), 
             document.getElementById('choice_3'), document.getElementById('choice_4')];
@@ -180,23 +251,23 @@ function prepare_test(words_list)   // initial function. Determining the 4 words
     // }
     
     if(testType == 'comic') {               // --- comic
-        $("#asked_word").show(300);
+        $("#asked-word").show(300);
         $("#choices").show(300);
     }
     else if(testType == 'classic') {                                  // --- classic
         $("#choices").css('visibility', 'visible');
-        $("#asked_word").fadeIn(600);
+        $("#asked-word").fadeIn(600);
         $("#choices").fadeIn(600);
     }
     else {                                  // --- no animation
-        $("#asked_word").show(0);
+        $("#asked-word").show(0);
         $("#choices").show(0);
     }
 
     for (var i = 0; i < 4; i++) {
         ids[i].innerHTML = fin[numbers[i]];     // assigning corresponding words to inputs in "choices"-section
     }
-    // $("#asked_word").show(300);
+    // $("#asked-word").show(300);
     // $("#choices").show(300);
     
 }
