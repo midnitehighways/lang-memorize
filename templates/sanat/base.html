@@ -10,7 +10,7 @@
 	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
+	<!-- <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script> -->
 	<script src="{% static "js/main.js" %}"></script>
 	<script type="text/javascript"> var testType = "{{request.session.test}}"; var userID = "{{user.id}}"; 
 	var testScope = "{{request.session.test_scope}}"; var showInCommon = "{{request.session.show}}"
@@ -91,11 +91,15 @@
 		{% block settings %} {% endblock settings %}	
 		{% block about %} {% endblock about %}	
 <div class="info">
-<!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. -->
 	{% if messages %}
 		{% for message in messages %}
-			<img class="image" src="{% static "img/thumbs-up3.png" %}" />					
-			<br />{{message}} 
+			{% if message.tags == 'success' %}
+				<img class="image success" src="{% static "img/thumbs-up3.png" %}" />					
+				<br />{{message}} 
+			{% else %}
+				<img class="image warning" src="{% static "img/grumpy2.jpg" %}" />					
+				<br />{{message}} 
+			{% endif %}
 		{% endfor %}
 	{% endif %}
 </div>

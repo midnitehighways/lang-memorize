@@ -72,13 +72,13 @@ def settings(request):
 
 			test_scope = request.POST.get('test_scope','')
 			if models.Word.objects.filter(user=request.user).count() < 4 and test_scope == "own": # if user tries to save to "own" and has less than 4 words in own vocabulary
-				messages.add_message(request, messages.SUCCESS, 
+				messages.add_message(request, messages.WARNING, 
 				'Not enough words in own vocabulary to take a test. Other settings saved.')		# sending the warning message
 			else:
 				messages.add_message(request, messages.SUCCESS, ' Settings successfully saved!')		# sending the success message
 				request.session['test_scope'] = test_scope
 		else:
-			messages.add_message(request, messages.SUCCESS, 
+			messages.add_message(request, messages.WARNING, 
 			'You must be logged in to work with own vocabulary. Other settings saved for anonymous session.')		# sending the warning message
 		#messages.add_message(request, messages.SUCCESS, ' Settings successfully saved!')		# sending the success message
 		return HttpResponseRedirect(reverse('settings'),)
@@ -94,7 +94,7 @@ def insert_form(request):
 			word.en = form.cleaned_data['en']
 			word.word_type = form.cleaned_data['word_type']
 			if request.user.is_authenticated():				# possibility to add words anonymously
-				word.user = request.user
+				word.user = request.user					# set current user as word's "owner"
 			word.save()
 			messages.add_message(request, messages.SUCCESS, 'Hooray! Your word is added.')		# sending the success message
 			return HttpResponseRedirect(reverse('insert_form'),)				# get back to the insert_form page
@@ -120,7 +120,11 @@ def add_example_form(request, id):
 	return render(request, "sanat/index.html",{'form':form})
 
 def delete_word(request, id):
-    word = get_object_or_404(models.Word, pk=id).delete()
+    word = get_object_or_404(models.Word, pk=id)
+    if request.user.is_authenticated() and word.user == request.user:
+    	word.delete()
+    else:
+    	messages.add_message(request, messages.WARNING, "Can delete own words only")		# sending the success message
     return HttpResponseRedirect(reverse('index'))
 
 def about(request):
