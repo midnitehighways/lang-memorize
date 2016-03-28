@@ -22,9 +22,11 @@
 									<br />
 								{% endfor %}
 								{% endwith %}
-								<a class='add-example' href="#">{% trans "Add an example" %}</a>&nbsp&nbsp&nbsp
-								<a class='edit-word' href="#">{% trans "Edit word" %}</a>&nbsp&nbsp&nbsp
-								<a href="{% url 'delete_word' word.id %}">{% trans "Delete word" %}</a>&nbsp&nbsp&nbsp
+								<a class='add-example tools-button'><img src="{% static 'img/add-icon.png' %}" />
+								{% trans "Add an example" %}</a>&nbsp&nbsp&nbsp
+								<a class='edit-word tools-button'>{% trans "Edit word" %}</a>&nbsp&nbsp&nbsp
+								<a class='tools-button' href="{% url 'delete_word' word.id %}?next={{ request.path }}">
+								{% trans "Delete word" %}</a>&nbsp&nbsp&nbsp
 								<form class='header-search-form' id='form{{ forloop.counter }}' wordid={{word.id}} 
 									  method='POST' autocomplete='off'>{% csrf_token %}
 									<input class='add-example-field' type='text' id='line{{ forloop.counter }}' name='fi' />
@@ -35,7 +37,7 @@
 						{% endif %}
 					{% endfor %}
 				</ul>
-				<div id="no-words"> {% trans "Currently there are no words in your own vocabulary." %} <p>{% trans "Please, don't hesitate to add them :)" %}</p> <img class="image" src="{% static "img/grumpy2.jpg" %}" /></div> 
+				<div id="no-words"> {% trans "Currently there are no words in your own vocabulary." %} <p>{% trans "Please, don't hesitate to add them :)" %}<a href="{% url 'insert_form' %}" ><img class="resize" src="{% static 'img/pen4.png' %}" /></a></p> <img class="image" src="{% static "img/grumpy2.jpg" %}" /></div> 
 			</div>
 		</div>
 {% endblock content %}

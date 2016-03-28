@@ -34,7 +34,7 @@
 					<div class="text-logged-in">
 						{% trans "Hello" %}, <a href="{% url 'settings' %}"><span class="red-text">{{ user.get_full_name }}</span></a>!
 						<a href="{% url 'index' %}"><span class="yellow-text">{% get_words_number request %} 
-						{% trans "words in vocabulary" %}</span></a>&nbsp; <a href="{% url 'logout' %}">{% trans "Log out" %}</a>
+						{% trans "words in vocabulary" %}</span></a>&nbsp; <a href="{% url 'logout' %}?next={{request.path}}">{% trans "Log out" %}</a>
 					</div>
  				{% else %}
 	  				<div class="text-login">{% trans "Log in using" %} &nbsp;</div>

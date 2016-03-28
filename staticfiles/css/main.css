@@ -1,4 +1,6 @@
 /*TO DO
+----- EDIT and SAVE word!!!!!!!!!!! FIX!!
+------ add pics to buttons - edit word, add-example, delete
 ----- header MUST be responsive. It's size must be more than social icon's size on any devices DONE
 ----- github icon in footer
 ----- user field in Word object in models DONE
@@ -21,7 +23,7 @@
 
 --------- background - accordeon-bd
 
---------- AJAX in main word menu. Pop up window at bottom - AJAX in insert_form	DONE
+--------- AJAX in main word menu. Pop up window at bottom - AJAX in insert_form	DONE partly
 
 --------- DEFAULT SETTINGS - checked radiobuttons in settings-section DONE
 
@@ -38,7 +40,12 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 .about-text { margin: 20px 20px 20px; line-height: 1.5}
 .info { background: lightgrey; width: 250px; position: absolute; left: 1%; bottom: 0; display: none;}
 
-.image {margin-left:50px;opacity: 0.7; }
+.success {margin-left:50px; }
+.warning { 	
+    max-width: 240px; 
+    max-height: 240px;
+}
+.image {opacity: 0.7; }
 
 .settings-form {
 	height: 92%;
@@ -167,12 +174,17 @@ input.radio:checked ~ label {
 }
 
 /* --------------------------Take a test-------------BEGINNING---- */
-#asked-word, .result, .card div, #choices {
+.result, .card div, #choices {
 	position: absolute;
 }
 #asked-word {
-	top: 30%;
-	left: 5%;
+	/*position: absolute;*/
+	float: right;
+	margin-right: 67%;
+	margin-top: 20%; 
+	/*top: 30%;*/
+	/*left: 20px;*/
+	/*left: 85%;*/
 }
 #choices {
 	top: 4%;
@@ -840,11 +852,15 @@ border-top: 1px solid #d2d2d2;
 .tools-button {
 	-webkit-border-radius: 7;
 	-moz-border-radius: 7;
-	border-radius: 7px;
-	border: 1px solid grey;  
+	border-radius: 10px;
+	border: 1px solid grey;
+	padding: 4px 5px 3px 5px;
 	outline: none;
+	cursor: pointer;
+	text-decoration: none;
+	color: black;
 	background-color: white;
-	font-size: 16px;
+	font-size: 14px;
 	font-family: Comfortaa-Light;
 	transition: all 0.6s ease-in-out;   
 }

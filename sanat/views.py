@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from sanat import models
 from django.shortcuts import render, get_object_or_404, render_to_response, redirect  ###
 from django.http import HttpResponse, HttpResponseRedirect
@@ -11,7 +10,6 @@ from django.contrib.auth.decorators import login_required  ###
 from django.contrib import messages
 # from django.views.decorators.csrf import ensure_csrf_cookie
 # -*- coding: utf-8 -*-
-# def number_of_words(request):
 def index(request):
 	if 'test_scope' not in request.session:				# set default settings
 		request.session['test_scope'] = 'common'		# if there's no key in session - add value (use common by default)
@@ -123,9 +121,11 @@ def delete_word(request, id):
     word = get_object_or_404(models.Word, pk=id)
     if request.user.is_authenticated() and word.user == request.user:
     	word.delete()
+    	messages.add_message(request, messages.SUCCESS, "Word deleted successfully")		# sending the success message
     else:
     	messages.add_message(request, messages.WARNING, "Can delete own words only")		# sending the success message
-    return HttpResponseRedirect(reverse('index'))
+    # return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(request.GET.get('next', '/'))
 
 def about(request):
 	# collection = dir(request.user.social_auth)
@@ -145,4 +145,4 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
-    return redirect('/')
+    return HttpResponseRedirect(request.GET.get('next', '/')) # redirect to current page after logout (specified in template: ?next={{request.path}})
