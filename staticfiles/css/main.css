@@ -832,7 +832,7 @@ border-top: 1px solid #d2d2d2;
   text-align: left;
   outline: none;
   border: 0;			/* remove 3d effect */
-  transition: all .5s ease-in-out; 
+  transition: all .3s ease-in-out; 
 }
 #add-button {			/* special id for add-button on insert_form page */
 	display: block;
@@ -846,7 +846,7 @@ border-top: 1px solid #d2d2d2;
   background-color: ##58FAF4;
   /*color: white;*/
   text-decoration: none;
-  transition: all .7s ease-in-out; 
+  transition: all .4s ease-in-out; 
 
 }
 .tools-button {
@@ -854,13 +854,17 @@ border-top: 1px solid #d2d2d2;
 	-moz-border-radius: 7;
 	border-radius: 10px;
 	border: 1px solid grey;
-	padding: 4px 5px 3px 5px;
+	padding: 4px 5px 3px 25px;
 	outline: none;
 	cursor: pointer;
 	text-decoration: none;
 	color: black;
-	background-color: white;
+	/*background-color: white;*/
 	font-size: 14px;
 	font-family: Comfortaa-Light;
-	transition: all 0.6s ease-in-out;   
+	transition: all .3s ease-in-out;   
 }
+
+.icon-add {	background: url('../img/icon-add2.png') no-repeat 5px 2px; }
+.icon-edit { background: url('../img/icon-edit.png') no-repeat 5px 2px; }
+.icon-delete { background: url('../img/icon-delete2.png') no-repeat 5px 1px; }
