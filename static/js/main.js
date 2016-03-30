@@ -31,28 +31,24 @@ $(function () {
     $('.header-search-form').on('submit', function(event) {
         var element = $(this)
         event.preventDefault()
-        // console.log("form submitted!")  // sanity check
-        // console.log($(this).children('.add-example-field').val())
-        // console.log($(this).attr("wordid"))        
         var wordid = element.attr("wordid")     // this way we send word.id from HTML to JS
         var example_text = element.children('.add-example-field').val()
         // console.log(wordid + " ---- " + example_text);
         $.ajax({
-            url : wordid + "/add-example", // the endpoint
+            url : wordid + "/add-example", 
             type : "POST",
             data : {  example_text : example_text, csrfmiddlewaretoken: csrftoken }, // data sent with the post request
-            // handle a successful response
+            // handle the successful response
             success : function(json) {
                 element.children('.add-example-field').val('');                     // remove the value from the input
                 element.children('.add-example-field').fadeOut(800);
                 element.children('.add-example-button').fadeOut(800);
                 //console.log(json); // log the returned json to the console
-                // console.log(element.parent()); // another sanity check
                 element.siblings('.add-example').before(json.number + ". " + json.example + "<br /><br />"); // insert at the end of examples list
             },
-            // handle a non-successful response
+            // handle non-successful response
             error : function(xhr, errmsg, err) {
-                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error 
+                console.log(xhr.status + ": " + xhr.responseText); // provide info about error 
             }
         });
     })
@@ -138,29 +134,43 @@ $(function () {
         });
     });
     
-    /* Edit words. Without back-end so far! */
+    /* Edit words. Without NORMAL and SECURE back-end so far!!! */
     $(function () {
         var element = $('.edit-word');
         element.click(function () {
-            //var form = $(this).siblings('.add-example-field');	/* siblings help to address the right form in the particular div */
-           //console.log($(this).children('.header-search-form').children());
-            var target = $(this).parent().parent().children().children('.arrowDown'); //parentsUntil(
-
-            if($(this).text()=="Edit word") $(this).text("Save");
-            else $(this).text("Edit word");
-        	target.siblings().each(
-    			function() {
-        			if ($(this).find('input').length) {
-            			$(this).text($(this).find('input').val());
-        			}
-        			else {
-            			var el_text = $(this).text();
-            			if (el_text!='') {		// this way we skip 'text-free' elements, in our case - tools-text-content
-                            $(this).html($('<input />',{'value' : el_text}).val(el_text));
-            				// if(element.text()=="Edit word") element.text("Save");                            
-            			}
-        			}
-    			});
+            // var target = $(this).parent().parent().children().children('.arrowDown'); //parentsUntil(
+            var fi_el = $(this).parent().parent().children().children('.fi-text-content'); //parentsUntil(
+            var en_el = $(this).parent().parent().children().children('.en-text-content'); //parentsUntil(
+            var wordid = $(this).attr("wordid")     // this way we send word.id from HTML to JS
+            console.log(wordid + "......")
+            if($(this).text()=="Edit word" || $(this).text()=="Muokkaa sana") {
+                $(this).text("Save"); // || == "Muokka sanaa"
+                var fi_el_text = fi_el.text();
+                var en_el_text = en_el.text();
+                fi_el.html($('<input />',{'value' : fi_el_text}).val(fi_el_text));
+                en_el.html($('<input />',{'value' : en_el_text}).val(en_el_text));
+            }
+            else {
+                $(this).text("Edit word");
+                fi_el.text(fi_el.find('input').val());
+                en_el.text(en_el.find('input').val());
+                $.ajax({
+                    url : wordid + "/edit-word", 
+                    type : "POST",
+                    data : {  fi_word : fi_el.text(), en_word: en_el.text() }, // data sent with the post request
+                });
+       // //  	target.siblings().each(
+    			// function() {
+       //              if ($(this).find('input').length) {
+       //      			$(this).text($(this).find('input').val());
+       //  			}
+       //  			else {
+       //                  var el_text = $(this).text();
+       //      			if (el_text!='') {		// this way we skip 'text-free' elements, in our case - tools-text-content
+       //                      $(this).html($('<input />',{'value' : el_text}).val(el_text));
+       //      				// if(element.text()=="Edit word") element.text("Save");                            
+       //      			} } });
+            }
         });
     });
 

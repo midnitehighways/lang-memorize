@@ -24,7 +24,7 @@
 								{% endwith %}
 								<a class='add-example tools-button icon-add'><!-- <img src="{% static 'img/add-icon.png' %}" /> --><span>
 								{% trans "Add an example" %}</span></a>&nbsp&nbsp&nbsp
-								<a class='edit-word tools-button icon-edit'><span>{% trans "Edit word" %}</span></a>&nbsp&nbsp&nbsp
+								<a class='edit-word tools-button icon-edit' wordid={{word.id}}><span>{% trans "Edit word" %}</span></a>&nbsp&nbsp&nbsp
 								<a class='tools-button icon-delete' href="{% url 'delete_word' word.id %}?next={{ request.path }}"><span>
 								{% trans "Delete word" %}</span></a>&nbsp&nbsp&nbsp
 								<form class='header-search-form' id='form{{ forloop.counter }}' wordid={{word.id}} 

@@ -117,6 +117,14 @@ def add_example_form(request, id):
 	form = ExampleForm()
 	return render(request, "sanat/index.html",{'form':form})
 
+def edit_word(request, id):
+	if request.method == 'POST':
+		word = get_object_or_404(models.Word, pk=id)
+		word.fi = request.POST.get('fi_word')
+		word.en = request.POST.get('en_word')
+		word.save()
+	return HttpResponse()
+
 def delete_word(request, id):
     word = get_object_or_404(models.Word, pk=id)
     if request.user.is_authenticated() and word.user == request.user:
