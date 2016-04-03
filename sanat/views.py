@@ -24,7 +24,7 @@ def index(request):
 		words_list = models.Word.objects.order_by('fi').filter(show_in_common=True)
 	context = {
 		'words_list': words_list,
-		'site_title': "Home | Puhun suomea",
+		'site_title': "Home | WWWords",
 		'is_common': False,									# which particular vocabulary user wants to display - common or own?
 		}
 	return render(request, "sanat/index.html", context,)
@@ -34,7 +34,7 @@ def common(request):										# uses the same template as index.view, displays c
 	words_list = models.Word.objects.order_by('fi').filter(show_in_common=True)#.exclude(user=request.user) 
 	context = {
 		'words_list': words_list,
-		'site_title': "Common vocabulary | Puhun suomea",
+		'site_title': "Common vocabulary | WWWords",
 		'is_common': True,
 		}
 	return render(request, "sanat/index.html", context,)
@@ -49,13 +49,13 @@ def take_a_test(request):
 		data = serializers.serialize("json", models.Word.objects.filter(show_in_common=True))
 	context = {
 		'words_list': data,
-		'site_title':"Test | Puhun suomea"
+		'site_title':"Test | WWWords"
 		}
 	return render(request, "sanat/take_a_test.html", context,)
 
 def settings(request):
 	context = {
-		'site_title':"Settings | Puhun suomea",
+		'site_title':"Settings | WWWords",
 		}
 	if request.method == 'POST':
 		test = request.POST.get('test','')
