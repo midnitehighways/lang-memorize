@@ -19,9 +19,9 @@ def index(request):
 		request.session['show'] = 'True'
 
 	if request.user.is_authenticated():
-		words_list = models.Word.objects.order_by('-fi').filter(user=request.user)
+		words_list = models.Word.objects.order_by('fi').filter(user=request.user)
 	else:
-		words_list = models.Word.objects.order_by('-fi').filter(show_in_common=True)
+		words_list = models.Word.objects.order_by('fi').filter(show_in_common=True)
 	context = {
 		'words_list': words_list,
 		'site_title': "Home | Puhun suomea",
@@ -31,7 +31,7 @@ def index(request):
 
 @login_required
 def common(request):										# uses the same template as index.view, displays common vocabulary for logged-in user
-	words_list = models.Word.objects.order_by('-fi').filter(show_in_common=True)#.exclude(user=request.user) 
+	words_list = models.Word.objects.order_by('fi').filter(show_in_common=True)#.exclude(user=request.user) 
 	context = {
 		'words_list': words_list,
 		'site_title': "Common vocabulary | Puhun suomea",
@@ -140,12 +140,12 @@ def about(request):
 	# collection = request.user.social_auth.get().id
 	# collection = request.user.social_auth.values
 	# collection = request.user.social_auth.get().uid
-	context = {
-		'words_list': models.Word.objects.order_by('-fi'),
-		'site_title':"About | Puhun suomea",
-		# 'users':collection,
-		}
-	return render(request, "sanat/about.html", context,)
+	# context = {
+	# 	'words_list': models.Word.objects.order_by('fi'),
+	# 	'site_title':"About | Puhun suomea",
+	# 	# 'users':collection,
+	# 	}
+	return render(request, "sanat/about.html",)
 
 
 def login(request):
