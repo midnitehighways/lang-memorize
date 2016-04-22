@@ -8,14 +8,16 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
 	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
+	<!--	CSS 	-->
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
+	<!--	jQuery 	-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<!-- <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script> -->
 	<script src="{% static "js/main.js" %}"></script>
 	<script type="text/javascript"> var testType = "{{request.session.test}}"; var userID = "{{user.id}}"; 
 	var testScope = "{{request.session.test_scope}}"; var showInCommon = "{{request.session.show}}"
 	// console.log(testScope + " test - " + test + " show - " + show + " user - " "{{user.id}}");</script>
-	<script>																								// google analytics
+	<script>  // -------------------- google analytics -------------------------------
 	  	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -26,14 +28,15 @@
 </head>
 <body>
 	<div class="wrap">
-							<!--				 Header 			-->
+							<!--	*************			 Header 		****************	-->
+
 		<div class="header">																							
 			<div class="header-left">
 				<div class="header-left-1">
 					<img class="smile" src="{% static "img/about1.png" %}" />
 				</div>
 				<div class="header-left-2">
-					<p><a href="{% url 'about' %}">{% trans "Be  a" %}  <span class="red-text">{% trans "Polyglot" %}</span></a></p>
+					<p><a href="{% url 'start' %}">{% trans "Be  a" %}  <span class="red-text">{% trans "Polyglot" %}</span></a></p>
 				</div>
 			</div>
 			<div class="header-right">
@@ -61,7 +64,9 @@
 			</div>
 		</div>
 <!-- <div class="main"><div class="main-left">		 -->			
-						<!--				 Sidebar 			-->
+						
+						<!--		****************		 Sidebar 		*****************		-->
+
 		<div class="sidebar">
 			<div class="text-sidebar">
 				<ul>
@@ -92,7 +97,9 @@
 			</div>
 		</div>
 <!-- </div> 		 <div class="main-right">	-->			
-		<!--				 Content 			-->
+		
+		<!--			***************************		 Content 		***********************		-->
+
 		{% block content %}{% endblock content %}
 		{% block insert_form %} {% endblock insert_form %}
 		{% block test %} {% endblock test %}
@@ -111,7 +118,7 @@
 		{% endfor %}
 	{% endif %}
 </div>
-							<!--				 Footer 			-->
+					<!--		****************		 Footer 		******************		-->
 		<div class="footer"> 
 			<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | <a href="mailto:alexandru.oat@gmail.com?Subject=Hei%20Alex" target="_top">oat.alexandru@gmail.com</a> | Powered by Django 1.8.6</p>
 		</div>

@@ -1,7 +1,7 @@
 from sanat import models
 from django.shortcuts import render, get_object_or_404, render_to_response, redirect  ###
 from django.http import HttpResponse, HttpResponseRedirect
-from django.core.urlresolvers import reverse # needed for WordFrom
+from django.core.urlresolvers import reverse # needed for WordForm
 from .forms import WordForm, ExampleForm
 import json
 from django.core import serializers
@@ -145,8 +145,16 @@ def about(request):
 	# 	'site_title':"About | Puhun suomea",
 	# 	# 'users':collection,
 	# 	}
-	return render(request, "sanat/about.html",)
+	context = {
+		'site_title':"About | WWWords",
+		}
+	return render(request, "sanat/about.html", context,)
 
+def start(request):
+	context = {
+		'site_title':"Welcome | WWWords",
+		}
+	return render(request, "sanat/start.html", context,)
 
 def login(request):
     return render(request, 'sanat/login.html')

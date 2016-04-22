@@ -8,8 +8,6 @@
 		<script>
 			var words = {{ words_list | safe }};	// array of words passed by means of json. Safe format, without 'u'-s
             window.onload = function() { prepare_test(words);};   // initial function must be executed on loading the page to prepare the first choices
-            // console.log(words[0]);
-            // console.log(user);
         </script>
 		<input type="button"; class="add-button"; id="asked-word" />
 
