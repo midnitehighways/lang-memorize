@@ -9,7 +9,9 @@
 	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
 	<title>{% block title %}{{ site_title }}{% endblock title %}</title> 
 	<!--	CSS 	-->
-	<link href="{% static "css/main.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "css/main.css" %}">
+	<link rel="stylesheet" media="all" href="{% static "css/style.css" %}">
+	<!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
 	<!--	jQuery 	-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<!-- <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script> -->
@@ -23,17 +25,66 @@
 </head>
 <body>
 <div class="container">
+	
 	<div class="upper"> 
-		<span class="very-big">WWWords</span> <br/><br/>
-		<span class="big">be a polyglote</span> 
+		<!-- <div class="learn">learn</div> -->
+		<div class="icons-start">
+ 				
+ 				{% if user and not user.is_anonymous %}
+					<div class="text-logged-in-start">
+						{% trans "Hello" %}, <a href="{% url 'settings' %}"><span class="bold-name">{{ user.get_full_name }}</span></a>!
+						<a href="{% url 'index' %}"><span class="yellow-text">{% get_words_number request %} 
+						{% trans "words in vocabulary" %}</span></a>&nbsp; <a href="{% url 'logout' %}?next={{request.path}}">{% trans "Log out" %}</a>
+					</div>
+ 				
+ 				{% else %}
+	  				<div class="text-login-start">{% trans "Log in using" %} </div>
+	  				<a class="icon-google moon" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
+	  				<a class="icon-twitter moon" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
+	  				<a class="icon-facebook moon" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
+				{% endif %}
 
+				<div class="language-section-start">
+					<a href="#" onclick="submitLangForm('en');">EN</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="submitLangForm('fi');">FI</a>
+				</div>	
+		</div>
+		<a href="{% url 'index' %}"><div class="very-big"><span class="www">www</span>ords</div> </a>
 	</div>
 	
 	<div class="central"> 
+		<div class="big">be a polyglote</div>
 	</div>
 	
-	<div class="lower"></div>
+	<div class="lower">
+		<div class="first">
+			First things first! This app contains 
+		</div>
+
+		<div class="second">
+			Excellent tool to store the newly learnt words. Just come to 'Add new' section, insert it into database and never forget it!
+		</div>
+
+		<div class="third">
+			Stored a bunch of words and now are struggling memorizing it? WWWords is ready to help. Try testing your knowledge.
+		</div>
+
+		<div class="forth">
+			Tired of same dull background? Or don't want to show words from your own dictionary in public storage? 
+			Or maybe want to style/animate somehow the test area. Visit 'Settings' section!
+		</div>
+
+		<div class="fifth">
+			Don't like all this boring registrations, account confirmations and password remembering? No such stuff here! Just log in using your 
+			social media credentials. And be sure, none of your personal data at any circumstances will be exposed to author or anybody else!
+		</div>
+	</div>
+	<div class="questions"></div>
 	<div class="lowest">Alexandru Oat. 2016.</div>
-<container>
+
+		<form name="langForm" action="{% url 'setlang' %}" method="post">{% csrf_token %} 		<!-- HIDDEN FORM -->
+			<input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" /><input type="hidden" id="selected-lang" name="language">
+		</form>
+
+</div> <!-- container -->
 </body>
 </html>

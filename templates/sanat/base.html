@@ -105,19 +105,19 @@
 		{% block test %} {% endblock test %}
 		{% block settings %} {% endblock settings %}	
 		{% block about %} {% endblock about %}	
-<div class="info">
-	{% if messages %}
-		{% for message in messages %}
-			{% if message.tags == 'success' %}
-				<img class="image success" src="{% static "img/thumbs-up3.png" %}" />					
-				<br />{{message}} 
-			{% else %}
-				<img class="image warning" src="{% static "img/grumpy2.jpg" %}" />					
-				<br />{{message}} 
+		<div class="info">
+			{% if messages %}
+				{% for message in messages %}
+					{% if message.tags == 'success' %}
+						<img class="image success" src="{% static "img/thumbs-up3.png" %}" />					
+						<br />{{message}} 
+					{% else %}
+						<img class="image warning" src="{% static "img/grumpy2.jpg" %}" />					
+						<br />{{message}} 
+					{% endif %}
+				{% endfor %}
 			{% endif %}
-		{% endfor %}
-	{% endif %}
-</div>
+		</div>
 					<!--		****************		 Footer 		******************		-->
 		<div class="footer"> 
 			<p>&#169; 2016 <a href="https://www.facebook.com/oat.alexander>">Alexandru Oat</a> | <a href="https://github.com/midnitehighways/lang-memorize">Github</a> | <a href="mailto:alexandru.oat@gmail.com?Subject=Hei%20Alex" target="_top">oat.alexandru@gmail.com</a> | Powered by Django 1.8.6</p>

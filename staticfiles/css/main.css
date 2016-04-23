@@ -1,3 +1,6 @@
+@charset "utf-8";
+
+
 /*TO DO
 ----- EDIT and SAVE word!!!!!!!!!!! FIX!!
 ------ add pics to buttons - edit word, add-example, delete
@@ -30,22 +33,148 @@
 ---------- скрыть из теста - галочка в дополнительном меню слова
 ---------- LOG OUT to current page
 
-Built using Twitter Bootstrap, Sinatra, and MongoMapper. Running on Heroku with MongoHQ.
-Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 © Alexandru Oat 2016
 */
+/***********************---------------------------------------------********************/
+/**********************----------------IMPORT FONTS-------------------*******************/
+/***********************---------------------------------------------********************/
 
-@charset "utf-8";
-
-.about-text { margin: 20px 20px 20px; line-height: 1.5}
-.info { background: lightgrey; width: 250px; position: absolute; left: 1%; bottom: 0; display: none;}
-
-.success {margin-left:50px; }
-.warning { 	
-    max-width: 240px; 
-    max-height: 240px;
+@font-face {
+	font-family: 'Comfortaa-Regular'; 
+	src: url('../fonts/Comfortaa-Regular.ttf'); 
 }
-.image {opacity: 0.7; }
+@font-face {
+	font-family: 'Sunshine'; 
+	src: url('../fonts/Mf Sippin On Sunshine.ttf');  
+}
+@font-face {
+	font-family: 'Comfortaa-Light'; 
+	src: url('../fonts/Comfortaa-Light.ttf');  
+}
+
+/************************************ ICONMOON icons ***********************************/
+
+/*@font-face {
+    font-family: 'icomoon';
+    src:    url('../fonts/icomoon.eot?8zrykz');
+    src:    url('../fonts/icomoon.eot?8zrykz#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?8zrykz') format('truetype'),
+        url('../fonts/icomoon.woff?8zrykz') format('woff'),
+        url('../fonts/icomoon.svg?8zrykz#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+/*    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-google:before {
+    content: "\e900";
+}
+.icon-facebook:before {
+    content: "\e902";
+}
+.icon-facebook2:before {
+    content: "\e903";
+}
+.icon-twitter:before {
+    content: "\e901";
+}
+.icon-github:before {
+    content: "\e904";
+}
+.icon-linkedin:before {
+    content: "\e905";
+}*/
+
+/***********************---------------------------------------------********************/
+/**********************----------------MAIN SECTIONS------------------*******************/
+/***********************---------------------------------------------********************/
+
+html, body, .wrap
+{
+	height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's children (sidebar, content) could reach the bottom */
+	margin: 0;
+	font-size: 18px;
+	position: relative;
+	font-family: Comfortaa-Light;
+}
+
+.wrap {
+	/*background-image: url('../img/metallic.jpeg'); */
+	/*background-image: url('../img/metal2.png');*/
+	/*background-image: url('../img/metal3.jpg');*/
+	/*background-image: url('../img/fon.jpg');*/
+	background-image: url('../img/metal4.jpg');
+}
+
+.header {
+	height: 52px;
+	width: 100%;
+	background-image: url('../img/fon2.png');
+}
+
+
+.sidebar {
+	position: absolute;
+	left: 1%;
+	top: 11%;
+	width: 250px;
+	height: 320px;
+}
+
+.content {
+	width: 65%;
+	height: 78%;
+	top: 11%;
+	 ::-webkit-scrollbar { width: 0; }
+}
+.footer {
+	font-size: 12px;
+	height: 5%;
+	width: 65%;
+	text-align: center;
+	bottom: 2%;
+}
+
+/***********************---------------------------------------------********************/
+/**********************------------STYLING MAIN SECTIONS AREAS--------*******************/
+/***********************---------------------------------------------********************/
+
+.header, .sidebar, .content, .footer {
+	box-shadow: 2px 2px 1px #555555;		/* shadow effect for main blocks; #888888 - lighter variant */
+}
+
+.sidebar, .content, .footer {				/* rounded corners */
+	-moz-border-radius: 5px; 
+ 	-webkit-border-radius: 5px; 
+ 	border-radius: 5px;
+ 	background-color: white;
+ 	border: 1px solid lightgrey;
+ }
+
+ .content, .footer {
+	position: absolute;
+	left: 300px;
+}
+
+/***********************---------------------------------------------********************/
+/**********************-----------STYLING MAIN SECTIONS ----END-------*******************/
+/***********************---------------------------------------------********************/
+
+
+/***********************-----------SETTINGS SECTION--------********************/
 
 .settings-form {
 	height: 92%;
@@ -60,33 +189,28 @@ Polyglot, Indeed uses Ideone API © by Sphere Research Labs
 	margin-top: 20px;
 }
 #set1 {
-	/*background-color: grey;*/
 	float: left;
 	width: 45%;
 	margin-bottom: 3%;
 }
 #set2 {
-	/*background-color: grey;*/
 	float: right;
 	width: 50%;
 	margin-bottom: 3%;
 }
 
 #set3 {
-	/*background-color: red;*/
 	float: left;
 	width: 45%;
 }
 
 #set4 {
-	/*background-color: yellow;*/
 	float: right;
 	width: 50%;
 }
-
+/*****************-------------Radio inputs for settings section-------------****************/
 .radio-div {
 	clear: both;
-	/*margin: 0 0px;*/
 }
 
 .radio-div label {
@@ -152,28 +276,51 @@ input.radio:checked ~ label {
 
 
 
-#hooray {
-	/*background-color: black;*/
-	height: 200px;
-	width: 250px;
-	position: absolute;
-	float: right;
-	bottom: 40%;
-	right: 12%;
-	text-align: justify;
+/**********************---------SIDEBAR SECTION------BEGIN------**********************/
+
+.text-sidebar li {			/*each of sidebar menu elements*/
+	line-height: 50px;
 }
 
-#hooray img {
-	display: block;
-    margin: 0 auto;
+.resize { 						/* resize for sidebar menu icons */
+	vertical-align: middle;
+	height: auto; 
+    width: auto; 
+    max-width: 40px; 
+    max-height: 40px;
+    transition: all .2s ease-in-out; 
+}
+.smile { 	
+	height: auto; 
+    width: auto; 
+    max-width: 30px; 
+    max-height: 30px;
+    margin-top: 10px;
 }
 
-.form-area {
-	/*margin-left: 5%;*/
-	position: relative;
+.text-sidebar a {					/* change only those "a"s which are inside div of .text-sidebar class */
+	font-family: 'Comfortaa-Regular';
+	font-size: 20px;
+/*	vertical-align: middle;*/
+	text-decoration: none;  		/* hide underline for links */
+	/*color: #a4f333;*/
+	color: black;
 }
 
-/* --------------------------Take a test-------------BEGINNING---- */
+.text-sidebar a:hover .words {		/* change only those "a"s which are inside div of .text-sidebar class */
+	color: green;
+	/*font-size: 32px;*/
+}
+
+.text-sidebar a:hover .resize  {		/* resize pics when hovering over text */
+	transform: scale(1.1); 
+}
+
+/**********--------------------------SIDEBAR SECTION------------END---- ***********************/
+
+
+
+/**********--------------------------Take a test-------------BEGINNING---- ***********************/
 .result, .card div, #choices {
 	position: absolute;
 }
@@ -257,11 +404,44 @@ input.radio:checked ~ label {
     -o-transform: rotateY( 180deg );
     transform: rotateY( 180deg );
 }
-/*---------------Take a test -------------- END -------*/
+
+
+.test-area {
+	float: left;
+	margin: 5% 5%;
+	height: 85%;
+	width: 90%;
+	position: relative;
+}
+/************---------------Take a test -------------- END -------*************/
 
 * {		/*make sure that the padding and border are included in the total width and height of the elements */
     box-sizing: border-box;
 }
+
+
+
+#hooray {
+	/*background-color: black;*/
+	height: 200px;
+	width: 250px;
+	position: absolute;
+	float: right;
+	bottom: 40%;
+	right: 12%;
+	text-align: justify;
+}
+
+#hooray img {
+	display: block;
+    margin: 0 auto;
+}
+
+.form-area {
+	/*margin-left: 5%;*/
+	position: relative;
+}
+
 #no-words { 
 	display: none;
 	font-family: 'Comfortaa-Regular';
@@ -271,6 +451,9 @@ input.radio:checked ~ label {
 }
 #no-words img {				/* grumpy cat image */
 }
+
+
+
 .flag {
 }
 
@@ -285,105 +468,13 @@ input.radio:checked ~ label {
 .twitter { background: url('../img/twitter-sprite.png');}
 .google { background: url('../img/google-sprite.png');}
 
-@font-face {
-	font-family: 'Comfortaa-Regular'; 
-	src: url('../fonts/Comfortaa-Regular.ttf'); 
-	/*src: url('../fonts/BrookeS8.ttf');  */
-	/*src: url('../fonts/Leoscar Serif.ttf');  */
-	/*src: url('../fonts/Essai.ttf');   */
-	/*src: url('../fonts/Bless.otf');  */
-}
-@font-face {
-	font-family: 'Sunshine'; 
-	src: url('../fonts/Mf Sippin On Sunshine.ttf');  
-}
-@font-face {
-	font-family: 'Comfortaa-Light'; 
-	src: url('../fonts/Comfortaa-Light.ttf');  
-}
+
 .gradient {
     background: linear-gradient(to top, white, grey);
-    	/*#474949, #808181);*/
-    /*padding: 10px;*/
-    /*border: 0px solid #333;*/
    }
-.text-sidebar li {			/*each of sidebar menu elements*/
-	line-height: 50px;
-}
 
-.resize { 	
-	vertical-align: middle;
-	height: auto; 
-    width: auto; 
-    max-width: 40px; 
-    max-height: 40px;
-    transition: all .2s ease-in-out; 
-}
-.smile { 	
-	height: auto; 
-    width: auto; 
-    max-width: 30px; 
-    max-height: 30px;
-    margin-top: 10px;
-}
 
-.text-sidebar a {					/* change only those "a"s which are inside div of .text-sidebar class */
-	font-family: 'Comfortaa-Regular';
-	font-size: 20px;
-/*	vertical-align: middle;*/
-	text-decoration: none;  		/* hide underline for links */
-	/*color: #a4f333;*/
-	color: black;
-}
 
-.text-sidebar a:hover .words {		/* change only those "a"s which are inside div of .text-sidebar class */
-	color: green;
-	/*font-size: 32px;*/
-}
-
-.text-sidebar a:hover .resize  {		/* resize pics when hovering over text */
-	transform: scale(1.1); 
-}
-
-.header, .sidebar, .content, .footer {
-	box-shadow: 2px 2px 1px #555555;		/* shadow effect for main blocks; #888888 - lighter variant */
-}
-
-.sidebar, .content, .footer {				/* rounded corners */
-	-moz-border-radius: 5px; 
- 	-webkit-border-radius: 5px; 
- 	border-radius: 5px;
- 	background-color: white;
- 	border: 1px solid lightgrey;
- }
-
-html, body, .wrap
-{
-	height: 100%; /* we need height to be 100% on html, body, and .wrap, so that wrap's children (sidebar, content) could reach the bottom */
-	margin: 0;
-	/*font-family: Verdana, Geneva, sans-serif;*/
-	/*font-weight: 600;*/
-	font-size: 18px;
-	position: relative;
-	font-family: Comfortaa-Light;
-}
-.wrap {
-	/*background-color: #E4E7E8;*/
-	/*background-image: url('../img/metallic.jpeg'); */
-	/*background-image: url('../img/metal2.png');*/
-	/*background-image: url('../img/metal3.jpg');*/
-	background-image: url('../img/metal4.jpg');
-	/*background-image: url('../img/fon.jpg');*/
-}
-
-.header {
-/*			position: fixed;*/
-	height: 52px;
-	width: 100%;
-	/*background: linear-gradient(to top, #474949, #666767);*/
-	background-image: url('../img/fon2.png');
-	/*margin-bottom: 1%;*/										/*NOT SURE!!!!! COMMENTED 15.03 AT 20.15!!!!*/
-}
 .header-left {
 	width: 32%;
 	/*background-color: #6f6868;*/
@@ -474,54 +565,12 @@ html, body, .wrap
 } 
 
 
-/* END OF HEADER */
+/****************************** END OF HEADER **************************************/
 
 
-.sidebar {
-	position: absolute;
-	left: 1%;
-	top: 11%;
-	/*float: left;*/
-	/*width: 20%;*/
-	/*height: 50%;*/
-	width: 250px;
-	height: 320px;
-	/*margin-left: 1%;*/
-	/*margin-top: 2%;*/
-	/*margin-bottom: 1%;*/
-}
-
-/*.main {
-	background-color: lightgrey;
-	height: 90%;
-	
-}*/
-.content {
-	width: 65%;
-	height: 78%;
-	/*bottom: 13%;*/
-	top: 11%;
-	 ::-webkit-scrollbar {
-        width: 0;
-    }
-}
-.footer {
-	font-size: 12px;
-	/*text-align: center;*/
-	height: 5%;
-	width: 65%;
-	/*margin-bottom: 1%;*/
-	text-align: center;
-	bottom: 2%;
-}
-.content, .footer {
-	position: absolute;
-	left: 300px;
-}
 .footer p {						/* text in footer section */
 	/*vertical-align: middle;*/
 }
-
 
 .text-content {
 	float: left;
@@ -536,13 +585,11 @@ html, body, .wrap
 
 
 }
-.test-area {
-	float: left;
-	margin: 5% 5%;
-	height: 85%;
-	width: 90%;
-	position: relative;
-}
+
+/***********************---------------------------------------------********************/
+/**********************-------------- MAIN WORD MENU------------------*******************/
+/***********************---------------------------------------------********************/
+
 .fi-text-content {
 	float: left;
 	width: 35%;
@@ -562,13 +609,6 @@ ul {
 .each-word {
 	/*display: inline;*/
 	overflow: auto;
-}
-.text-content {
-	
-/*-----------------------------------------------------------*/
-	/*background-color: #FAFAFA;*/
-/*-----------------------------------------------------------*/
-	/*cursor: pointer;*/
 }
 
 .accordion {
@@ -618,7 +658,25 @@ border-top: 1px solid #d2d2d2;
 	font-size: 14px;
 }
 
+/***********************---------------------------------------------********************/
+/**********************-------------- MAIN WORD MENU------END---------*******************/
+/***********************---------------------------------------------********************/
 
+
+
+
+
+/****************************************************************************************/
+/****************************************************************************************/
+/****************************************************************************************/
+
+
+
+
+
+/***********************---------------------------------------------********************/
+/**********************--- USELESS CSS - OLD. STORE JUST IN CASE------*******************/
+/***********************---------------------------------------------********************/
 /*hr {
 	opacity: 0.2;
 	border-top: 1px solid #000;
@@ -647,7 +705,7 @@ border-top: 1px solid #d2d2d2;
         width: 33%;
     }
 
-    .nappi {
+.nappi {
 	text-decoration:none; text-align:center; 
 	 padding: 11px 11px; 
 	 border: none;
@@ -756,7 +814,18 @@ border-top: 1px solid #d2d2d2;
 	width: 70px;
 }*/
 
-/* input form */
+
+/****************************************************************************************/
+/***************************-------END OF USELESS----************************************/
+/****************************************************************************************/
+
+
+
+
+
+/***********************---------------------------------------------********************/
+/**********************------------ MAIN FORM STYLING ----------------*******************/
+/***********************---------------------------------------------********************/
 
 .form-style-7 {
     width: 80%;
@@ -811,12 +880,29 @@ border-top: 1px solid #d2d2d2;
     color: #C0C0C0;
     font-size: 11px;
 }
+
+
+.about-text { margin: 20px 20px 20px; line-height: 1.5}
+.info { background: lightgrey; width: 250px; position: absolute; left: 1%; bottom: 0; display: none;}
+
+.success {margin-left:50px; }
+.warning { 	
+    max-width: 240px; 
+    max-height: 240px;
+}
+.image {opacity: 0.7; }
+
+
 #middle {
 	margin-left: 25%;	/* special id for 'Choose word's type' select-form */
 }
 #left {
 	margin-left: 5%;
 }
+
+/***********************---------------------------------------------********************/
+/**********************----------------------BUTTONS------------------*******************/
+/***********************---------------------------------------------********************/
 
 .add-button {
   -webkit-border-radius: 7;
@@ -865,6 +951,194 @@ border-top: 1px solid #d2d2d2;
 	transition: all .3s ease-in-out;   
 }
 
+
+/***********************---------------------------------------------********************/
+/**********************---------- ICONS FOR WORD MENU ----------------*******************/
+/***********************---------------------------------------------********************/
 .icon-add {	background: url('../img/icon-add2.png') no-repeat 5px 2px; }
 .icon-edit { background: url('../img/icon-edit.png') no-repeat 5px 2px; }
 .icon-delete { background: url('../img/icon-delete2.png') no-repeat 5px 1px; }
+
+
+/***********************---------------------------------------------********************/
+/**********************------------- CENTRAL PAGE --------------------*******************/
+/***********************---------------------------------------------********************/
+
+
+.container {
+	width: 100%;
+	background: #FAFAFA;	
+}
+.upper {
+	width: 100%;
+	height: 150px;
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+	background: lightgrey;
+/*	border-bottom: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 0 1px 0px rgba(255,255,255,0.5);*/
+/*border-bottom: 1px solid lightgrey;*/
+}
+.central {
+	width: 100%;
+	margin: 0 auto;
+	height: 80px;
+	text-align: center;
+	background: #FAFAFA;
+/*	border-bottom: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 0 1px 0px rgba(255,255,255,0.5);*/
+	background: lightgrey;
+}
+.lower {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	height: 1800px;
+	margin: 0 auto;
+	background: grey;
+	background: #FAFAFA;
+	/*background: #333;
+	color: #eee;*/
+}
+.first, .third, .fifth {
+	width: 51%;
+	float: left;
+	height: 300px;
+	text-align: left;
+	padding: 50px;
+	border-bottom: 1px solid #555;
+	/*background: yellow;*/
+}
+
+.second, .forth {
+	float: right;
+	width: 51%;
+	height: 300px;
+	text-align: right;
+	padding: 50px;
+	border-bottom: 1px solid #555;
+	/*background: blue;*/
+}
+.questions {
+	height: 50px;
+	width: 100%;
+/*	background: black;
+*/	padding: 0px;
+}
+.lowest {
+	width: 100%;
+	text-align: center;
+	height: 30px;
+	/*line-height: 1px;*/
+	font-size: 12px;
+	letter-spacing: 2px;
+	/*margin: 0 auto;*/
+	background: #333;
+	/*vertical-align: middle;*/
+	color: white;
+	padding-top: 10px;
+}
+.upper a {
+	text-decoration: none;
+}
+
+.very-big {
+	letter-spacing: 7px;
+	font-size: 40px;
+	font-weight: 300;
+	padding-top: 100px;
+	color: black;
+}
+.big {
+	letter-spacing: 5px;
+	font-size: 16px;
+	font-weight: 300;
+}
+.text-login-start {
+	position: absolute;
+	right: 120px;
+	top: 3px;
+	/*padding-right: 30px;*/
+	width: 90px;
+	font-size: 12px;
+	color: #666;
+	text-shadow: 0px 1px 0 white;
+}
+
+.text-logged-in-start {
+	/*position: absolute;*/
+	right: 120px;
+	width: 100%;
+	top: 3px;
+		color: #666;
+	text-shadow: 0px 1px 0 white;	
+}
+.text-logged-in-start a {
+		color: #666;
+	text-shadow: 0px 1px 0 white;	
+
+}
+.bold-name {
+	color: black;
+}
+.language-section-start  {
+	position: absolute;
+	right: -90px;
+	top: 2px;
+}
+.language-section-start a {
+	color: #666;
+	text-shadow: 0px 1px 0 white;	
+}
+.language-section-start a:hover {
+	color: #000;
+	/*text-shadow: 0px 1px 0 white;	*/
+}
+.icons-start {
+	position: absolute;
+	right: 150px;
+	top: 12px;
+	font-size: 14px;
+}
+.moon {
+	padding-right: 20px;
+	color: #666;
+	text-shadow: 0px 1px 0 white;
+}
+.icon-twitter:hover {
+	color: #4099ff;
+}
+.icon-facebook:hover {
+	color: #4E71A8;
+}
+.icon-google:hover {
+	color: #D6492F;
+}
+.icon-github:hover {
+    color: #000;
+}
+.icon-linkedin:hover {
+    color: #0094BC;
+}
+/*.icons-start a {
+	text-decoration: none;
+
+}
+.learn {
+	/*padding-right: 40px;*/
+	font-size: 14px;
+	padding-right: 190px;
+	/*position: absolute;*/
+	/*top: 30px;*/
+
+}
+.www {
+	color: #7380D6;
+	color: #6476F1;
+}
+.very-big:hover {
+	/*border: 1px solid black;
+	
+	transition: all .4s ease-in-out; */
+}
