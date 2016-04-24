@@ -11,14 +11,11 @@
 	<!--	CSS 	-->
 	<link rel="stylesheet" href="{% static "css/main.css" %}">
 	<link rel="stylesheet" media="all" href="{% static "css/style.css" %}">
-	<!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
-	<!--	jQuery 	-->
+	<!--	JS 		-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<!-- <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script> -->
 	<script src="{% static "js/main.js" %}"></script>
 	<script type="text/javascript"> var testType = "{{request.session.test}}"; var userID = "{{user.id}}"; 
-	var testScope = "{{request.session.test_scope}}"; var showInCommon = "{{request.session.show}}"
-	// console.log(testScope + " test - " + test + " show - " + show + " user - " "{{user.id}}");</script>
+	var testScope = "{{request.session.test_scope}}"; var showInCommon = "{{request.session.show}}"</script>
 	<script>  // -------------------- google analytics -------------------------------
 	  	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');	ga('create', 'UA-76253113-1', 'auto'); ga('send', 'pageview');
 	</script>
@@ -26,38 +23,50 @@
 <body>
 <div class="container">
 	
-	<div class="upper"> 
-		<!-- <div class="learn">learn</div> -->
-		<div class="icons-start">
+	<div class="menu-start"> 
+		<div class="cool"><a class="icon-cool moon" href="{% url 'index' %}"></a></div>
+		
+		<div class="icons-left-start">
+			<a class="icon-pencil2 moon" href="{% url 'insert_form' %}"></a>
+			<a class="icon-list2 moon" href="{% url 'take_a_test' %}"></a>
+			<a class="icon-cogs moon" href="{% url 'settings' %}"></a>
+		</div>
+		
+		<div class="icons-right-start">
  				
- 				{% if user and not user.is_anonymous %}
-					<div class="text-logged-in-start">
-						{% trans "Hello" %}, <a href="{% url 'settings' %}"><span class="bold-name">{{ user.get_full_name }}</span></a>!
-						<a href="{% url 'index' %}"><span class="yellow-text">{% get_words_number request %} 
-						{% trans "words in vocabulary" %}</span></a>&nbsp; <a href="{% url 'logout' %}?next={{request.path}}">{% trans "Log out" %}</a>
-					</div>
+ 			{% if user and not user.is_anonymous %}
+				<div class="text-logged-in-start">
+					{% trans "Hello" %}, <a href="{% url 'settings' %}"><span class="bold-name">{{ user.get_full_name }}</span></a>!
+					<a href="{% url 'index' %}"><span class="yellow-text">{% get_words_number request %} 
+					{% trans "words in vocabulary" %}</span></a>&nbsp; <a href="{% url 'logout' %}?next={{request.path}}">{% trans "Log out" %}</a>
+				</div>
  				
- 				{% else %}
-	  				<div class="text-login-start">{% trans "Log in using" %} </div>
-	  				<a class="icon-google moon" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
-	  				<a class="icon-twitter moon" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
-	  				<a class="icon-facebook moon" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
-				{% endif %}
+ 			{% else %}
+	  			<div class="text-login-start">{% trans "Log in using" %} </div>
+	  			<a class="icon-google moon" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>
+	  			<a class="icon-twitter moon" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a>
+	  			<a class="icon-facebook moon" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> </a>
+			{% endif %}
 
 				<div class="language-section-start">
-					<a href="#" onclick="submitLangForm('en');">EN</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="submitLangForm('fi');">FI</a>
+					<a href="#" onclick="submitLangForm('en');">EN</a><a href="#" onclick="submitLangForm('fi');">FI</a>
 				</div>	
 		</div>
-		<a href="{% url 'index' %}"><div class="very-big"><span class="www">www</span>ords</div> </a>
+	</div>
+
+	<div class="upper"> 
+		<!-- <div class="learn">learn</div> -->
+		<div class="logo-start"> <a href="{% url 'index' %}"><span class="very-big"><span class="www">www</span>ords</span> </a></div>
 	</div>
 	
 	<div class="central"> 
 		<div class="big">be a polyglote</div>
+		<div class="logo-start"> <a href="{% url 'index' %}"><span class="start-button"> start </a></div>
 	</div>
 	
 	<div class="lower">
 		<div class="first">
-			First things first! This app contains 
+			First things first! This app contains . It's not 100% ready yet, but all the options and tools available here are fully functional. So, feel free to use it.
 		</div>
 
 		<div class="second">
@@ -74,8 +83,7 @@
 		</div>
 
 		<div class="fifth">
-			Don't like all this boring registrations, account confirmations and password remembering? No such stuff here! Just log in using your 
-			social media credentials. And be sure, none of your personal data at any circumstances will be exposed to author or anybody else!
+			Don't like all this boring registrations, account confirmations and password remembering? Your browser can't hold already all the web passwords? Well, no such stuff here! Just log in using your social media credentials. And be sure, it's safe. None of your personal data at any circumstances will be exposed to author or anybody else!
 		</div>
 	</div>
 	<div class="questions"></div>
