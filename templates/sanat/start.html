@@ -55,39 +55,93 @@
 	</div>
 
 	<div class="upper"> 
-		<!-- <div class="learn">learn</div> -->
+		<div class="learn">just add</div>
 		<div class="logo-start"> <a href="{% url 'index' %}"><span class="very-big"><span class="www">www</span>ords</span> </a></div>
 	</div>
 	
-	<div class="central"> 
+	<section class="ss-style-multitriangles">
+	<!-- <div class="central">  -->
 		<div class="big">be a polyglote</div>
-		<div class="logo-start"> <a href="{% url 'index' %}"><span class="start-button"> start </a></div>
-	</div>
-	
+		<div class="start-button-section"> <a href="{% url 'index' %}"><span class="start-button"> start </span></a></div>
+	<!-- </div> -->
+	</section>
 	<div class="lower">
+		<div class="summary">
+			<!-- <div class="section-title">Briefly about WWWords</div> -->
+			<!-- Hi! I'm Alexandru, the author of WWWords.  -->WWWelcome! This app might be helpful to language learners as well as polyglottic enthusiasts, since it's first aim is to help you storing and memorizing new words and expressions. Log in through one of your social network accounts and create your own vocabulary. Or don't log in and just join the common word database. You will be able to add/edit/delete words and fill in corresponding examples. Besides, once in a while you may test you knowledge. Basic settings for your vocabulary are also available. More details below.
+		</div>
+
 		<div class="first">
-			First things first! This app contains . It's not 100% ready yet, but all the options and tools available here are fully functional. So, feel free to use it.
+			
+			<div class="description"> 
+				<div class="section-title">Just add w... wwwords</div>
+				Excellent tool to store the newly learned words and expressions. Just come to 'Add new' section <a class="icon-pencil2 moon no-padding" href="{% url 'insert_form' %}"></a>, insert it into database and never lost it! Don't forget to specify the type of your word (e.g. noun, verb, etc.), although it's not necessary.
+			</div>
 		</div>
 
 		<div class="second">
-			Excellent tool to store the newly learnt words. Just come to 'Add new' section, insert it into database and never forget it!
+			
+			<div class="description-r"> 
+				<div class="section-title">One wwword is never enough</div>
+				Don't limit yourself to simple original-translation combination. Apart from word type you can provide an infinite number of example expressions for each of your words. Click on the needed line in the word table and it'll expand. There you can also update or delete your words.
+			</div>
 		</div>
 
 		<div class="third">
-			Stored a bunch of words and now are struggling memorizing it? WWWords is ready to help. Try testing your knowledge.
+			
+			<div class="description"> 
+				<div class="section-title">First logic, then wwwords</div>
+				Organize your vocabulary in a clever way. Logged in you've got a possibility to either include your own words/expressions/examples in the common database or hide it from the public. Specify it in settings <a class="icon-cogs no-padding moon" href="{% url 'settings' %}"></a>. In the same section you can choose the scope of your test (common vocabulary vs. own words).
+			</div>
 		</div>
 
 		<div class="forth">
-			Tired of same dull background? Or don't want to show words from your own dictionary in public storage? 
-			Or maybe want to style/animate somehow the test area. Visit 'Settings' section!
+			
+			<div class="description-r"> 
+				<div class="section-title">Log in to WWWords</div>
+				Tired of all this boring registrations, account confirmations and password remembering? Your browser can't hold already all the web passwords? Well, no such stuff here! Just log in using your social media credentials: 
+				<a class="icon-facebook moon no-padding" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"></a> 
+	  			<a class="icon-twitter no-padding moon" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a> 
+	  			<a class="icon-google moon no-padding" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"></a>. And be sure, it's safe. None of your personal data at any circumstances will be exposed to author or anybody else!
+	  		</div>
 		</div>
 
 		<div class="fifth">
-			Don't like all this boring registrations, account confirmations and password remembering? Your browser can't hold already all the web passwords? Well, no such stuff here! Just log in using your social media credentials. And be sure, it's safe. None of your personal data at any circumstances will be exposed to author or anybody else!
+			
+			<div class="description"> 
+				<div class="section-title">WWWords testing</div>
+				Stored a bunch of expressions and now you are struggling memorizing it? WWWords app is ready to help. Try to take a test! <a class="icon-list2 moon no-padding" href="{% url 'take_a_test' %}"></a> Check your knowledge. And don't forget about test settings <a class="icon-cogs no-padding moon" href="{% url 'settings' %}"></a>.<br />P.S. More test types to come later.
+			</div>
 		</div>
+
+		<div class="sixth">
+			
+			<div class="description-r"> 
+				<div class="section-title">Setting the wwwords up</div>
+				Tired of same dull background? Or don't want to show words from own vocabulary in public storage? Wanna add to your testing scope common words? Or maybe want to style/animate somehow the test area? Drop in on already mentioned 'Settings' section! <a class="icon-cogs no-padding moon" href="{% url 'settings' %}"></a>
+			</div>
+			<div class="pic"></div>
+		</div>
+
+
+		<div class="summary" id="conclusion">
+			<div class="summary-heading"> A bit more about author</div>
+			Hi, I'm Alexandru, the author of WWWords. The idea of such tool appeared when I first came to Finland in 2013 and threw myself into learning Finnish. I tried to memorize as much words as I could, so I wrote'em down every day in my exercise book, PC, phone, textbook, on some random papers... That was just wrong. Trying to centralize somehow the storing location, I wrote the first, primitive version of this app using JS/PHP/MySQL.<br /><br />
+
+			Time passed by and by the end of 2015 it was decided to completely rewrite this program from scratch using Django/PostgreSQL, since at that time I was in love with Python. (Well, I am now too.) Thus, for me this app became a natural coldblooded aiming at two birds with one stone: I wanted to improve both Django and Finnish skills:)<br /><br />
+
+			WWWords are not 100% ready yet, I keep working upon this website as a part of my self-studying process. But all the options and tools available here are fully functional. Note, that personal vocabularies and the whole database will stay untouched, since I make backups periodically. So, please feel free to use it! If you have any suggestions or ideas, mail me or send me a message. Please, find all my contacts in footer sections.<br /><br />
+			
+			P.S. And don't be afraid of some random words in the common vocabulary. These are the part of testing process. As for April'16 at least three persons - voluntary testers - stored their recently learned expressions there.<br />
+
+		</div>
+
+
 	</div>
-	<div class="questions"></div>
-	<div class="lowest">Alexandru Oat. 2016.</div>
+	<section class="ss-style-doublediagonal">Alexandru Oat. 2016.
+	Don't like all this boring registrations, account confirmations and password remembering? Your browser can't hold already all the web passwords? Well, no such stuff here! Just log in using your social media credentials. And be sure, it's safe. None of your personal data at any circumstances will be exposed to author or anybody else!
+	</section>
+	<div class="lowest ss-style-doublediagonal">Alexandru Oat. 2016.</div>
 
 		<form name="langForm" action="{% url 'setlang' %}" method="post">{% csrf_token %} 		<!-- HIDDEN FORM -->
 			<input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" /><input type="hidden" id="selected-lang" name="language">
