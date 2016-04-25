@@ -1516,25 +1516,57 @@ border-top: 1px solid #d2d2d2;
 	color: white;
 	padding-top: 10px;
 }
-.upper a, .menu-start a, .central a, section a, .lower a {
+.container a {
 	text-decoration: none;
 }
-.learn {						/* just add */
-	padding-top: 30px;
+section {
+	position: relative;
+	height: 200px;
+	background: #ccc;
+	text-align: center;
+}
+
+section::before,
+section::after {
+	position: absolute;
+	content: '';
+	pointer-events: none;
+}
+
+.just-add {								/* just add */
+	padding-top: 40px;
 	font-size: 14px;
 	width: 220px;
 	margin: 0 auto;
 	text-align: left;
+	font-weight: 300;
 	color: #999;
+	text-shadow: 0px 1px 0 #eee;
 }
-
-.very-big {
+.wwwords, .wwwords a {					/* WWWORDS */
+	/*padding-top: 10px;*/
 	letter-spacing: 7px;
 	font-size: 40px;
-	font-weight: 300;
 	color: black;
+	display: inline-block;
 }
-.start-button {					/* start */
+.motto {								/* be a polyglote */
+	letter-spacing: 5px;
+	font-size: 16px;
+	font-weight: 300;
+	padding-top: 15px;
+}
+.start-button-section {					/* start positioning */
+	padding-left: 200px;
+	display: inline-block;
+	/*padding-bottom: 100px;*/
+}
+.about-button-section {					/* start positioning */
+	padding-right: 200px;
+	display: inline-block;
+	/*padding-bottom: 100px;*/
+}
+.start-button {							/* start */
 	-webkit-border-radius: 7;
 	-moz-border-radius: 7;
 	font-size: 16px;
@@ -1548,19 +1580,7 @@ border-top: 1px solid #d2d2d2;
 	border: 1px solid blue;
 	color: blue;
 }
-.logo-start {					/* WWWORDS */
-	/*padding-top: 20px;*/
-	padding-top: 10px;
-}
-.start-button-section {			/* start positioning */
-	padding-top: 25px;
-}
-.big {							/* be a polyglote */
-	letter-spacing: 5px;
-	font-size: 16px;
-	font-weight: 300;
-	padding-top: 20px;
-}
+
 .text-login-start {				/* log in using */
 	position: absolute;
 	right: 180px;
@@ -1569,20 +1589,19 @@ border-top: 1px solid #d2d2d2;
 	width: 90px;
 	font-size: 12px;
 	color: #666;
-	text-shadow: 0px 1px 0 white;
+	text-shadow: 0px 1px 0 #eee;
 }
 
-.text-logged-in-start {
-	/*position: absolute;*/
+.text-logged-in-start {			/* Hello, Alexandru */
 	right: 120px;
 	width: 100%;
 	top: 3px;
 	color: #666;
-	text-shadow: 0px 1px 0 white;	
+	text-shadow: 0px 1px 0 #eee;	
 }
 .text-logged-in-start a {
 	color: #666;
-	text-shadow: 0px 1px 0 white;	
+	text-shadow: 0px 1px 0 #eee;	
 
 }
 .bold-name {					/* name of logged in user */
@@ -1596,12 +1615,12 @@ border-top: 1px solid #d2d2d2;
 }
 .language-section-start a {
 	color: #666;
-	text-shadow: 0px 1px 0 white;	
+	text-shadow: 0px 1px 0 #eee;	
 	padding-left: 30px;
 }
 .language-section-start a:hover {
 	color: blue;
-	text-shadow: 0px 1px 0 white;	
+	text-shadow: 0px 1px 0 #eee;	
 }
 .icons-right-start {
 	position: absolute;
@@ -1659,11 +1678,6 @@ border-top: 1px solid #d2d2d2;
 .www {
 	color: #04137B;
 }
-.very-big:hover {
-	/*border: 1px solid black;
-	
-	transition: all .4s ease-in-out; */
-}
 
 /*
 .ss-style-inczigzag::before,
@@ -1683,19 +1697,6 @@ border-top: 1px solid #d2d2d2;
 	bottom: 0;
 	background-image: linear-gradient(15deg, #2980b9 50%, #3498db 50%);
 }*/
-section {
-	position: relative;
-	height: 130px;
-	background: #ccc;
-	text-align: center;
-}
-
-section::before,
-section::after {
-	position: absolute;
-	content: '';
-	pointer-events: none;
-}
 
 /*.ss-style-doublediagonal {
 	z-index: 1;

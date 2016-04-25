@@ -23,7 +23,7 @@
 <body>
 <div class="container">
 	
-	<div class="menu-start"> 
+	<div class="menu-start"> 		<!-- ******** HEAD BAR MENU ********** -->
 		<div class="cool"><a class="icon-cool moon" href="{% url 'index' %}"></a></div>
 		
 		<div class="icons-left-start">
@@ -52,23 +52,28 @@
 					<a href="#" onclick="submitLangForm('en');">EN</a><a href="#" onclick="submitLangForm('fi');">FI</a>
 				</div>	
 		</div>
-	</div>
+	</div>							<!-- ******** HEAD BAR MENU ********** -->
 
-	<div class="upper"> 
-		<div class="learn">just add</div>
-		<div class="logo-start"> <a href="{% url 'index' %}"><span class="very-big"><span class="www">www</span>ords</span> </a></div>
-	</div>
-	
 	<section class="ss-style-multitriangles">
+	<!-- <div class="upper">  -->
+		<div class="just-add">just add</div>
+		<div class="wwwords"> 
+			<div class="about-button-section"> <a href="{% url 'index' %}"><span class="start-button"> about </span></a></div>
+			<a href="{% url 'index' %}"><span class="very-big"><span class="www">www</span><span style="font-size: 26px" class="icon-cool"></span>rds</span> </a>
+			<div class="start-button-section"> <a href="{% url 'index' %}"><span class="start-button"> start </span></a></div>
+		</div>
+	<!-- </div> -->
+	
+	
 	<!-- <div class="central">  -->
-		<div class="big">be a polyglote</div>
-		<div class="start-button-section"> <a href="{% url 'index' %}"><span class="start-button"> start </span></a></div>
+		<div class="motto">be a polyglote</div>
+		<!-- <div class="start-button-section"> <a href="{% url 'index' %}"><span class="start-button"> start </span></a></div> -->
 	<!-- </div> -->
 	</section>
 	<div class="lower">
 		<div class="summary">
 			<!-- <div class="section-title">Briefly about WWWords</div> -->
-			<!-- Hi! I'm Alexandru, the author of WWWords.  -->WWWelcome! This app might be helpful to language learners as well as polyglottic enthusiasts, since it's first aim is to help you storing and memorizing new words and expressions. Log in through one of your social network accounts and create your own vocabulary. Or don't log in and just join the common word database. You will be able to add/edit/delete words and fill in corresponding examples. Besides, once in a while you may test you knowledge. Basic settings for your vocabulary are also available. More details below.
+			<!-- Hi! I'm Alexandru, the author of WWWords.  -->WWWelcome! This app might be helpful to language learners as well as polyglottic enthusiasts, since it's first aim is to help storing and memorizing new words and expressions. Log in through one of your social network accounts and create your own vocabulary. Or don't log in and just join the common word database. You will be able to add/edit/delete words and fill in corresponding examples. Besides, once in a while you may test you knowledge. Basic settings for your vocabulary are also available. More details below.
 		</div>
 
 		<div class="first">
@@ -110,7 +115,7 @@
 			
 			<div class="description"> 
 				<div class="section-title">WWWords testing</div>
-				Stored a bunch of expressions and now you are struggling memorizing it? WWWords app is ready to help. Try to take a test! <a class="icon-list2 moon no-padding" href="{% url 'take_a_test' %}"></a> Check your knowledge. And don't forget about test settings <a class="icon-cogs no-padding moon" href="{% url 'settings' %}"></a>.<br />P.S. More test types to come later.
+				Stored a bunch of expressions and now you are struggling memorizing it? WWWords app is ready to help. Take a small test <a class="icon-list2 moon no-padding" href="{% url 'take_a_test' %}"></a> and check your knowledge. And don't forget about test settings <a class="icon-cogs no-padding moon" href="{% url 'settings' %}"></a>.<br />P.S. More test types to come later.
 			</div>
 		</div>
 

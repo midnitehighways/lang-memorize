@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('../fonts/icomoon.eot?7nn0ll');
-    src:    url('../fonts/icomoon.eot?7nn0ll#iefix') format('embedded-opentype'),
-        url('../fonts/icomoon.ttf?7nn0ll') format('truetype'),
-        url('../fonts/icomoon.woff?7nn0ll') format('woff'),
-        url('../fonts/icomoon.svg?7nn0ll#icomoon') format('svg');
+    src:    url('../fonts/icomoon.eot?s6f4ye');
+    src:    url('../fonts/icomoon.eot?s6f4ye#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?s6f4ye') format('truetype'),
+        url('../fonts/icomoon.woff?s6f4ye') format('woff'),
+        url('../fonts/icomoon.svg?s6f4ye#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -30,11 +30,23 @@
 .icon-pencil2:before {
     content: "\e907";
 }
+.icon-books:before {
+    content: "\e90c";
+}
+.icon-database:before {
+    content: "\e90d";
+}
+.icon-equalizer:before {
+    content: "\e90e";
+}
 .icon-cogs:before {
     content: "\e908";
 }
 .icon-list2:before {
     content: "\e909";
+}
+.icon-wink:before {
+    content: "\e90f";
 }
 .icon-cool:before {
     content: "\e90a";
