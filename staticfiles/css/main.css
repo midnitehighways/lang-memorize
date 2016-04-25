@@ -24,36 +24,6 @@
 	background: inherit;
 }
 
-/* Double Diagonal line */
-
-.ss-style-doublediagonal {
-	z-index: 1;
-	padding-top: 6em;
-	background: #2072a7;
-}
-
-.ss-style-doublediagonal::before,
-.ss-style-doublediagonal::after {
-	top: 0;
-	left: -25%;
-	z-index: -1;
-	width: 150%;
-	height: 75%;
-	background: inherit;
-	-webkit-transform: rotate(-2deg);
-	transform: rotate(-2deg);
-	-webkit-transform-origin: 0 0;
-	transform-origin: 0 0;
-}
-
-.ss-style-doublediagonal::before {
-	height: 50%;
-	background: #116094;
-	-webkit-transform: rotate(-3deg);
-	transform: rotate(-3deg);
-	-webkit-transform-origin: 3% 0;
-	transform-origin: 3% 0;
-}
 
 /* Half Circle */
 .ss-style-halfcircle::before,
@@ -547,6 +517,8 @@ html, body, .wrap
 	font-size: 18px;
 	position: relative;
 	font-family: Comfortaa-Light;
+	overflow-y: scroll;		
+	overflow-x: hidden;		/* hide horizontol scrollbar */
 }
 
 .wrap {
@@ -1438,22 +1410,47 @@ border-top: 1px solid #d2d2d2;
 	width: 100%;
 	/*height: 100%;*/
 	text-align: center;
-	height: 4000px;
+	height: 3000px;
 	margin: 0 auto;
-	background: grey;
 	background: #FAFAFA;
 	/*background: #333;
 	color: #eee;*/
 }
-.summary {
-	width: 80%;
-	font-size: 24px;
-	height: 350px;
-	margin: 0 auto;
-	padding-top: 80px;
-	letter-spacing: 1.1px;
-	line-height: 160%;
+.summary-heading {
+	padding-bottom: 25px;
+	font-size: 26px;
+	letter-spacing: 2px;
+	color: #F5B041;
 }
+.summary {
+	width: 85%;
+	padding: 50px;
+	font-size: 24px;
+	/*height: 350px;*/
+	margin: 0 auto;
+	
+	letter-spacing: 1.2px;
+	line-height: 160%;
+
+}
+.summary-wrap {
+	width: 100%;
+	/*padding-top: 80px;*/
+	/*background: #eee;*/
+
+	background: #333;
+	color: white;
+}
+.section-long {					/* for conclusion summary */
+	/*height: 1200px;*/
+	padding-top: 50px;
+	padding-bottom: 120px;
+}
+.section-short {				/* for section before summary*/
+	height: 30px;
+	background: #FAFAFA
+}
+
 
 .first, .third, .fifth, .seventh {
 	width: 100%;
@@ -1462,22 +1459,22 @@ border-top: 1px solid #d2d2d2;
 	text-align: left;
 	padding: 50px;
 	/*border-bottom: 1px solid #555;*/
-	font-size: 20px;
+	font-size: 22px;
 	letter-spacing: 1.5px;
-	line-height: 150%;
-	height: 300px;
+	line-height: 170%;
+	height: 420px;
 	/*background: yellow;*/
 }
 
 .second, .forth, .sixth {
 	width: 100%;
-	height: 300px;
+	height: 420px;
 	text-align: right;
 	padding: 50px;
 	/*border-bottom: 1px solid #555;*/
-	font-size: 20px;
+	font-size: 22px;
 	letter-spacing: 1.5px;
-	line-height: 150%;
+	line-height: 170%;
 	/*background: blue;*/
 }
 
@@ -1491,9 +1488,33 @@ border-top: 1px solid #d2d2d2;
 	float: right;
 	width: 550px;
 }
-.section-title {
-	border-bottom: 1px solid #aaa;
-	padding-bottom: 20px; 
+.pic{
+	float: left;
+	margin-left: 100px; 
+	border-radius: 50%;
+	width: 300px;
+	height: 300px;
+	padding: 75px;
+	border: 1px solid #333;
+	/*background: green;*/
+}
+.pic-r{
+	float: right;
+	border-radius: 50%;
+	width: 300px;
+	height: 300px;
+	padding: 75px;
+	border: 1px solid #333;
+	/*background: green;*/
+}
+.pic span, .pic-r span {
+	font-size: 150px;
+
+}
+.section-title {						/* title for each subsection */
+	/*border-bottom: 1px solid #aaa;*/
+	padding-bottom: 15px;
+	font-weight: bold; 
 	width: 550px;
 }
 
@@ -1506,7 +1527,7 @@ border-top: 1px solid #d2d2d2;
 .lowest {
 	width: 100%;
 	text-align: center;
-	height: 300px;
+	height: 90px;
 	/*line-height: 1px;*/
 	font-size: 12px;
 	letter-spacing: 2px;
@@ -1514,7 +1535,9 @@ border-top: 1px solid #d2d2d2;
 	background: #333;
 	/*vertical-align: middle;*/
 	color: white;
-	padding-top: 10px;
+	/*padding-top: 10px;*/
+	
+	bottom: 0;
 }
 .container a {
 	text-decoration: none;
@@ -1522,8 +1545,9 @@ border-top: 1px solid #d2d2d2;
 section {
 	position: relative;
 	height: 200px;
-	background: #ccc;
+	background: #fff;
 	text-align: center;
+	padding-top: 30px;
 }
 
 section::before,
@@ -1559,12 +1583,10 @@ section::after {
 .start-button-section {					/* start positioning */
 	padding-left: 200px;
 	display: inline-block;
-	/*padding-bottom: 100px;*/
 }
-.about-button-section {					/* start positioning */
+.about-button-section {					/* start button positioning */
 	padding-right: 200px;
 	display: inline-block;
-	/*padding-bottom: 100px;*/
 }
 .start-button {							/* start */
 	-webkit-border-radius: 7;
@@ -1634,17 +1656,18 @@ section::after {
 	top: 12px;
 	font-size: 14px;
 }
-.cool {
+.cool {							/* cool icon in left upper corner */
 	position: absolute;
 	left: 40px;
 	top: 12px;
 	font-size: 14px;
 }
-.moon {
+.moon {							/* common properties for all icons on the start page */
 	padding-right: 30px;
 	color: #666;
 	text-shadow: 0px 1px 0 white;
 }
+
 .no-padding {
 	padding: 0;
 }
@@ -1723,7 +1746,29 @@ section::after {
 	transform-origin: 3% 0;
 }*/
 
-.ss-style-multitriangles::after {
+.ss-style-multitriangles-u::before,
+.ss-style-multitriangles-d::after {
+	left: 50%;
+	width: 50px;
+	height: 50px;
+	-webkit-transform: translateX(-50%) rotate(45deg);
+	transform: translateX(-50%) rotate(45deg);
+}
+
+.ss-style-multitriangles-u::before {
+	top: -25px;
+	background: inherit;
+	box-shadow: -50px 50px 0 #fff, 50px -50px 0 #fff;
+}
+
+.ss-style-multitriangles-d::after {
+	bottom: -25px;
+	z-index: 10;
+	background: inherit;
+	box-shadow: -50px 50px 0 #fff, 50px -50px 0 #fff;
+}
+
+/*.ss-style-multitriangles::after {
 	left: 50%;
 	width: 50px;
 	height: 50px;
@@ -1732,15 +1777,39 @@ section::after {
 	background: #ccc;
 }
 
-/*.ss-style-multitriangles::before {
-	top: -25px;
-	background: inherit;
-	box-shadow: -50px 50px 0 #3498db, 50px -50px 0 #3498db;
-}
-*/
 .ss-style-multitriangles::after {
 	bottom: -25px;
 	z-index: 10;
 	background: #ccc;;
 	box-shadow: -50px 50px 0 #ccc, 50px -50px 0 #ccc;
+}
+*/
+.ss-style-doublediagonal {
+	z-index: 1;
+	/*padding-top: 6em;*/
+	background: #2072a7;
+
+}
+
+.ss-style-doublediagonal::before,
+.ss-style-doublediagonal::after {
+	top: 0;
+	left: -50%;
+	z-index: -1;
+	width: 151%;
+	height: 75%;
+	background: inherit;
+	-webkit-transform: rotate(-2deg);
+	transform: rotate(-2deg);
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+}
+
+.ss-style-doublediagonal::before {
+	height: 50%;
+	background: #116094;
+	-webkit-transform: rotate(-3deg);
+	transform: rotate(-3deg);
+	-webkit-transform-origin: 3% 0;
+	transform-origin: 3% 0;
 }
