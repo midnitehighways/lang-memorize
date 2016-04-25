@@ -144,18 +144,27 @@
 
 				Time passed by and by the end of 2015 it was decided to rewrite this program from scratch using Django/PostgreSQL, since at that time I was in love with Python. (Well, I am now too.) Thus, this app became for me a natural aiming at two birds with one stone: I wanted to improve both Django and Finnish skills:)<br /><br />
 
-				WWWords is not 100% ready yet, I keep working upon this website as a part of my self-studying process. But all the options and tools available here are fully functional. Note, that personal vocabularies and the whole database will stay untouched, since I make backups periodically. So, please feel free to use it! If you have any suggestions or ideas, mail me or send me a message. Please, find all my contacts in footer sections.<br /><br />
+				WWWords is not 100% ready yet, I keep working upon this website as a part of my self-studying process. But all the options and tools available here are fully functional. Note, that personal vocabularies and the whole database will stay untouched, since I make backups periodically. So, please feel free to use it! I hope you like it. If you have any suggestions or ideas, mail me or send me a message. Please, find all my contacts in footer sections.<br /><br />
 				
-				P.S. And don't be afraid of some random words in the common vocabulary. These are the part of testing process. As for April'16 at least three persons - voluntary testers - stored their recently learned expressions there.<br />
+				P.S. And never mind about some random words in the common vocabulary. These are the part of testing process. As for April'16 at least three persons - voluntary testers - stored their recently learned expressions there.<br />
 			</div>
 		</div>
 
-		<section class="lowest ss-style-doublediagonal">Alexandru Oat. 2016.</section>
+		<section class="lowest ss-style-doublediagonal">
+				&#169; 2016. Alexandru Oat. 
+			<!-- <div class="icons-left-start"> -->
+				
+				<a class="icon-facebook2 white-icon" href="https://www.facebook.com/oat.alexander"></a> 
+				<a class="icon-linkedin white-icon" href="https://www.linkedin.com/in/alexandruoat"></a> 
+				<a class="icon-github white-icon" href="https://github.com/midnitehighways/lang-memorize"></a>
+			<!-- </div> -->
+			
+		</section>
 	</div>
 
 	
 
-		<form name="langForm" action="{% url 'setlang' %}" method="post">{% csrf_token %} 		<!-- HIDDEN FORM -->
+		<form name="langForm" action="{% url 'setlang' %}" method="post">{% csrf_token %} 		<!-- HIDDEN FORM : SWITCH LANGS -->
 			<input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" /><input type="hidden" id="selected-lang" name="language">
 		</form>
 
