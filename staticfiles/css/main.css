@@ -1428,7 +1428,6 @@ border-top: 1px solid #d2d2d2;
 	font-size: 24px;
 	/*height: 350px;*/
 	margin: 0 auto;
-	
 	letter-spacing: 1.2px;
 	line-height: 160%;
 
@@ -1448,7 +1447,7 @@ border-top: 1px solid #d2d2d2;
 }
 .section-short {				/* for section before summary*/
 	height: 30px;
-	background: #FAFAFA
+	background: #FAFAFA;
 }
 
 
@@ -1496,6 +1495,7 @@ border-top: 1px solid #d2d2d2;
 	height: 300px;
 	padding: 75px;
 	border: 1px solid #333;
+	/*color: #F5B846;*/
 	/*background: green;*/
 }
 .pic-r{
@@ -1517,7 +1517,9 @@ border-top: 1px solid #d2d2d2;
 	font-weight: bold; 
 	width: 550px;
 }
-
+.wwwords-title {						/* highlight 'wwwords' in section titles */
+	color: #D35400;
+}
 .questions {
 	height: 500px;
 	width: 100%;
@@ -1525,19 +1527,12 @@ border-top: 1px solid #d2d2d2;
 	background: #ddd;
 }
 .lowest {
-	width: 100%;
-	text-align: center;
-	height: 90px;
-	/*line-height: 1px;*/
-	font-size: 12px;
+
+	height: 100px;
+	font-size: 14px;
 	letter-spacing: 2px;
-	/*margin: 0 auto;*/
-	background: #333;
-	/*vertical-align: middle;*/
 	color: white;
-	/*padding-top: 10px;*/
-	
-	bottom: 0;
+/*	bottom: 0;*/
 }
 .container a {
 	text-decoration: none;
@@ -1605,7 +1600,7 @@ section::after {
 
 .text-login-start {				/* log in using */
 	position: absolute;
-	right: 180px;
+	right: 190px;
 	top: 3px;
 	/*padding-right: 30px;*/
 	width: 90px;
@@ -1615,7 +1610,7 @@ section::after {
 }
 
 .text-logged-in-start {			/* Hello, Alexandru */
-	right: 120px;
+	right: 180px;
 	width: 100%;
 	top: 3px;
 	color: #666;
@@ -1646,7 +1641,13 @@ section::after {
 }
 .icons-right-start {
 	position: absolute;
-	right: 150px;
+	right: 230px;
+	top: 12px;
+	font-size: 14px;
+}
+.social-icons-right-start {
+	position: absolute;
+	right: 0px;
 	top: 12px;
 	font-size: 14px;
 }
@@ -1660,12 +1661,21 @@ section::after {
 	position: absolute;
 	left: 40px;
 	top: 12px;
-	font-size: 14px;
+}
+.cool a {
+	font-size: 18px !important;
+	color: #666;	
+	text-shadow: 0px 1px 0 white;
 }
 .moon {							/* common properties for all icons on the start page */
 	padding-right: 30px;
 	color: #666;
+	font-size: 16px;
 	text-shadow: 0px 1px 0 white;
+}
+.white-icon {
+	padding-left: 10px;
+	color: #eee;
 }
 
 .no-padding {
@@ -1674,15 +1684,18 @@ section::after {
 .icons-left-start .moon {
 	padding-left: 20px;
 }
-.moon:hover {
+.moon:hover, .cool a:hover {
 	color: blue;
 	text-shadow: 0px 1px 0 white;
 }
 .icon-twitter:hover {
 	color: #4099ff;
 }
-.icon-facebook:hover {
+.icon-facebook:hover  {
 	color: #4E71A8;
+}
+.icon-facebook2:hover {
+	color: #1B4F72;
 }
 .icon-google:hover {
 	color: #D6492F;
@@ -1787,10 +1800,14 @@ section::after {
 .ss-style-doublediagonal {
 	z-index: 1;
 	/*padding-top: 6em;*/
-	background: #2072a7;
-
+	background: #1F71a8;
 }
-
+.lowest .credits {
+	font-size: 10px;
+}
+.lowest a {
+	color: white;
+}
 .ss-style-doublediagonal::before,
 .ss-style-doublediagonal::after {
 	top: 0;
@@ -1807,7 +1824,7 @@ section::after {
 
 .ss-style-doublediagonal::before {
 	height: 50%;
-	background: #116094;
+	background: #125F95;
 	-webkit-transform: rotate(-3deg);
 	transform: rotate(-3deg);
 	-webkit-transform-origin: 3% 0;

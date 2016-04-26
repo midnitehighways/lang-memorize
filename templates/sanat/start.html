@@ -25,7 +25,7 @@
 <div class="container">
 	
 	<div class="menu-start"> 		<!-- ******** HEAD BAR MENU ********** -->
-		<div class="cool"><a class="icon-cool moon" href="{% url 'index' %}"></a></div>
+		<div class="cool"><a class="icon-cool" href="{% url 'index' %}"></a></div>
 		
 		<div class="icons-left-start">
 			<a class="icon-pencil2 moon" href="{% url 'insert_form' %}"></a>
@@ -52,7 +52,9 @@
 				<div class="language-section-start">
 					<a href="#" onclick="submitLangForm('en');">EN</a><a href="#" onclick="submitLangForm('fi');">FI</a>
 				</div>	
+		
 		</div>
+		<a class="icon-github moon social-icons-right-start" href="https://github.com/midnitehighways/lang-memorize"></a>
 	</div>							<!-- ******** HEAD BAR MENU ********** -->
 
 	<section class="ss-style-multitriangles-d">
@@ -61,7 +63,7 @@
 		<div class="wwwords"> 
 			<div class="about-button-section"> <a href="{% url 'index' %}"><span class="start-button"> start </span></a></div>
 			<a href="{% url 'index' %}"><span class="very-big"><span class="www">www</span><span style="font-size: 26px" class="icon-cool"></span>rds</span> </a>
-			<div class="start-button-section"> <a href="{% url 'index' %}"><span class="start-button"> about </span></a></div>
+			<div class="start-button-section"> <a href="#conclusion"><span class="start-button"> about </span></a></div>
 		</div>
 	<!-- </div> -->
 	
@@ -74,7 +76,7 @@
 		<div class="summary-wrap">
 			<div class="summary">
 				<!-- <div class="section-title">Briefly about WWWords</div> -->
-				<!-- Hi! I'm Alexandru, the author of WWWords.  -->WWWelcome! This app might be helpful to language learners as well as polyglottic enthusiasts, since it's first aim is to help storing and memorizing new words and expressions. Log in through one of your social network accounts and create your own vocabulary. Or don't log in and just join the common word database. You will be able to add/edit/delete words and fill in corresponding examples. Besides, once in a while you may test you knowledge. Basic settings for your vocabulary are also available. More details below.
+				<!-- Hi! I'm Alexandru, the author of WWWords.  --><p>WWWelcome! This app might be helpful to language learners as well as polyglottic enthusiasts, since it's first aim is to help storing and memorizing new words and expressions. Log in through one of your social network accounts and create your own vocabulary. Or don't log in and just join the common word database. You will be able to add/edit/delete words and fill in corresponding examples. Besides, once in a while you may test you knowledge. Basic settings for your vocabulary are also available. More details below.</p>
 			</div>
 		</div>
 
@@ -82,7 +84,7 @@
 		<div class="first">
 			
 			<div class="description"> 
-				<div class="section-title">Just add w... wwwords</div>
+				<div class="section-title">Just add w... <span class="wwwords-title">wwwords</span></div>
 				Excellent tool to store the newly learned words and expressions. Just come to 'Add new' section <a class="icon-pencil2 moon no-padding" href="{% url 'insert_form' %}"></a>, insert it into database and never lost it! Don't forget to specify the type of your word (e.g. noun, verb, etc.), although it's not necessary.
 			</div>
 			<div class="pic-r"><span class="li_data"></span></div>
@@ -91,7 +93,7 @@
 		<div class="second">
 			
 			<div class="description-r"> 
-				<div class="section-title">One wwword is never enough</div>
+				<div class="section-title">One <span class="wwwords-title">wwword</span> is never enough</div>
 				Don't limit yourself to simple original-translation combination. Apart from word type you can provide an infinite number of example expressions for each of your words. Click on the needed line in the word table and it'll expand. There you can also update or delete your words.
 			</div>
 			<div class="pic"><span class="icon-books"></span></div>
@@ -100,7 +102,7 @@
 		<div class="third">
 			
 			<div class="description"> 
-				<div class="section-title">First logic, then wwwords</div>
+				<div class="section-title">First logic, then <span class="wwwords-title">wwwords</span></div>
 				Organize your vocabulary in a clever way. Logged in you've got a possibility to either include your own words, expressions and examples in the common database or hide it from the public. Specify it in settings <a class="icon-cogs no-padding moon" href="{% url 'settings' %}"></a>. In the same section you can choose the scope of your test (common vocabulary vs. own words).
 			</div>
 			<div class="pic-r"><span class="li_bulb"></span></div>
@@ -109,7 +111,7 @@
 		<div class="forth">
 			
 			<div class="description-r"> 
-				<div class="section-title">Log in to WWWords</div>
+				<div class="section-title">Log in to <span class="wwwords-title">Wwwords</span></div>
 				Tired of all this boring registrations, account confirmations and password remembering? Your browser can't hold already all the web passwords? Well, no such stuff here! Just log in using your social media credentials: 
 				<a class="icon-facebook moon no-padding" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"></a> 
 	  			<a class="icon-twitter no-padding moon" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"> </a> 
@@ -121,7 +123,7 @@
 		<div class="fifth">
 			
 			<div class="description"> 
-				<div class="section-title">WWWords testing</div>
+				<div class="section-title"><span class="wwwords-title">Wwwords</span> testing</div>
 				Stored a bunch of expressions and now you are struggling memorizing it? WWWords app is ready to help. Take a small test <a class="icon-list2 moon no-padding" href="{% url 'take_a_test' %}"></a> and check your knowledge. And don't forget about test settings <a class="icon-cogs no-padding moon" href="{% url 'settings' %}"></a>.<br />P.S. More test types to come later.
 			</div>
 			<div class="pic-r"><span class="li_study"></span></div>
@@ -130,7 +132,7 @@
 		
 		<div class="sixth">
 			<div class="description-r"> 
-				<div class="section-title">Setting the wwwords up</div>
+				<div class="section-title">Setting the <span class="wwwords-title">wwwords</span> up</div>
 				Tired of same dull background? Or don't want to show words from own vocabulary in public storage? Wanna add to your testing scope common words? Or maybe want to style/animate somehow the test area? Drop in on already mentioned 'Settings' section! <a class="icon-cogs no-padding moon" href="{% url 'settings' %}"></a>
 			</div>
 			<div class="pic"><span class="li_params"></span></div>
@@ -140,25 +142,31 @@
 		<div class="summary-wrap section-long" id="conclusion">
 			<div class="summary">
 				<div class="summary-heading"> A bit more this app</div>
-				Hi, I'm Alexandru, the author of WWWords. The idea of such a tool appeared when I first came to Finland in 2013 and threw myself into learning Finnish. I tried to memorize as much words as I could, so I wrote'em down every day in my exercise book, PC, phone, textbook, on some random papers... That was just wrong. Trying to centralize somehow the storing location I sketched the first, primitive version of this app using JS/PHP/MySQL.<br /><br />
+				<p>Hi, I'm Alexandru, the author of WWWords. The idea of such a tool appeared when I first came to Finland in 2013 and threw myself into learning Finnish. I tried to memorize as much words as I could, so I wrote'em down every day in my exercise book, PC, phone, textbook, on some random papers... That was just wrong. Trying to centralize somehow the storing location I sketched the first, primitive version of this app using JS/PHP/MySQL.</p><br />
 
-				Time passed by and by the end of 2015 it was decided to rewrite this program from scratch using Django/PostgreSQL, since at that time I was in love with Python. (Well, I am now too.) Thus, this app became for me a natural aiming at two birds with one stone: I wanted to improve both Django and Finnish skills:)<br /><br />
+				<p>Time passed by and by the end of 2015 it was decided to rewrite this program from scratch using Django/PostgreSQL, since at that time I was in love with Python. (Well, I am now too.) Thus, this app became for me a natural aiming at two birds with one stone: I wanted to improve both Django and Finnish skills:)</p><br />
 
-				WWWords is not 100% ready yet, I keep working upon this website as a part of my self-studying process. But all the options and tools available here are fully functional. Note, that personal vocabularies and the whole database will stay untouched, since I make backups periodically. So, please feel free to use it! I hope you like it. If you have any suggestions or ideas, mail me or send me a message. Please, find all my contacts in footer sections.<br /><br />
+				<p>WWWords is not 100% ready yet, I keep working upon this website as a part of my self-studying process. But all the options and tools available here are fully functional. Note, that personal vocabularies and the whole database will stay untouched, since I make backups periodically. So, please feel free to use it! I hope you like it. If you have any suggestions or ideas, mail me or send me a message. Please, find all my contacts in footer sections.</p><br />
 				
-				P.S. And never mind about some random words in the common vocabulary. These are the part of testing process. As for April'16 at least three persons - voluntary testers - stored their recently learned expressions there.<br />
+				<p>P.S. And never mind about some random words in the common vocabulary. These are the part of testing process. As for April'16 at least three persons - voluntary testers - stored their recently learned expressions there.</p>
 			</div>
 		</div>
 
 		<section class="lowest ss-style-doublediagonal">
-				&#169; 2016. Alexandru Oat. 
+				<p>
+					&#169; 2016. Alexandru Oat. | <a href="mailto:alexandru.oat@gmail.com?Subject=Hei%20Alex" target="_top">Mail me</a> | 
 			<!-- <div class="icons-left-start"> -->
 				
-				<a class="icon-facebook2 white-icon" href="https://www.facebook.com/oat.alexander"></a> 
-				<a class="icon-linkedin white-icon" href="https://www.linkedin.com/in/alexandruoat"></a> 
-				<a class="icon-github white-icon" href="https://github.com/midnitehighways/lang-memorize"></a>
+					<a href="https://github.com/midnitehighways/lang-memorize">GitHub</a> | 
+					<a href="https://www.linkedin.com/in/alexandruoat">LinkedIn</a> | 
+					<a href="https://www.facebook.com/oat.alexander">FB</a>
+
+				</p>
+				<!-- <br/> -->
 			<!-- </div> -->
-			
+				<p class="credits">
+					Powered by Django 1.8.6. Used free icons from <a href="https://icomoon.io/">icomoon.io</a> and <a href="http://designmodo.com/linecons-free/">linecons</a>
+				</p>
 		</section>
 	</div>
 
