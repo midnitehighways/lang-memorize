@@ -1825,9 +1825,9 @@ section::after {
 .ss-style-doublediagonal::before,
 .ss-style-doublediagonal::after {
 	top: 0;
-	left: -50%;
+	left: -25%;
 	z-index: -1;
-	width: 151%;
+	width: 150%;
 	height: 75%;
 	background: inherit;
 	-webkit-transform: rotate(-2deg);
@@ -1848,9 +1848,9 @@ section::after {
 
 
 /****************************************** MEDIA QUERIES **************************************/
+/*/// TO DO: mobile responsive design width < 800 ////*/
 
-
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 890px) {
 	.pic, .pic-r {
 		border-radius: 50%;
 		width: 100px;
@@ -1865,6 +1865,22 @@ section::after {
 		width: 400px;
 		font-size: 16px;
 	}
+	.start-button-section {					/* start positioning */
+		padding-left: 50px;
+	}
+	.about-button-section {					/* start button positioning */
+		padding-right: 50px;
+	}
+	.moon {
+		padding-right: 15px;
+	}
+	.icons-left-start .moon {
+		padding-left: 12px;
+	}
+	.icons-left-start {
+		left: 100px;
+	}
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -1876,17 +1892,50 @@ section::after {
 		margin-top: 50px;
 	}
 	.pic span, .pic-r span {
-	font-size: 100px;
+		font-size: 100px;
 	}
+	.text-login-start {				/* log in using */
+		right: 95px;
+	}
+
 }
 @media screen and (min-width: 1100px) {
 
-	.pic {
+	.pic, .description {
 		margin-left: 80px;
 	}
-	.pic-r {
+	.pic-r, .description-r {
 		margin-right: 80px;
 	}
+	.summary {
+		width: 80%;
+	}
+}
+
+@media screen and (min-width: 1360px) {
+
+	.pic, .description {
+		margin-left: 150px;
+	}
+	.pic-r, .description-r {
+		margin-right: 150px;
+	}
+		.summary {
+		width: 70%;
+	} 
+}
+@media screen and (min-width: 1600px) {
+
+	.pic, .description {
+		margin-left: 250px;
+	}
+	.pic-r, .description-r {
+		margin-right: 250px;
+	}
+	.summary {
+	
+		width: 65%;
+	} 
 }
 
 /****************************************** MEDIA QUERIES. END **************************************/
