@@ -367,6 +367,7 @@ svg#bigTriangleColor {
 	stroke: #3498db; /* avoid gap in FF */
 }
 
+
 /* Clouds */
 #clouds path {
 	fill: #ecf0f1;
@@ -374,6 +375,7 @@ svg#bigTriangleColor {
 }
 
 /* Media Queries for the layout */
+
 @media screen and (max-width: 68em) {
 	section {
 		font-size: 80%;
@@ -507,9 +509,12 @@ svg#bigTriangleColor {
 .icon-linkedin:before {
     content: "\e905";
 }*/
+
+
 /***********************---------------------------------------------********************/
 /**********************----------------MAIN SECTIONS------------------*******************/
 /***********************---------------------------------------------********************/
+
 
 html, body, .wrap
 {
