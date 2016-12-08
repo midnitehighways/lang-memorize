@@ -1,8 +1,6 @@
 @charset "utf-8";
 
 
-
-
 /* Triangles */
 .ss-style-triangles::before,
 .ss-style-triangles::after {
@@ -25,6 +23,8 @@
 }
 
 
+
+
 /* Half Circle */
 .ss-style-halfcircle::before,
 .ss-style-halfcircle::after {
@@ -37,6 +37,8 @@
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
 }
+
+
 
 .ss-style-halfcircle::before {
 	top: -50px;
@@ -505,7 +507,6 @@ svg#bigTriangleColor {
 .icon-linkedin:before {
     content: "\e905";
 }*/
-
 /***********************---------------------------------------------********************/
 /**********************----------------MAIN SECTIONS------------------*******************/
 /***********************---------------------------------------------********************/
